@@ -1,3 +1,5 @@
+'use client';
+
 // import { useState } from 'react';
 // import { formType, iconBtnType, iconSizes, pagesPath } from '@/constants';
 import { MdEmail, MdLock } from 'react-icons/md';
@@ -10,8 +12,11 @@ import Input from '@/components/Input';
 import { InputType } from '@/constants/inputType';
 import { IconSizes } from '@/constants/iconSizes';
 import AuthFormMessage from '@/components/AuthFormMessage';
+import { useFormState, useFormStatus } from 'react-dom';
+import { authenticate } from '@/app/lib/actions';
 
 const LoginForm = () => {
+  const [state, dispatch] = useFormState(authenticate, undefined);
   //   const [isShowPassword, setIsShowPassword] = useState(false);
   //   const isLoading = useSelector(selectIsLoading);
   //   const dispatch = useDispatch();
@@ -44,23 +49,25 @@ const LoginForm = () => {
     <>
       <h2 className={css.title}>log in</h2>
       <p className={css.message}>Welcome to Phonebook!</p>
-      <Image src={defaultAvatar} alt='user avatar' width={150} />
-      <form className={css.form} action=''>
+      <Image src={defaultAvatar} alt='user avatar' width={150} priority />
+      <form action={dispatch} className={css.form}>
         <Input
           type='email'
+          name='email'
           placeholder='Email'
-          inputType={InputType.auth}
+          // inputType={InputType.auth}
           icon={<MdEmail size={IconSizes.secondaryIconSize} />}
-          inputWrap
+          // inputWrap
           required
           autoFocus
         />
         <Input
           type='password'
+          name='password'
           placeholder='Password'
-          inputType={InputType.auth}
+          // inputType={InputType.auth}
           icon={<MdLock size={IconSizes.secondaryIconSize} />}
-          inputWrap
+          // inputWrap
           required
         />
         <AuthFormMessage
