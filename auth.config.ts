@@ -10,7 +10,9 @@ export const authConfig = {
       const isLoggedIn = !!auth?.user;
       const isOnContacts = nextUrl.pathname.startsWith('/contacts');
       if (isOnContacts) {
-        if (isLoggedIn) return true;
+        if (isLoggedIn) {
+          return true;
+        }
         return false;
       } else if (isLoggedIn) {
         return Response.redirect(new URL('/contacts', nextUrl));

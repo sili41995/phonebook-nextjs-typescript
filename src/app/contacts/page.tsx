@@ -1,4 +1,5 @@
-import { auth } from '../../../auth';
+import contactsServiceApi from '@/service/contactsServiceApi';
+import { auth, signOut } from '../../../auth';
 
 export const metadata = {
   title: 'Contacts',
@@ -6,8 +7,15 @@ export const metadata = {
 };
 
 const ContactsPage = async () => {
-  const session = await auth();
-  console.log(session);
+  const { user } = await auth();
+  contactsServiceApi.token = user.token;
+  const currentUser = await contactsServiceApi.refreshUser();
+  // if (currentUser.message) {
+  //   ('use server');
+  //   await signOut();
+  // }
+
+  const contacts = await contactsServiceApi.fetchContacts();
 
   return <div>Contacts</div>;
 };
