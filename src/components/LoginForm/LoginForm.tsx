@@ -17,6 +17,7 @@ import { authenticate } from '@/app/lib/actions';
 
 const LoginForm = () => {
   const [state, dispatch] = useFormState(authenticate, undefined);
+  const { pending } = useFormStatus();
   //   const [isShowPassword, setIsShowPassword] = useState(false);
   //   const isLoading = useSelector(selectIsLoading);
   //   const dispatch = useDispatch();
@@ -61,48 +62,40 @@ const LoginForm = () => {
           required
           autoFocus
         />
+        {/* {errors.email && toasts.errorToast('Email is required')}
+         */}
         <Input
           type='password'
           name='password'
           placeholder='Password'
           // inputType={InputType.auth}
           icon={<MdLock size={IconSizes.secondaryIconSize} />}
+          // action={toggleIsShowPassword}
+          // btnIcon={inputPasswordBtnIcon}
+          // btnType={watchPassword && iconBtnType.toggleShowPassword}
           // inputWrap
           required
         />
+        {/* {errors.password &&
+               toasts.errorToast(
+                 errors.password.type === 'required'
+                   ? 'Password is required'
+                   : 'Password minimum length is 7 characters'
+               )} */}
         <AuthFormMessage
           action='Sign up'
           pageLink='/register'
           message="if you don't have an account yet"
         />
-        <button className={css.button} type='submit'>
+        <button
+          className={css.button}
+          type='submit'
+          // aria-disabled={pending}
+        >
           Log in
         </button>
       </form>
     </>
-    //     <>
-
-    //       <form  onSubmit={handleSubmit(onSubmit)}>
-    //         <Input
-    //           settings={{ ...register('email', { required: true }) }}
-    //         />
-    //         {errors.email && toasts.errorToast('Email is required')}
-    //         <Input
-    //           settings={{
-    //             ...register('password', { : true, minLength: 7 }),
-    //           }}
-    //           btnType={watchPassword && iconBtnType.toggleShowPassword}
-    //           action={toggleIsShowPassword}
-    //           btnIcon={inputPasswordBtnIcon}
-    //         />
-    //         {errors.password &&
-    //           toasts.errorToast(
-    //             errors.password.type === 'required'
-    //               ? 'Password is required'
-    //               : 'Password minimum length is 7 characters'
-    //           )}
-    //       </form>
-    //     </>
   );
 };
 
