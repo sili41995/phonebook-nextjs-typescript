@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link {
+  display: flex;
+  height: 48px;
+  text-decoration: none;
+  padding: 8px 12px;
+  background-color: #f9fafb;
+  align-items: center;
+  border-radius: var(--primaryBorderRadius);
+}
+
+.link p {
+  color: var(--primaryFontColor);
+}
+
+.link.active {
+  background-color: #e0f2fe;
+}
+
+.link.active p {
+  color: #2f6feb;
+}

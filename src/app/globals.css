@@ -83,3 +83,15 @@ img {
 button {
   cursor: pointer;
 }
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: var(--deskContainerWidth);
+}
+
+.contacts-page {
+  display: flex;
+  padding: var(--paddingContainer);
+  gap: var(--primaryGap);
+}
