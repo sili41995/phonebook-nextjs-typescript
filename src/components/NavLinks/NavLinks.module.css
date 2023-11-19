@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 8px;
 }
 
@@ -23,5 +24,15 @@
 }
 
 .link.active p {
+  color: #2f6feb;
+}
+
+.link:hover,
+.link:focus {
+  background-color: #e0f2fe;
+}
+
+.link:hover p,
+.link:focus p {
   color: #2f6feb;
 }

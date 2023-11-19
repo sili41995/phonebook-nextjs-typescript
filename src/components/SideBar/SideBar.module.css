@@ -1,9 +1,43 @@
 .container {
   width: 240px;
-  padding: 16px 8px;
   display: flex;
+  height: 100%;
 }
 
 .linksContainer {
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
+  align-content: space-between;
+}
+
+.linksContainer form {
+  width: 100%;
+}
+
+.signOutBtn {
+  display: flex;
+  height: 48px;
+  width: 100%;
+  text-decoration: none;
+  padding: 8px 12px;
+  background-color: #f9fafb;
+  align-items: center;
+  border-radius: var(--primaryBorderRadius);
+  outline: none;
+  border-color: transparent;
+}
+
+.signOutBtn p {
+  color: var(--primaryFontColor);
+}
+
+.signOutBtn:hover,
+.signOutBtn:focus {
+  background-color: #e0f2fe;
+}
+
+.signOutBtn:hover p,
+.signOutBtn:focus p {
+  color: #2f6feb;
 }
