@@ -1,4 +1,4 @@
-export enum IconSizes {
+export const enum IconSizes {
   defaultIconSize = 18,
   primaryIconSize = 23,
   secondaryIconSize = 20,

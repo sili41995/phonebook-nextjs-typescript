@@ -98,3 +98,7 @@ button {
   padding: var(--paddingContainer);
   gap: var(--primaryGap);
 }
+
+.section {
+  width: 100%;
+}

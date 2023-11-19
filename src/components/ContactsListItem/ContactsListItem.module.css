@@ -1,0 +1,70 @@
+.contactItem {
+  position: relative;
+  align-items: center;
+  border-radius: var(--secondaryBorderRadius);
+  border: 0.5px solid;
+  border-color: var(--borderColor);
+  transition: box-shadow var(--transitionDurationAndFunc);
+}
+
+.contactItem:hover,
+.contactItem:focus {
+  box-shadow: var(--primaryShadow);
+}
+
+.contactLink {
+  padding: 12px;
+  display: flex;
+  gap: var(--primaryGap);
+  text-decoration: none;
+  color: var(--primaryFontColor);
+}
+
+.avatar {
+  width: 70px;
+  height: auto;
+}
+
+.infoWrap {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: var(--primaryGap);
+  align-items: center;
+}
+
+.infoWrap div {
+  flex-basis: calc((100% - var(--primaryGap) * 2) / 3);
+}
+
+.name {
+  color: var(--primaryFontColor);
+  font-family: var(--font-inter);
+  font-size: var(--otherFontSize);
+  font-weight: var(--secondaryFontWeight);
+  text-align: center;
+}
+
+.role {
+  color: var(--contactPrimaryTextColor);
+  font-family: var(--font-inter);
+  font-size: var(--primaryFontSize);
+  font-weight: var(--primaryFontWeight);
+  text-align: center;
+}
+
+.phone {
+  color: var(--primaryFontColor);
+  font-family: var(--font-inter);
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--primaryFontWeight);
+  text-align: center;
+}
+
+.email {
+  color: var(--contactSecondaryTextColor);
+  font-family: var(--font-inter);
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--secondaryFontWeight);
+  text-align: center;
+}
