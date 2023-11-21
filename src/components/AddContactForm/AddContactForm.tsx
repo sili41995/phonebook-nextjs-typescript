@@ -1,3 +1,5 @@
+'use client';
+
 // import { HiPhone } from 'react-icons/hi';
 // import { FaUser } from 'react-icons/fa';
 // import { GiCheckMark } from 'react-icons/gi';
@@ -11,13 +13,26 @@
 // import { selectContacts, selectIsLoading } from '@/redux/contacts/selectors';
 // import { useRouter } from 'next/navigation';
 // import { addContact } from '@/redux/contacts/operations';
-// import css from './AddContactForm.module.css';
+import css from './AddContactForm.module.css';
+
+import { createContact } from '@/app/lib/actions';
+import { useFormState } from 'react-dom';
+import Input from '../Input';
+import { InputType } from '@/constants/inputType';
+import IconButton from '@/components/IconButton';
+import { IconBtnType } from '@/constants/iconBtnType';
+import { IconSizes } from '@/constants/iconSizes';
+import { useRouter } from 'next/navigation';
+import contactsServiceApi from '@/service/contactsServiceApi';
 
 const AddContactForm = () => {
+  const initialState = { message: null, errors: {} };
+  const [state, dispatch] = useFormState(createContact, initialState);
+
   // const contacts = useSelector(selectContacts);
   // const isLoading = useSelector(selectIsLoading);
   // const dispatch = useDispatch();
-  // const router = useRouter();
+  const router = useRouter();
   // const {
   //   register,
   //   formState: { errors },
@@ -25,9 +40,9 @@ const AddContactForm = () => {
   //   reset,
   // } = useForm();
 
-  // const onCancelBtnClick = () => {
-  //   router.back();
-  // };
+  const onCancelBtnClick = () => {
+    router.back();
+  };
 
   // const onAcceptBtnClick = ({ currentTarget }) => {
   //   makeBlur(currentTarget);
@@ -53,37 +68,44 @@ const AddContactForm = () => {
 
   return (
     <>
-      {/* <p className={css.title}>Add contact</p>
-      <form className={css.form} onSubmit={handleSubmit(handleFormSubmit)}>
+      <p className={css.title}>Add contact</p>
+      <form action={dispatch} className={css.form}>
         <Input
-          settings={{ ...register('name', { required: true, minLength: 1 }) }}
           type='text'
+          name='name'
           placeholder='Name'
+          // icon={<FaUser size={iconSizes.inputIcon} />}
+          // inputWrap
+          required
           autoFocus
-          inputWrap
-          fieldIcon={<FaUser size={iconSizes.inputIcon} />}
         />
-        {errors.name && toasts.errorToast('Name is required')}
+        {/* {errors.name && toasts.errorToast('Name is required')} */}
         <Input
-          settings={{ ...register('number', { required: true }) }}
           type='tel'
+          name='number'
           placeholder='Phone'
-          inputWrap
-          fieldIcon={<HiPhone size={iconSizes.inputIcon} />}
+          // icon={<HiPhone size={iconSizes.inputIcon} />}
+          // inputWrap
+          required
         />
-        {errors.number && toasts.errorToast('Phone is required')}
+        {/* {errors.number && toasts.errorToast('Phone is required')} */}
         <div className={css.container}>
           <IconButton
-            disabled={isLoading}
-            btnType={iconBtnType.accept}
+            // disabled={isLoading}
+            btnType={IconBtnType.accept}
             width={44}
             height={35}
             type='submit'
-            onBtnClick={onAcceptBtnClick}
-            icon={<GiCheckMark size={iconSizes.primaryIconSize} />}
+            // icon={<GiCheckMark size={IconSizes.primaryIconSize} />}
           />
           <IconButton onBtnClick={onCancelBtnClick}>Cancel</IconButton>
         </div>
+      </form>
+      {/* 
+      <form >
+               
+        
+ 
       </form> */}
     </>
   );

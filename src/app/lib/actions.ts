@@ -1,11 +1,14 @@
 'use server';
 
-import { signIn } from '../../../auth';
+import contactsServiceApi from '@/service/contactsServiceApi';
+import { auth, signIn } from '../../../auth';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
-export async function authenticate(
+export const authenticate = async (
   prevState: string | undefined,
   formData: FormData
-) {
+) => {
   try {
     await signIn('credentials', Object.fromEntries(formData));
   } catch (error) {
@@ -14,4 +17,18 @@ export async function authenticate(
     }
     throw error;
   }
-}
+};
+
+export const createContact = async (prevState, formData) => {
+  const { user } = await auth();
+  contactsServiceApi.token = user.token;
+  const name = formData.get('name');
+  const number = formData.get('number');
+  const contact = { name, number };
+  try {
+    await contactsServiceApi.addContact(contact);
+    revalidatePath('/contacts');
+  } catch (error) {
+    console.log(error);
+  }
+};
