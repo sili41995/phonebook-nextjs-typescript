@@ -1,11 +1,10 @@
 'use client';
 
-import links from '@/constants/links';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import css from './NavLinks.module.css';
 
-export default function NavLinks() {
+export default function NavLinks({ links }) {
   const pathname = usePathname();
 
   return (

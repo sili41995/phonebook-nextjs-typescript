@@ -9,7 +9,7 @@ const ContactPage = async ({ params }) => {
   const contacts = await contactsServiceApi.fetchContacts();
   const contact = contacts.find((contact) => contact.id === id);
 
-  return <ContactDetails />;
+  return <ContactDetails contact={contact} />;
 };
 
 export default ContactPage;

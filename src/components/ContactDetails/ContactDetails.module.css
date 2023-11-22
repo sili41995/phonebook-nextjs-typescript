@@ -1,10 +1,36 @@
 .container {
-  flex-grow: 1;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--primaryGap);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.buttonsContainer {
+.avatar {
+  width: 112px;
+  height: auto;
+  margin: 0 auto 8px;
+}
+
+.infoWrap {
   display: flex;
-  gap: var(--primaryGap);
-  justify-content: flex-end;
-  margin-bottom: 80px;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.name {
+  color: var(--primaryFontColor);
+  font-family: var(--font-jua);
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--otherFontWeight);
+  text-align: center;
+}
+
+.role {
+  color: var(--secondaryFontColor);
+  font-family: var(--font-inter);
+  font-size: var(--primaryFontSize);
+  font-weight: var(--primaryFontWeight);
+  text-align: center;
 }
