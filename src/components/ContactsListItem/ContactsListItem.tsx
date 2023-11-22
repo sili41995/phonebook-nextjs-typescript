@@ -19,7 +19,7 @@ const ContactsListItem = ({ contact }) => {
   return (
     contact && (
       <li className={css.contactItem}>
-        <Link className={css.contactLink} href={id}>
+        <Link className={css.contactLink} href={`/contacts/${id}`}>
           <Image className={css.avatar} src={userAvatar} alt={name} priority />
           <div className={css.infoWrap}>
             <div>

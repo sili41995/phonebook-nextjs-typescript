@@ -1,0 +1,10 @@
+.container {
+  flex-grow: 1;
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: var(--primaryGap);
+  justify-content: flex-end;
+  margin-bottom: 80px;
+}
