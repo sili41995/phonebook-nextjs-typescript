@@ -32,3 +32,15 @@ export const createContact = async (prevState, formData) => {
     console.log(error);
   }
 };
+
+export const deleteContact = async (id) => {
+  const { user } = await auth();
+  contactsServiceApi.token = user.token;
+  try {
+    await contactsServiceApi.deleteContact(id);
+    console.log('contact delete success');
+    revalidatePath('/contacts');
+  } catch (error) {
+    console.log(error);
+  }
+};

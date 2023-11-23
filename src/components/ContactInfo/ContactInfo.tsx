@@ -8,7 +8,7 @@ import ActionLink from '@/components/ActionLink';
 import { IconBtnType } from '@/constants/iconBtnType';
 
 const ContactInfo = ({ contact }) => {
-  const { number, email, chat } = getContactInfo(contact);
+  const { number, email, chat, description } = getContactInfo(contact);
   const phoneNumber = getPhoneNumber(number);
 
   return (
@@ -42,6 +42,12 @@ const ContactInfo = ({ contact }) => {
         >
           <RiChat1Line />
         </ActionLink>
+      </div>
+      <div className={css.field}>
+        <div>
+          <p className={css.infoDesc}>Description</p>
+          <p className={css.infoData}>{description}</p>
+        </div>
       </div>
     </div>
   );

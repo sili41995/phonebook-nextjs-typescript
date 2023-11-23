@@ -1,8 +1,8 @@
 'use client';
 
-// import { HiPhone } from 'react-icons/hi';
-// import { FaUser } from 'react-icons/fa';
-// import { GiCheckMark } from 'react-icons/gi';
+import { HiPhone } from 'react-icons/hi';
+import { FaUser } from 'react-icons/fa';
+import { GiCheckMark } from 'react-icons/gi';
 // import { useForm } from 'react-hook-form';
 // import { useDispatch, useSelector } from 'react-redux';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -18,12 +18,10 @@ import css from './AddContactForm.module.css';
 import { createContact } from '@/app/lib/actions';
 import { useFormState } from 'react-dom';
 import Input from '../Input';
-import { InputType } from '@/constants/inputType';
 import IconButton from '@/components/IconButton';
 import { IconBtnType } from '@/constants/iconBtnType';
 import { IconSizes } from '@/constants/iconSizes';
 import { useRouter } from 'next/navigation';
-import contactsServiceApi from '@/service/contactsServiceApi';
 
 const AddContactForm = () => {
   const initialState = { message: null, errors: {} };
@@ -74,8 +72,8 @@ const AddContactForm = () => {
           type='text'
           name='name'
           placeholder='Name'
-          // icon={<FaUser size={iconSizes.inputIcon} />}
-          // inputWrap
+          icon={<FaUser size={IconSizes.defaultIconSize} />}
+          inputWrap
           required
           autoFocus
         />
@@ -84,8 +82,8 @@ const AddContactForm = () => {
           type='tel'
           name='number'
           placeholder='Phone'
-          // icon={<HiPhone size={iconSizes.inputIcon} />}
-          // inputWrap
+          icon={<HiPhone size={IconSizes.defaultIconSize} />}
+          inputWrap
           required
         />
         {/* {errors.number && toasts.errorToast('Phone is required')} */}
@@ -96,7 +94,7 @@ const AddContactForm = () => {
             width={44}
             height={35}
             type='submit'
-            // icon={<GiCheckMark size={IconSizes.primaryIconSize} />}
+            icon={<GiCheckMark size={IconSizes.primaryIconSize} />}
           />
           <IconButton onBtnClick={onCancelBtnClick}>Cancel</IconButton>
         </div>

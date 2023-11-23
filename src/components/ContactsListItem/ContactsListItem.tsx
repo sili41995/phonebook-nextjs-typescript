@@ -9,6 +9,7 @@ import Link from 'next/link';
 import css from './ContactsListItem.module.css';
 import Image from 'next/image';
 import getContactInfo from '@/utils/getContactInfo';
+import DelBtn from '../DelBtn';
 
 const ContactsListItem = ({ contact }) => {
   const { userAvatar, name, id, role, number, email } = getContactInfo(contact);
@@ -30,6 +31,7 @@ const ContactsListItem = ({ contact }) => {
             <p className={css.email}>{email}</p>
           </div>
         </Link>
+        <DelBtn contactId={contact.id} />
         {/* <IconButton
           top={0}
           right={0}

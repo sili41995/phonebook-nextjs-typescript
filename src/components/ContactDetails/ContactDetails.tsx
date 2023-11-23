@@ -6,6 +6,7 @@ import getContactInfo from '@/utils/getContactInfo';
 import getAvatar from '@/utils/getAvatar';
 import contactNavLinks from '@/constants/contactNavLinks';
 import ContactInfo from '@/components/ContactInfo';
+import ContactDescription from '@/components/ContactDescription';
 
 const ContactDetails = ({ contact }) => {
   const { name, role, avatar } = getContactInfo(contact);
