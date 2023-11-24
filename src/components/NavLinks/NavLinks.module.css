@@ -13,10 +13,12 @@
   background-color: #f9fafb;
   align-items: center;
   border-radius: var(--primaryBorderRadius);
+  transition: background-color var(--transitionDurationAndFunc);
 }
 
 .link p {
   color: var(--primaryFontColor);
+  transition: color var(--transitionDurationAndFunc);
 }
 
 .link.active {

@@ -68,3 +68,9 @@
   font-weight: var(--secondaryFontWeight);
   text-align: center;
 }
+
+.contactItem form {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

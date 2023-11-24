@@ -1,7 +1,7 @@
 'use server';
 
 import contactsServiceApi from '@/service/contactsServiceApi';
-import { auth, signIn } from '../../../auth';
+import { auth, signIn, signOut } from '../../../auth';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 

@@ -1,6 +1,8 @@
 import contactsServiceApi from '@/service/contactsServiceApi';
-import { auth, signOut } from '../../../auth';
+import { auth } from '../../../auth';
 import ContactsList from '@/components/ContactsList';
+import ErrorMessage from '@/components/ErrorMessage';
+import getCurrentUser from '@/utils/getCurrentUser';
 
 export const metadata = {
   title: 'Contacts',
@@ -8,24 +10,16 @@ export const metadata = {
 };
 
 const ContactsPage = async () => {
-  const logout = async () => {
-    'use server';
-    signOut();
-  };
+  const error = await getCurrentUser();
 
-  const { user } = await auth();
-  contactsServiceApi.token = user.token;
-  const currentUser = await contactsServiceApi.refreshUser();
-
-  if (currentUser.message) {
-    return <p>упс, что-то пошло не так! перелогинся</p>;
+  if (error) {
+    return <ErrorMessage />;
   }
 
   const contacts = await contactsServiceApi.fetchContacts();
 
   return (
     <>
-      <p>My contacts</p>
       <ContactsList contacts={contacts} />
     </>
   );
