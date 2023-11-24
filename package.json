@@ -17,6 +17,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",
+    "react-loader-spinner": "^5.4.5",
     "zod": "^3.22.4"
   },
   "devDependencies": {
