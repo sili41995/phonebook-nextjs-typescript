@@ -1,0 +1,13 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--primaryGap);
+}
+
+.nav ul {
+  width: 100%;
+}
+
+.nav ul li:first-child {
+  margin-right: auto;
+}

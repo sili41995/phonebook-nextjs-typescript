@@ -1,4 +1,15 @@
-import Image from 'next/image';
-import styles from './page.module.css';
+import AuthForm from '@/components/AuthForm';
+import LoginForm from '@/components/LoginForm';
+import SharedLayout from '@/components/SharedLayout';
 
-export default function Home() {}
+const Home = () => {
+  return (
+    <SharedLayout>
+      <AuthForm>
+        <LoginForm />
+      </AuthForm>
+    </SharedLayout>
+  );
+};
+
+export default Home;

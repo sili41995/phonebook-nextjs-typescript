@@ -1,5 +1,6 @@
 import AuthForm from '@/components/AuthForm';
 import LoginForm from '@/components/LoginForm';
+import SharedLayout from '@/components/SharedLayout';
 
 export const metadata = {
   title: 'Login',
@@ -7,9 +8,11 @@ export const metadata = {
 };
 
 const LoginPage = () => (
-  <AuthForm>
-    <LoginForm />
-  </AuthForm>
+  <SharedLayout>
+    <AuthForm>
+      <LoginForm />
+    </AuthForm>
+  </SharedLayout>
 );
 
 export default LoginPage;
