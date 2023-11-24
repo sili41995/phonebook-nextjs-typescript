@@ -13,6 +13,11 @@
   font-weight: var(--primaryFontWeight);
 }
 
+.avatar {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .form {
   display: flex;
   flex-direction: column;

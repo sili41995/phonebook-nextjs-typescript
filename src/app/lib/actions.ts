@@ -1,9 +1,8 @@
 'use server';
 
 import contactsServiceApi from '@/service/contactsServiceApi';
-import { auth, signIn, signOut } from '../../../auth';
+import { auth, signIn } from '../../../auth';
 import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
 
 export const authenticate = async (
   prevState: string | undefined,
@@ -25,22 +24,22 @@ export const createContact = async (prevState, formData) => {
   const name = formData.get('name');
   const number = formData.get('number');
   const contact = { name, number };
-  try {
-    await contactsServiceApi.addContact(contact);
-    revalidatePath('/contacts');
-  } catch (error) {
-    console.log(error);
-  }
+  await contactsServiceApi.addContact(contact);
+  revalidatePath('/contacts');
 };
 
 export const deleteContact = async (id) => {
   const { user } = await auth();
   contactsServiceApi.token = user.token;
-  try {
-    await contactsServiceApi.deleteContact(id);
-    console.log('contact delete success');
-    revalidatePath('/contacts');
-  } catch (error) {
-    console.log(error);
-  }
+  await contactsServiceApi.deleteContact(id);
+  console.log('contact delete success');
+  revalidatePath('/contacts');
+};
+
+export const signUp = async (prevState, formData) => {
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const password = formData.get('password');
+  const user = { name, email, password };
+  await contactsServiceApi.registerUser(user);
 };

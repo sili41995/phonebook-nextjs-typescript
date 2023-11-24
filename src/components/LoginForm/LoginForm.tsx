@@ -50,15 +50,21 @@ const LoginForm = () => {
     <>
       <h2 className={css.title}>log in</h2>
       <p className={css.message}>Welcome to Phonebook!</p>
-      <Image src={defaultAvatar} alt='user avatar' width={150} priority />
+      <Image
+        className={css.avatar}
+        src={defaultAvatar}
+        alt='user avatar'
+        width={150}
+        priority
+      />
       <form action={dispatch} className={css.form}>
         <Input
           type='email'
           name='email'
           placeholder='Email'
-          // inputType={InputType.auth}
+          inputType={InputType.auth}
           icon={<MdEmail size={IconSizes.secondaryIconSize} />}
-          // inputWrap
+          inputWrap
           required
           autoFocus
         />
@@ -68,12 +74,9 @@ const LoginForm = () => {
           type='password'
           name='password'
           placeholder='Password'
-          // inputType={InputType.auth}
+          inputType={InputType.auth}
           icon={<MdLock size={IconSizes.secondaryIconSize} />}
-          // action={toggleIsShowPassword}
-          // btnIcon={inputPasswordBtnIcon}
-          // btnType={watchPassword && iconBtnType.toggleShowPassword}
-          // inputWrap
+          inputWrap
           required
         />
         {/* {errors.password &&

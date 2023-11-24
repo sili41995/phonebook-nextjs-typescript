@@ -16,8 +16,12 @@ import { InputType } from '@/constants/inputType';
 import { IconSizes } from '@/constants/iconSizes';
 import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
 import AuthFormMessage from '@/components/AuthFormMessage';
+import { useFormState, useFormStatus } from 'react-dom';
+import { signUp } from '@/app/lib/actions';
 
 const RegisterForm = () => {
+  const [state, dispatch] = useFormState(signUp, undefined);
+  const { pending } = useFormStatus();
   //   const isLoading = useSelector(selectIsLoading);
   //   const dispatch = useDispatch();
   //   const {
@@ -37,17 +41,14 @@ const RegisterForm = () => {
     <>
       <h2 className={css.title}>sign up</h2>
       <p className={css.message}>Welcome to Phonebook!</p>
-      <form
-        // action={dispatch}
-        className={css.form}
-      >
+      <form action={dispatch} className={css.form}>
         <Input
           type='text'
           name='name'
           placeholder='Username'
-          // inputType={InputType.auth}
+          inputType={InputType.auth}
           icon={<MdPerson size={IconSizes.secondaryIconSize} />}
-          // inputWrap
+          inputWrap
           required
           autoFocus
         />
@@ -56,9 +57,9 @@ const RegisterForm = () => {
           type='email'
           name='email'
           placeholder='Email'
-          // inputType={InputType.auth}
+          inputType={InputType.auth}
           icon={<MdEmail size={IconSizes.secondaryIconSize} />}
-          // inputWrap
+          inputWrap
           required
         />
         {/* {errors.email && toasts.errorToast('Email is required')} */}
@@ -66,9 +67,9 @@ const RegisterForm = () => {
           type='text'
           name='password'
           placeholder='Password'
-          // inputType={InputType.auth}
+          inputType={InputType.auth}
           icon={<MdLock size={IconSizes.secondaryIconSize} />}
-          // inputWrap
+          inputWrap
           required
         />
         {/* {errors.password &&

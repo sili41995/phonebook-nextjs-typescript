@@ -52,8 +52,8 @@
 }
 
 .authForm {
-  /* composes: input; */
-  /* font-size: var(--otherFontSize); */
-  /* height: 60px; */
-  /* padding: 8px 40px 8px; */
+  composes: input;
+  font-size: var(--otherFontSize);
+  height: 60px;
+  padding: 8px 40px 8px;
 }
