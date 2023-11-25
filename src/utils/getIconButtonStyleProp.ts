@@ -1,4 +1,16 @@
 import { IconBtnType } from '@/constants/iconBtnType';
+import { ICssProp } from '@/types/types';
+
+interface IProps {
+  position: string;
+  right: number;
+  width: number;
+  height: number;
+  btnType: IconBtnType;
+  css: ICssProp;
+  top: 'center' | number;
+  inputWrap?: boolean;
+}
 
 const getIconButtonStyleProp = ({
   position = 'static',
@@ -9,7 +21,7 @@ const getIconButtonStyleProp = ({
   btnType,
   css,
   top,
-}) => {
+}: IProps) => {
   const topValue = top === 'center' ? '50%' : `${top}px`;
   const translateYValue = top === 'center' ? '-50%' : 0;
   const styles = {

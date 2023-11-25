@@ -8,7 +8,7 @@ import { auth } from '../../../auth';
 import getUserInfo from '@/utils/getUserInfo';
 
 const UserProfile = async () => {
-  const { user } = await auth();
+  const { user }: any = await auth();
   const {
     name,
     userAvatar,

@@ -18,13 +18,13 @@ export const { auth, signIn, signOut } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials) {
-        const user = await getUser(credentials);
-        if (!user.token) {
+        const { user, token } = await getUser(credentials);
+        if (!token) {
           console.log('Invalid credentials');
           return null;
         }
 
-        return { ...user.user, token: user.token };
+        return { user, token };
       },
     }),
   ],
@@ -32,7 +32,7 @@ export const { auth, signIn, signOut } = NextAuth({
     async jwt({ token, user }) {
       return { ...token, ...user };
     },
-    async session({ session, user, token }) {
+    async session({ session, token }) {
       session.user = token;
       return session;
     },

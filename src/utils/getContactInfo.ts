@@ -1,7 +1,8 @@
 import { DefaultValues } from '@/constants/defaultValues';
+import { IContact } from '@/types/types';
 import getAvatar from '@/utils/getAvatar';
 
-const getContactInfo = (contact = {}) => {
+const getContactInfo = (contact: IContact): IContact => {
   const {
     id,
     name,

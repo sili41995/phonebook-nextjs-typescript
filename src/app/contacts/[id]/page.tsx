@@ -4,7 +4,7 @@ import ContactDetails from '@/components/ContactDetails';
 import ErrorMessage from '@/components/ErrorMessage';
 import getCurrentUser from '@/utils/getCurrentUser';
 
-const ContactPage = async ({ params }) => {
+const ContactPage = async ({ params }: { params: { id: string } }) => {
   const error = await getCurrentUser();
 
   if (error) {

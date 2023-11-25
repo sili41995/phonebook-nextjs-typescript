@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import css from './NavLinks.module.css';
+import { IProps } from './NavLinks.types';
 
-const NavLinks = ({ links }) => {
+const NavLinks = ({ links }: IProps) => {
   const pathname = usePathname();
 
   return (

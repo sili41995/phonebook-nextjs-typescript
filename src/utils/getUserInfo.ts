@@ -1,7 +1,8 @@
 import { DefaultValues } from '@/constants/defaultValues';
 import getAvatar from './getAvatar';
+import { IUser } from '@/types/types';
 
-const getUserInfo = (user) => {
+const getUserInfo = (user: IUser) => {
   const {
     name,
     lastName,

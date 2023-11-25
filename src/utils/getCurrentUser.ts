@@ -2,7 +2,7 @@ import contactsServiceApi from '@/service/contactsServiceApi';
 import { auth } from '../../auth';
 
 const getCurrentUser = async () => {
-  const { user } = await auth();
+  const { user }: any = await auth();
   contactsServiceApi.token = user.token;
   const currentUser = await contactsServiceApi.refreshUser();
 
@@ -10,5 +10,4 @@ const getCurrentUser = async () => {
     return currentUser.message;
   }
 };
-
 export default getCurrentUser;

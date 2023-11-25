@@ -6,8 +6,9 @@ import css from './ContactInfo.module.css';
 import getPhoneNumber from '@/utils/getPhoneNumber';
 import ActionLink from '@/components/ActionLink';
 import { IconBtnType } from '@/constants/iconBtnType';
+import { IProps } from './ContactInfo.types';
 
-const ContactInfo = ({ contact }) => {
+const ContactInfo = ({ contact }: IProps) => {
   const { number, email, chat, description } = getContactInfo(contact);
   const phoneNumber = getPhoneNumber(number);
 

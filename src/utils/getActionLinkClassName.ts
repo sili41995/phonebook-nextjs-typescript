@@ -1,6 +1,7 @@
 import { IconBtnType } from '@/constants/iconBtnType';
+import { ICssProp } from '@/types/types';
 
-const getActionLinkClassName = (css, btnType) => {
+const getActionLinkClassName = (css: ICssProp, btnType: IconBtnType) => {
   switch (btnType) {
     case IconBtnType.delete:
       return css.delete;

@@ -1,4 +1,4 @@
-const makeBlur = (element) => {
+const makeBlur = (element: HTMLElement): void => {
   element.blur();
 };
 

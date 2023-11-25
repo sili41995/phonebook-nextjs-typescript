@@ -1,14 +1,14 @@
-import { IAuthResponse, IContact, ICredentials } from '@/types/types';
+import { IAuthResponse, IContact, ICredentials, Token } from '@/types/types';
 
 class ContactsServiceApi {
   private BASE_URL = 'https://connections-api.herokuapp.com';
-  private TOKEN = null;
+  private TOKEN: Token = null;
 
-  get token() {
+  get token(): Token {
     return this.TOKEN;
   }
 
-  set token(newToken) {
+  set token(newToken: string) {
     this.TOKEN = newToken;
   }
 

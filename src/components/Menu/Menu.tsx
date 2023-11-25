@@ -3,8 +3,9 @@
 import { usePathname } from 'next/navigation';
 import css from './Menu.module.css';
 import Link from 'next/link';
+import { IProps } from './Menu.types';
 
-const Menu = ({ links }) => {
+const Menu = ({ links }: IProps) => {
   const pathname = usePathname();
 
   return (

@@ -7,8 +7,9 @@ import EmptyListMessage from '@/components/EmptyListMessage';
 // import { selectContacts } from '@/redux/contacts/selectors';
 // import { useSearchParams } from 'next/navigation';
 import css from './ContactsList.module.css';
+import { IProps } from './ContactsList.types';
 
-const ContactsList = ({ contacts }) => {
+const ContactsList = ({ contacts }: IProps) => {
   // const searchParams = useSearchParams();
   // const filter = searchParams.get(searchParamsKeys.FILTER_SP_KEY) ?? '';
   // const sortType = searchParams.get(searchParamsKeys.SORT_SP_KEY) ?? '';

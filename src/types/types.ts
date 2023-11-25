@@ -1,3 +1,6 @@
+import { PagesTypes } from '@/constants/pagesTypes';
+import { StaticImageData } from 'next/image';
+
 export type PagesPath = {
   homePath: '/';
   contactsPath: 'contacts';
@@ -42,7 +45,7 @@ export interface IContact {
   email?: string;
   chat?: string;
   description?: string;
-  userAvatar?: string;
+  userAvatar?: string | StaticImageData;
 }
 
 export interface IContactsInitialState {
@@ -74,3 +77,16 @@ export interface IInitialState {
 }
 
 export type Message = string;
+
+export interface ICssProp {
+  [key: string]: string;
+}
+
+export interface ILink {
+  name: string;
+  href: string;
+  icon: null | HTMLElement;
+  page: PagesTypes;
+}
+
+export type Token = string | null;
