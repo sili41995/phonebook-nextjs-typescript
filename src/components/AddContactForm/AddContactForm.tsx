@@ -22,19 +22,15 @@ import IconButton from '@/components/IconButton';
 import { IconBtnType } from '@/constants/iconBtnType';
 import { IconSizes } from '@/constants/iconSizes';
 import { useRouter } from 'next/navigation';
-import { BtnTypes } from '@/types/types';
+import { BtnTypes, IContact } from '@/types/types';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 const AddContactForm = () => {
   // const contacts = useSelector(selectContacts);
   // const isLoading = useSelector(selectIsLoading);
   // const dispatch = useDispatch();
   const router = useRouter();
-  // const {
-  //   register,
-  //   formState: { errors },
-  //   handleSubmit,
-  //   reset,
-  // } = useForm();
+  const { register, handleSubmit } = useForm<IContact>();
 
   const onCancelBtnClick = () => {
     router.back();
@@ -44,31 +40,34 @@ const AddContactForm = () => {
   //   makeBlur(currentTarget);
   // };
 
-  // const handleFormSubmit = (data) => {
-  //   const contactName = data.name;
-  //   const isContact = contacts.some(({ name }) => name === contactName);
-  //   if (isContact) {
-  //     toasts.warnToast(`${contactName} is already in contacts`);
-  //     return;
-  //   }
-  //   dispatch(addContact(data))
-  //     .unwrap()
-  //     .then(() => {
-  //       toasts.successToast('Contact added successfully');
-  //       reset();
-  //     })
-  //     .catch(() => {
-  //       toasts.errorToast('Adding a contact failed');
-  //     });
-  // };
+  const handleFormSubmit: SubmitHandler<IContact> = (data: IContact): void => {
+    createContact(data).then(() => {
+      console.log('contact add');
+    });
+    //   const contactName = data.name;
+    //   const isContact = contacts.some(({ name }) => name === contactName);
+    //   if (isContact) {
+    //     toasts.warnToast(`${contactName} is already in contacts`);
+    //     return;
+    //   }
+    //   dispatch(addContact(data))
+    //     .unwrap()
+    //     .then(() => {
+    //       toasts.successToast('Contact added successfully');
+    //       reset();
+    //     })
+    //     .catch(() => {
+    //       toasts.errorToast('Adding a contact failed');
+    //     });
+  };
 
   return (
     <>
       <p className={css.title}>Add contact</p>
-      <form action={createContact} className={css.form}>
+      <form onSubmit={handleSubmit(handleFormSubmit)} className={css.form}>
         <Input
+          settings={{ ...register('name') }}
           type='text'
-          name='name'
           placeholder='Name'
           icon={<FaUser size={IconSizes.defaultIconSize} />}
           inputWrap
@@ -77,8 +76,8 @@ const AddContactForm = () => {
         />
         {/* {errors.name && toasts.errorToast('Name is required')} */}
         <Input
+          settings={{ ...register('number') }}
           type='tel'
-          name='number'
           placeholder='Phone'
           icon={<HiPhone size={IconSizes.defaultIconSize} />}
           inputWrap

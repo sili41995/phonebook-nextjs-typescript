@@ -2,9 +2,17 @@ import getInputClassName from '@/utils/getInputClassName';
 import css from './Input.module.css';
 import { IProps } from './Input.types';
 
-const Input = ({ inputWrap, inputType, icon, ...otherProps }: IProps) => {
+const Input = ({
+  inputWrap,
+  inputType,
+  icon,
+  settings,
+  ...otherProps
+}: IProps) => {
   const inputClassName = getInputClassName(css, inputType);
-  const styledInput = <input className={inputClassName} {...otherProps} />;
+  const styledInput = (
+    <input {...settings} className={inputClassName} {...otherProps} />
+  );
   const inputWithWrap = (
     <div
       className={css.container}

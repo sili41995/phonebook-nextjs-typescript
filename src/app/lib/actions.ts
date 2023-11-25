@@ -19,13 +19,10 @@ export const authenticate = async (
   }
 };
 
-export const createContact = async (formData: FormData) => {
+export const createContact = async (data: IContact) => {
   const { user }: any = await auth();
   contactsServiceApi.token = user.token;
-  const name = formData.get('name') as string;
-  const number = formData.get('number') as string;
-  const contact: IContact = { name, number };
-  await contactsServiceApi.addContact(contact);
+  await contactsServiceApi.addContact(data);
   revalidatePath('/contacts');
 };
 

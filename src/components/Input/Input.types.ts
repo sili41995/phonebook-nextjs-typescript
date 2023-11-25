@@ -7,8 +7,8 @@ export interface IProps {
   inputType?: InputType;
   icon: ReactElement;
   type?: InputTypes;
-  name: string;
   placeholder: string;
   required?: boolean;
   autoFocus?: boolean;
+  settings?: { [key: string]: any };
 }
