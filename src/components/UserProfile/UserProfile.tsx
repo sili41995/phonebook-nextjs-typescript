@@ -4,11 +4,10 @@
 // import { selectUser } from '@/redux/auth/selectors';
 import Image from 'next/image';
 import css from './UserProfile.module.css';
-import { auth } from '../../../auth';
 import getUserInfo from '@/utils/getUserInfo';
+import { IProps } from './UserProfile.types';
 
-const UserProfile = async () => {
-  const { user }: any = await auth();
+const UserProfile = ({ user }: IProps) => {
   const {
     name,
     userAvatar,

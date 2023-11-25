@@ -33,7 +33,7 @@ export const { auth, signIn, signOut } = NextAuth({
     async jwt({ token, user }) {
       return { ...token, ...user };
     },
-    async session({ session, token }) {
+    async session({ session, user, token }) {
       session.user = token;
       return session;
     },

@@ -19,7 +19,7 @@ interface IStylesProps {
     right: number;
     transform: string;
     minWidth: number;
-    height: number;
+    height?: number;
   };
   hoverClassName: string;
 }
@@ -28,7 +28,7 @@ const getIconButtonStyleProp = ({
   position = Position.static,
   right = 0,
   width = 0,
-  height = 0,
+  height,
   inputWrap,
   btnType,
   css,
