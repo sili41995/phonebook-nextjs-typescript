@@ -2,13 +2,6 @@ import NextAuth from 'next-auth';
 import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import contactsServiceApi from './src/service/contactsServiceApi';
-import {
-  IAuthResponse,
-  IContact,
-  ICredentials,
-  IUser,
-  Token,
-} from '@/types/types';
 
 async function getUser(credentials: any) {
   try {

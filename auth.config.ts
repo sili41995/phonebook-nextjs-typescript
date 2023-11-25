@@ -7,6 +7,7 @@ export const authConfig = {
   },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
+      console.log(nextUrl);
       const isLoggedIn = !!auth?.user;
       const isOnContacts = nextUrl.pathname.startsWith('/contacts');
       if (isOnContacts) {
