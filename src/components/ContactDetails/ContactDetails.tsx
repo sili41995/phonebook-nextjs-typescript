@@ -1,14 +1,11 @@
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import css from './ContactDetails.module.css';
 import getContactInfo from '@/utils/getContactInfo';
 import getAvatar from '@/utils/getAvatar';
-import contactNavLinks from '@/constants/contactNavLinks';
 import ContactInfo from '@/components/ContactInfo';
-import ContactDescription from '@/components/ContactDescription';
+import { IProps } from './ContactDetails.types';
 
-const ContactDetails = ({ contact }) => {
+const ContactDetails = ({ contact }: IProps) => {
   const { name, role, avatar } = getContactInfo(contact);
   const userAvatar = getAvatar.getContactAvatar(avatar);
 

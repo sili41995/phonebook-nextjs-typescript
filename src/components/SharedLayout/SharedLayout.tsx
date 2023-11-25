@@ -1,7 +1,8 @@
 import Navigation from '../Navigation';
 import css from './SharedLayout.module.css';
+import { IProps } from './SharedLayout.types';
 
-const SharedLayout = ({ children }) => {
+const SharedLayout = ({ children }: IProps) => {
   return (
     <>
       <header className={css.header}>

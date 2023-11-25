@@ -5,8 +5,9 @@ import IconButton from '@/components/IconButton';
 import { IconBtnType } from '@/constants/iconBtnType';
 import { IconSizes } from '@/constants/iconSizes';
 import { AiOutlineDelete } from 'react-icons/ai';
+import { IProps } from './DelBtn.types';
 
-const DelBtn = ({ contactId }) => {
+const DelBtn = ({ contactId }: IProps) => {
   return (
     <form
       action={() => {

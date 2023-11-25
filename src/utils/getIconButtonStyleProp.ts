@@ -1,27 +1,39 @@
 import { IconBtnType } from '@/constants/iconBtnType';
-import { ICssProp } from '@/types/types';
+import { ICssProp, Position } from '@/types/types';
 
 interface IProps {
-  position: string;
-  right: number;
-  width: number;
-  height: number;
-  btnType: IconBtnType;
+  position?: Position;
+  right?: number;
+  width?: number;
+  height?: number;
+  btnType: IconBtnType | undefined;
   css: ICssProp;
-  top: 'center' | number;
+  top?: 'center' | number;
   inputWrap?: boolean;
 }
 
+interface IStylesProps {
+  styles: {
+    position: Position;
+    top: string;
+    right: number;
+    transform: string;
+    minWidth: number;
+    height: number;
+  };
+  hoverClassName: string;
+}
+
 const getIconButtonStyleProp = ({
-  position = 'static',
+  position = Position.static,
   right = 0,
-  width,
-  height,
+  width = 0,
+  height = 0,
   inputWrap,
   btnType,
   css,
-  top,
-}: IProps) => {
+  top = 0,
+}: IProps): IStylesProps => {
   const topValue = top === 'center' ? '50%' : `${top}px`;
   const translateYValue = top === 'center' ? '-50%' : 0;
   const styles = {

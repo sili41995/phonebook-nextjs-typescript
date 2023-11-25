@@ -1,7 +1,7 @@
 import { InputType } from '@/constants/inputType';
 import { ICssProp } from '@/types/types';
 
-const getInputClassName = (css: ICssProp, inputType: string) => {
+const getInputClassName = (css: ICssProp, inputType: InputType | undefined) => {
   switch (inputType) {
     case InputType.filter:
       return css.filter;

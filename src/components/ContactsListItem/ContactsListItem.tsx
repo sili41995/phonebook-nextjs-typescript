@@ -10,29 +10,34 @@ import css from './ContactsListItem.module.css';
 import Image from 'next/image';
 import getContactInfo from '@/utils/getContactInfo';
 import DelBtn from '../DelBtn';
+import { IProps } from './ContactsListItem.types';
 
-const ContactsListItem = ({ contact }) => {
+const ContactsListItem = ({ contact }: IProps) => {
   const { userAvatar, name, id, role, number, email } = getContactInfo(contact);
   // const isLoading = useSelector(selectIsLoading);
   // const deleteContact = useDeleteContact();
   // const searchParams = useSearchParams();
 
   return (
-    contact && (
-      <li className={css.contactItem}>
-        <Link className={css.contactLink} href={`/contacts/${id}`}>
-          <Image className={css.avatar} src={userAvatar} alt={name} priority />
-          <div className={css.infoWrap}>
-            <div>
-              <p className={css.name}>{name}</p>
-              <p className={css.role}>{role}</p>
-            </div>
-            <p className={css.phone}>{number}</p>
-            <p className={css.email}>{email}</p>
+    <li className={css.contactItem}>
+      <Link className={css.contactLink} href={`/contacts/${id}`}>
+        <Image
+          className={css.avatar}
+          src={userAvatar as string}
+          alt={name}
+          priority
+        />
+        <div className={css.infoWrap}>
+          <div>
+            <p className={css.name}>{name}</p>
+            <p className={css.role}>{role}</p>
           </div>
-        </Link>
-        <DelBtn contactId={contact.id} />
-        {/* <IconButton
+          <p className={css.phone}>{number}</p>
+          <p className={css.email}>{email}</p>
+        </div>
+      </Link>
+      <DelBtn contactId={contact.id as string} />
+      {/* <IconButton
           top={0}
           right={0}
           position='absolute'
@@ -45,8 +50,7 @@ const ContactsListItem = ({ contact }) => {
             deleteContact(id);
           }}
         /> */}
-      </li>
-    )
+    </li>
   );
 };
 

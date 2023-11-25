@@ -2,8 +2,15 @@ import NextAuth from 'next-auth';
 import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import contactsServiceApi from './src/service/contactsServiceApi';
+import {
+  IAuthResponse,
+  IContact,
+  ICredentials,
+  IUser,
+  Token,
+} from '@/types/types';
 
-async function getUser(credentials) {
+async function getUser(credentials: any) {
   try {
     const user = await contactsServiceApi.loginUser(credentials);
     return user;
@@ -17,7 +24,8 @@ export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
-      async authorize(credentials) {
+      async authorize(credentials): Promise<any> {
+        console.log(credentials);
         const { user, token } = await getUser(credentials);
         if (!token) {
           console.log('Invalid credentials');

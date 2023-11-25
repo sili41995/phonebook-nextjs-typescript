@@ -20,8 +20,6 @@ import { useFormState, useFormStatus } from 'react-dom';
 import { signUp } from '@/app/lib/actions';
 
 const RegisterForm = () => {
-  const [state, dispatch] = useFormState(signUp, undefined);
-  const { pending } = useFormStatus();
   //   const isLoading = useSelector(selectIsLoading);
   //   const dispatch = useDispatch();
   //   const {
@@ -41,7 +39,7 @@ const RegisterForm = () => {
     <>
       <h2 className={css.title}>sign up</h2>
       <p className={css.message}>Welcome to Phonebook!</p>
-      <form action={dispatch} className={css.form}>
+      <form action={signUp} className={css.form}>
         <Input
           type='text'
           name='name'

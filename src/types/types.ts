@@ -37,7 +37,7 @@ export interface IUser {
 }
 
 export interface IContact {
-  id: string;
+  id?: string;
   name: string;
   number: string;
   avatar?: string;
@@ -90,3 +90,15 @@ export interface ILink {
 }
 
 export type Token = string | null;
+
+export type InputTypes = 'text' | 'tel' | 'email' | 'password';
+
+export const enum BtnTypes {
+  button = 'button',
+  submit = 'submit',
+}
+
+export const enum Position {
+  absolute = 'absolute',
+  static = 'static',
+}

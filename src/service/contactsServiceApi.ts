@@ -26,9 +26,8 @@ class ContactsServiceApi {
     );
   }
 
-  loginUser(data: ICredentials, signal: AbortSignal): Promise<IAuthResponse> {
+  loginUser(data: ICredentials): Promise<IAuthResponse> {
     const options = {
-      signal,
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -69,9 +68,8 @@ class ContactsServiceApi {
     );
   }
 
-  fetchContacts(signal: AbortSignal): Promise<IContact[]> {
+  fetchContacts(): Promise<IContact[]> {
     const options = {
-      signal,
       method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',

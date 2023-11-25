@@ -1,5 +1,4 @@
 import contactsServiceApi from '@/service/contactsServiceApi';
-import { auth } from '../../../auth';
 import ContactsList from '@/components/ContactsList';
 import ErrorMessage from '@/components/ErrorMessage';
 import getCurrentUser from '@/utils/getCurrentUser';

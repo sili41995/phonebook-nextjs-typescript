@@ -3,6 +3,7 @@
 import contactsServiceApi from '@/service/contactsServiceApi';
 import { auth, signIn } from '../../../auth';
 import { revalidatePath } from 'next/cache';
+import { IContact, ICredentials } from '@/types/types';
 
 export const authenticate = async (
   prevState: string | undefined,
@@ -18,28 +19,27 @@ export const authenticate = async (
   }
 };
 
-export const createContact = async (prevState, formData) => {
-  const { user } = await auth();
+export const createContact = async (formData: FormData) => {
+  const { user }: any = await auth();
   contactsServiceApi.token = user.token;
-  const name = formData.get('name');
-  const number = formData.get('number');
-  const contact = { name, number };
+  const name = formData.get('name') as string;
+  const number = formData.get('number') as string;
+  const contact: IContact = { name, number };
   await contactsServiceApi.addContact(contact);
   revalidatePath('/contacts');
 };
 
-export const deleteContact = async (id) => {
-  const { user } = await auth();
+export const deleteContact = async (id: string) => {
+  const { user }: any = await auth();
   contactsServiceApi.token = user.token;
   await contactsServiceApi.deleteContact(id);
-  console.log('contact delete success');
   revalidatePath('/contacts');
 };
 
-export const signUp = async (prevState, formData) => {
-  const name = formData.get('name');
-  const email = formData.get('email');
-  const password = formData.get('password');
-  const user = { name, email, password };
+export const signUp = async (formData: FormData) => {
+  const name = formData.get('name') as string;
+  const email = formData.get('email') as string;
+  const password = formData.get('password') as string;
+  const user: ICredentials = { name, email, password };
   await contactsServiceApi.registerUser(user);
 };

@@ -22,11 +22,9 @@ import IconButton from '@/components/IconButton';
 import { IconBtnType } from '@/constants/iconBtnType';
 import { IconSizes } from '@/constants/iconSizes';
 import { useRouter } from 'next/navigation';
+import { BtnTypes } from '@/types/types';
 
 const AddContactForm = () => {
-  const initialState = { message: null, errors: {} };
-  const [state, dispatch] = useFormState(createContact, initialState);
-
   // const contacts = useSelector(selectContacts);
   // const isLoading = useSelector(selectIsLoading);
   // const dispatch = useDispatch();
@@ -67,7 +65,7 @@ const AddContactForm = () => {
   return (
     <>
       <p className={css.title}>Add contact</p>
-      <form action={dispatch} className={css.form}>
+      <form action={createContact} className={css.form}>
         <Input
           type='text'
           name='name'
@@ -93,7 +91,7 @@ const AddContactForm = () => {
             btnType={IconBtnType.accept}
             width={44}
             height={35}
-            type='submit'
+            type={BtnTypes.submit}
             icon={<GiCheckMark size={IconSizes.primaryIconSize} />}
           />
           <IconButton onBtnClick={onCancelBtnClick}>Cancel</IconButton>
