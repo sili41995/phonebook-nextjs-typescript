@@ -9,6 +9,13 @@ export const authenticate = async (data: ICredentials) => {
   await signIn('credentials', data);
 };
 
+export const signUp = async (data: ICredentials) => {
+  const response = await contactsServiceApi.registerUser(data);
+  if (response.keyValue) {
+    throw new Error('This user is already registered');
+  }
+};
+
 export const createContact = async (data: IContact) => {
   const { user }: any = await auth();
   contactsServiceApi.token = user.token;
@@ -21,12 +28,4 @@ export const deleteContact = async (id: string) => {
   contactsServiceApi.token = user.token;
   await contactsServiceApi.deleteContact(id);
   revalidatePath('/contacts');
-};
-
-export const signUp = async (formData: FormData) => {
-  const name = formData.get('name') as string;
-  const email = formData.get('email') as string;
-  const password = formData.get('password') as string;
-  const user: ICredentials = { name, email, password };
-  await contactsServiceApi.registerUser(user);
 };
