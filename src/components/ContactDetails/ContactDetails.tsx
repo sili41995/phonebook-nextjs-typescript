@@ -21,7 +21,7 @@ const ContactDetails = ({ contact }: IProps) => {
           width={50}
           btnType={IconBtnType.delete}
         />
-        <Link href={`/contacts/${id}/edit`}>
+        <Link href={`/contacts/${id}/edit`} className={css.navLink}>
           <CiEdit />
         </Link>
       </div>

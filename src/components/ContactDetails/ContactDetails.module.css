@@ -14,7 +14,7 @@
   height: 40px;
 }
 
-.buttonsContainer a {
+.navLink {
   width: 50px;
   background-color: var(--blueBtnColor);
   padding: var(--spacing);
@@ -22,14 +22,15 @@
   transition: box-shadow var(--transitionDurationAndFunc);
 }
 
-.buttonsContainer a:hover,
-.buttonsContainer a:focus {
+.navLink:hover,
+.navLink:focus {
   box-shadow: var(--primaryShadow);
 }
 
-.buttonsContainer svg {
+.navLink svg {
   width: 100%;
   height: 100%;
+  fill: var(--blueIconColor);
 }
 
 .avatar {
