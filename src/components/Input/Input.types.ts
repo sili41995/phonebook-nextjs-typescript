@@ -11,4 +11,5 @@ export interface IProps {
   required?: boolean;
   autoFocus?: boolean;
   settings?: { [key: string]: any };
+  defaultValue?: string;
 }
