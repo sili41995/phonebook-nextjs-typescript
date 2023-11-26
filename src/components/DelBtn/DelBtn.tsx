@@ -9,7 +9,6 @@ import { IProps } from './DelBtn.types';
 import { BtnTypes } from '@/types/types';
 
 const DelBtn = ({ contactId }: IProps) => {
-  console.log(contactId);
   return (
     <form
       action={() => {

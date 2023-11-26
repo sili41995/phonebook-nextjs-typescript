@@ -14,4 +14,5 @@ export interface IProps {
   height?: number;
   top?: 'center' | number;
   inputWrap?: boolean;
+  disabled?: boolean;
 }

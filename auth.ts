@@ -8,7 +8,6 @@ async function getUser(credentials: any) {
     const user = await contactsServiceApi.loginUser(credentials);
     return user;
   } catch (error) {
-    console.error('Failed to fetch user:', error);
     throw new Error('Failed to fetch user.');
   }
 }
@@ -18,11 +17,9 @@ export const { auth, signIn, signOut } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials): Promise<any> {
-        console.log(credentials);
         const { user, token } = await getUser(credentials);
         if (!token) {
-          console.log('Invalid credentials');
-          return null;
+          throw new Error('Invalid credentials');
         }
 
         return { user, token };

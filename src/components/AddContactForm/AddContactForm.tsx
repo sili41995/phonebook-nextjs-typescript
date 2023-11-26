@@ -1,22 +1,11 @@
 'use client';
 
+import 'react-toastify/dist/ReactToastify.css';
 import { HiPhone } from 'react-icons/hi';
 import { FaUser } from 'react-icons/fa';
 import { GiCheckMark } from 'react-icons/gi';
-// import { useForm } from 'react-hook-form';
-// import { useDispatch, useSelector } from 'react-redux';
-// import 'react-toastify/dist/ReactToastify.css';
-// import IconButton from '@/components/IconButton';
-// import Input from '@/components/Input';
-// import { makeBlur, toasts } from '@/utils';
-// import { iconBtnType, iconSizes } from '@/constants';
-// import { selectContacts, selectIsLoading } from '@/redux/contacts/selectors';
-// import { useRouter } from 'next/navigation';
-// import { addContact } from '@/redux/contacts/operations';
 import css from './AddContactForm.module.css';
-
 import { createContact } from '@/app/lib/actions';
-import { useFormState } from 'react-dom';
 import Input from '../Input';
 import IconButton from '@/components/IconButton';
 import { IconBtnType } from '@/constants/iconBtnType';
@@ -24,41 +13,37 @@ import { IconSizes } from '@/constants/iconSizes';
 import { useRouter } from 'next/navigation';
 import { BtnTypes, IContact } from '@/types/types';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import toasts from '@/utils/toasts';
+import { useEffect } from 'react';
 
 const AddContactForm = () => {
-  // const contacts = useSelector(selectContacts);
-  // const isLoading = useSelector(selectIsLoading);
-  // const dispatch = useDispatch();
   const router = useRouter();
-  const { register, handleSubmit } = useForm<IContact>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<IContact>();
+
+  useEffect(() => {
+    errors.name && toasts.errorToast('Name is required');
+    errors.number && toasts.errorToast('Phone is required');
+  }, [errors, isSubmitting]);
 
   const onCancelBtnClick = () => {
     router.back();
   };
 
-  // const onAcceptBtnClick = ({ currentTarget }) => {
-  //   makeBlur(currentTarget);
-  // };
-
-  const handleFormSubmit: SubmitHandler<IContact> = (data: IContact): void => {
-    createContact(data).then(() => {
-      console.log('contact add');
-    });
-    //   const contactName = data.name;
-    //   const isContact = contacts.some(({ name }) => name === contactName);
-    //   if (isContact) {
-    //     toasts.warnToast(`${contactName} is already in contacts`);
-    //     return;
-    //   }
-    //   dispatch(addContact(data))
-    //     .unwrap()
-    //     .then(() => {
-    //       toasts.successToast('Contact added successfully');
-    //       reset();
-    //     })
-    //     .catch(() => {
-    //       toasts.errorToast('Adding a contact failed');
-    //     });
+  const handleFormSubmit: SubmitHandler<IContact> = async (
+    data: IContact
+  ): Promise<void> => {
+    try {
+      await createContact(data);
+      reset();
+      toasts.successToast('Contact added successfully');
+    } catch (error) {
+      toasts.errorToast('Adding a contact failed');
+    }
   };
 
   return (
@@ -66,27 +51,23 @@ const AddContactForm = () => {
       <p className={css.title}>Add contact</p>
       <form onSubmit={handleSubmit(handleFormSubmit)} className={css.form}>
         <Input
-          settings={{ ...register('name') }}
+          settings={{ ...register('name', { required: true, minLength: 1 }) }}
           type='text'
           placeholder='Name'
           icon={<FaUser size={IconSizes.defaultIconSize} />}
           inputWrap
-          required
           autoFocus
         />
-        {/* {errors.name && toasts.errorToast('Name is required')} */}
         <Input
-          settings={{ ...register('number') }}
+          settings={{ ...register('number', { required: true }) }}
           type='tel'
           placeholder='Phone'
           icon={<HiPhone size={IconSizes.defaultIconSize} />}
           inputWrap
-          required
         />
-        {/* {errors.number && toasts.errorToast('Phone is required')} */}
         <div className={css.container}>
           <IconButton
-            // disabled={isLoading}
+            disabled={isSubmitting}
             btnType={IconBtnType.accept}
             width={44}
             height={35}
@@ -96,12 +77,6 @@ const AddContactForm = () => {
           <IconButton onBtnClick={onCancelBtnClick}>Cancel</IconButton>
         </div>
       </form>
-      {/* 
-      <form >
-               
-        
- 
-      </form> */}
     </>
   );
 };

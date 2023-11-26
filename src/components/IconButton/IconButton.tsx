@@ -10,6 +10,7 @@ const IconButton = ({
   type = BtnTypes.button,
   onBtnClick,
   btnType,
+  disabled,
   ...otherProps
 }: IProps) => {
   const className = getIconButtonClassName(css, btnType);
@@ -25,6 +26,7 @@ const IconButton = ({
       style={styleProp.styles}
       type={type}
       onClick={onBtnClick}
+      disabled={disabled}
     >
       {children ? children : icon}
     </button>

@@ -5,18 +5,8 @@ import { auth, signIn } from '../../../auth';
 import { revalidatePath } from 'next/cache';
 import { IContact, ICredentials } from '@/types/types';
 
-export const authenticate = async (
-  prevState: string | undefined,
-  formData: FormData
-) => {
-  try {
-    await signIn('credentials', Object.fromEntries(formData));
-  } catch (error) {
-    if ((error as Error).message.includes('CredentialsSignin')) {
-      return 'CredentialSignin';
-    }
-    throw error;
-  }
+export const authenticate = async (data: ICredentials) => {
+  await signIn('credentials', data);
 };
 
 export const createContact = async (data: IContact) => {

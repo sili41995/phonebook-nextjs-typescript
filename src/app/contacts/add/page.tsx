@@ -3,9 +3,11 @@ import AuthForm from '@/components/AuthForm';
 
 const AddContactPage = () => {
   return (
-    <AuthForm>
-      <AddContactForm />
-    </AuthForm>
+    <>
+      <AuthForm>
+        <AddContactForm />
+      </AuthForm>
+    </>
   );
 };
 
