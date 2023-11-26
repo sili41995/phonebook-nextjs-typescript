@@ -11,6 +11,7 @@ import Image from 'next/image';
 import getContactInfo from '@/utils/getContactInfo';
 import DelBtn from '../DelBtn';
 import { IProps } from './ContactsListItem.types';
+import { IconBtnType } from '@/constants/iconBtnType';
 
 const ContactsListItem = ({ contact }: IProps) => {
   const { userAvatar, name, id, role, number, email } = getContactInfo(contact);
@@ -36,7 +37,12 @@ const ContactsListItem = ({ contact }: IProps) => {
           <p className={css.email}>{email}</p>
         </div>
       </Link>
-      <DelBtn contactId={contact.id as string} />
+      <DelBtn
+        contactId={contact.id as string}
+        width={44}
+        height={35}
+        btnType={IconBtnType.deleteTransparent}
+      />
       {/* <IconButton
           top={0}
           right={0}

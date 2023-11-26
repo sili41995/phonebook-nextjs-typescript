@@ -19,7 +19,7 @@ interface IStylesProps {
     right: number;
     transform: string;
     minWidth: number;
-    height?: number;
+    height?: number | string;
   };
   hoverClassName: string;
 }
@@ -42,7 +42,7 @@ const getIconButtonStyleProp = ({
     right,
     transform: `translateY(${translateYValue})`,
     minWidth: width,
-    height,
+    height: height || '100%',
   };
 
   const inputIconHoverEffect =

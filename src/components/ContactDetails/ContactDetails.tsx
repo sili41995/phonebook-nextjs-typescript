@@ -4,42 +4,26 @@ import getContactInfo from '@/utils/getContactInfo';
 import getAvatar from '@/utils/getAvatar';
 import ContactInfo from '@/components/ContactInfo';
 import { IProps } from './ContactDetails.types';
-import ActionLink from '../ActionLink';
-import { IconBtnType } from '@/constants/iconBtnType';
 import { CiEdit } from 'react-icons/ci';
+import Link from 'next/link';
+import DelBtn from '../DelBtn';
+import { IconBtnType } from '@/constants/iconBtnType';
 
 const ContactDetails = ({ contact }: IProps) => {
-  const { name, role, avatar } = getContactInfo(contact);
+  const { name, role, avatar, id } = getContactInfo(contact);
   const userAvatar = getAvatar.getContactAvatar(avatar);
 
   return (
     <div className={css.container}>
       <div className={css.buttonsContainer}>
-        <ActionLink
-          link={`/contacts/${contact.id}/edit`}
-          btnType={IconBtnType.edit}
-        >
+        <DelBtn
+          contactId={id as string}
+          width={50}
+          btnType={IconBtnType.delete}
+        />
+        <Link href={`/contacts/${id}/edit`}>
           <CiEdit />
-        </ActionLink>
-        {/* {!editContact && (
-          <IconButton
-            disabled={isLoading}
-            btnType={iconBtnType.delete}
-            width={44}
-            height={35}
-            icon={<AiOutlineDelete size={iconSizes.primaryIconSize} />}
-            onBtnClick={() => {
-              deleteContact(id);
-            }}
-          />
-        )}
-        <IconButton
-          btnType={iconBtnType.edit}
-          width={44}
-          height={35}
-          onBtnClick={handleEditBtnClick}
-          icon={<CiEdit size={iconSizes.primaryIconSize} />}
-        /> */}
+        </Link>
       </div>
       <Image
         className={css.avatar}

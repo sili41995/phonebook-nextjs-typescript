@@ -7,6 +7,31 @@
   margin-right: auto;
 }
 
+.buttonsContainer {
+  display: flex;
+  gap: var(--primaryGap);
+  justify-content: flex-end;
+  height: 40px;
+}
+
+.buttonsContainer a {
+  width: 50px;
+  background-color: var(--blueBtnColor);
+  padding: var(--spacing);
+  border-radius: var(--secondaryBorderRadius);
+  transition: box-shadow var(--transitionDurationAndFunc);
+}
+
+.buttonsContainer a:hover,
+.buttonsContainer a:focus {
+  box-shadow: var(--primaryShadow);
+}
+
+.buttonsContainer svg {
+  width: 100%;
+  height: 100%;
+}
+
 .avatar {
   width: 112px;
   height: auto;

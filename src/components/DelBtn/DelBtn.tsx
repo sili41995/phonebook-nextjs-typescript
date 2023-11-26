@@ -2,24 +2,38 @@
 
 import { deleteContact } from '@/app/lib/actions';
 import IconButton from '@/components/IconButton';
-import { IconBtnType } from '@/constants/iconBtnType';
 import { IconSizes } from '@/constants/iconSizes';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { IProps } from './DelBtn.types';
 import { BtnTypes } from '@/types/types';
+import { useRouter } from 'next/navigation';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { usePathname } from 'next/navigation';
+import toasts from '@/utils/toasts';
 
-const DelBtn = ({ contactId }: IProps) => {
+const DelBtn = ({ contactId, width, height, btnType }: IProps) => {
+  const pathname = usePathname();
+  const router = useRouter();
+  const { handleSubmit } = useForm<{}>();
+
+  const handleFormSubmit: SubmitHandler<{}> = async () => {
+    try {
+      await deleteContact(contactId);
+      if (pathname.includes(contactId)) {
+        router.push('/contacts');
+      }
+    } catch (error) {
+      toasts.errorToast('Deleting a contact failed');
+    }
+  };
+
   return (
-    <form
-      action={() => {
-        deleteContact(contactId);
-      }}
-    >
+    <form onSubmit={handleSubmit(handleFormSubmit)}>
       <IconButton
-        btnType={IconBtnType.deleteTransparent}
+        btnType={btnType}
         icon={<AiOutlineDelete size={IconSizes.primaryIconSize} />}
-        width={44}
-        height={35}
+        width={width}
+        height={height}
         type={BtnTypes.submit}
       />
     </form>
