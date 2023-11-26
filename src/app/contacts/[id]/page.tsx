@@ -4,6 +4,7 @@ import ContactDetails from '@/components/ContactDetails';
 import ErrorMessage from '@/components/ErrorMessage';
 import getCurrentUser from '@/utils/getCurrentUser';
 import { IContact } from '@/types/types';
+import getContact from '@/utils/getContact';
 
 const ContactPage = async ({ params }: { params: { id: string } }) => {
   const error = await getCurrentUser();
@@ -12,10 +13,7 @@ const ContactPage = async ({ params }: { params: { id: string } }) => {
     return <ErrorMessage />;
   }
 
-  const { id } = params;
-
-  const contacts = await contactsServiceApi.fetchContacts();
-  const contact = contacts.find((contact) => contact.id === id);
+  const contact = await getContact(params.id);
 
   return <ContactDetails contact={contact as IContact} />;
 };
