@@ -1,7 +1,7 @@
 // import { useMemo } from 'react';
 // import { useSelector } from 'react-redux';
 import ContactsListItem from '@/components/ContactsListItem';
-import EmptyListMessage from '@/components/EmptyListMessage';
+import DefaultMessage from '@/components/DefaultMessage';
 // import { searchParamsKeys } from '@/constants';
 // import { filterContactsByName, sortContactsByName } from '@/utils';
 // import { selectContacts } from '@/redux/contacts/selectors';
@@ -28,7 +28,7 @@ const ContactsList = ({ contacts }: IProps) => {
           ))}
         </ul>
       ) : (
-        <EmptyListMessage />
+        <DefaultMessage message='Contact list is empty' />
       )}
     </div>
   );

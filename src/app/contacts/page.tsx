@@ -2,6 +2,8 @@ import contactsServiceApi from '@/service/contactsServiceApi';
 import ContactsList from '@/components/ContactsList';
 import ErrorMessage from '@/components/ErrorMessage';
 import getCurrentUser from '@/utils/getCurrentUser';
+import Header from '@/components/Header';
+import Filter from '@/components/Filter';
 
 export const metadata = {
   title: 'Contacts',
@@ -18,9 +20,12 @@ const ContactsPage = async () => {
   const contacts = await contactsServiceApi.fetchContacts();
 
   return (
-    <>
+    <div className='contacts'>
+      <Header>
+        <Filter />
+      </Header>
       <ContactsList contacts={contacts} />
-    </>
+    </div>
   );
 };
 

@@ -110,6 +110,16 @@ button {
   width: 100%;
 }
 
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--primaryGap);
+}
+
+.contacts header {
+  border-radius: var(--navBarBorderRadius);
+}
+
 .error-message {
   color: var(--primaryFontColor);
   /* font-family: var(--font-jua); */

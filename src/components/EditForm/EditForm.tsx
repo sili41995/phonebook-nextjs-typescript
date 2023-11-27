@@ -23,13 +23,14 @@ import { IconBtnType } from '@/constants/iconBtnType';
 import { BtnTypes, IContact } from '@/types/types';
 import { IProps } from './EditForm.types';
 import { useRouter } from 'next/navigation';
+import { updateContact } from '@/app/lib/actions';
 
 const EditForm = ({ contact }: IProps) => {
   // const isLoading = useSelector(selectIsLoading);
   // const dispatch = useDispatch();
   // const id = useParams()[pagesPath.dynamicParam];
   // const targetContact = useTargetContact();
-  const { name, number } = getContactInfo(contact);
+  const { name, number, id } = getContactInfo(contact);
   const {
     register,
     formState: { errors, isSubmitting },
@@ -42,16 +43,13 @@ const EditForm = ({ contact }: IProps) => {
     errors.number && toasts.errorToast('Phone is required');
   }, [errors, isSubmitting]);
 
-  const handleFormSubmit: SubmitHandler<IContact> = (data) => {
-    console.log(data);
-    //   dispatch(updateContact({ data, id }))
-    //     .unwrap()
-    //     .then(() => {
-    //       toasts.successToast('Contact updated successfully');
-    //     })
-    //     .catch(() => {
-    //       toasts.errorToast('Contact update failed');
-    //     });
+  const handleFormSubmit: SubmitHandler<IContact> = async (data) => {
+    try {
+      await updateContact({ data, id: id as string });
+      toasts.successToast('Contact updated successfully');
+    } catch (error) {
+      toasts.errorToast('Contact update failed');
+    }
   };
 
   return (

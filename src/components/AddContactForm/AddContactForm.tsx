@@ -70,7 +70,6 @@ const AddContactForm = () => {
             disabled={isSubmitting}
             btnType={IconBtnType.accept}
             width={44}
-            height={35}
             type={BtnTypes.submit}
             icon={<GiCheckMark size={IconSizes.primaryIconSize} />}
           />

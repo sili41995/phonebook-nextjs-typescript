@@ -4,10 +4,10 @@ import { auth } from '../../auth';
 const getCurrentUser = async () => {
   const { user }: any = await auth();
   contactsServiceApi.token = user.token;
-  const currentUser = await contactsServiceApi.refreshUser();
+  const response = await contactsServiceApi.refreshUser();
 
-  if (currentUser.message) {
-    return currentUser.message;
+  if (response.message) {
+    return response.message;
   }
 };
 export default getCurrentUser;

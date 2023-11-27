@@ -1,9 +1,10 @@
 'use server';
 
 import contactsServiceApi from '@/service/contactsServiceApi';
-import { auth, signIn } from '../../../auth';
+import { signIn } from '../../../auth';
 import { revalidatePath } from 'next/cache';
 import { IContact, ICredentials } from '@/types/types';
+import getCurrentUser from '@/utils/getCurrentUser';
 
 export const authenticate = async (data: ICredentials) => {
   await signIn('credentials', data);
@@ -17,15 +18,19 @@ export const signUp = async (data: ICredentials) => {
 };
 
 export const createContact = async (data: IContact) => {
-  const { user }: any = await auth();
-  contactsServiceApi.token = user.token;
+  await getCurrentUser();
   await contactsServiceApi.addContact(data);
   revalidatePath('/contacts');
 };
 
 export const deleteContact = async (id: string) => {
-  const { user }: any = await auth();
-  contactsServiceApi.token = user.token;
+  await getCurrentUser();
   await contactsServiceApi.deleteContact(id);
+  revalidatePath('/contacts');
+};
+
+export const updateContact = async (data: { data: IContact; id: string }) => {
+  await getCurrentUser();
+  await contactsServiceApi.updateContact(data);
   revalidatePath('/contacts');
 };
