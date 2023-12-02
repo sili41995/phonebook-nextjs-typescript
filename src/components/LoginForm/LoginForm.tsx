@@ -20,7 +20,6 @@ const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    //     watch,
   } = useForm<ICredentials>();
 
   useEffect(() => {
@@ -42,17 +41,6 @@ const LoginForm = () => {
       toasts.errorToast('Wrong email or password');
     }
   };
-  //   const [isShowPassword, setIsShowPassword] = useState(false);
-  //   const watchPassword = watch('password');
-  //   const inputType = isShowPassword ? 'text' : 'password';
-  //   const inputPasswordBtnIcon = isShowPassword ? (
-  //     <MdVisibilityOff size={iconSizes.primaryIconSize} />
-  //   ) : (
-  //     <MdVisibility size={iconSizes.primaryIconSize} />
-  //   );
-  //   const toggleIsShowPassword = () => {
-  //     setIsShowPassword((prevState) => !prevState);
-  //   };
 
   return (
     <>

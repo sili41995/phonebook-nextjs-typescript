@@ -11,7 +11,6 @@ const NavLinks = ({ links }: IProps) => {
   return (
     <div className={css.container}>
       {links.map((link) => {
-        // const LinkIcon = link.icon;
         const isActiveLink = link.href === pathname && css.active;
 
         return (
@@ -20,7 +19,6 @@ const NavLinks = ({ links }: IProps) => {
             href={link.href}
             className={`${css.link} ${isActiveLink}`}
           >
-            {/* <LinkIcon className='w-6' /> */}
             <p>{link.name}</p>
           </Link>
         );

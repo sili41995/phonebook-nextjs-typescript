@@ -15,9 +15,6 @@ import { IconBtnType } from '@/constants/iconBtnType';
 
 const ContactsListItem = ({ contact }: IProps) => {
   const { userAvatar, name, id, role, number, email } = getContactInfo(contact);
-  // const isLoading = useSelector(selectIsLoading);
-  // const deleteContact = useDeleteContact();
-  // const searchParams = useSearchParams();
 
   return (
     <li className={css.contactItem}>
@@ -43,19 +40,6 @@ const ContactsListItem = ({ contact }: IProps) => {
         height={35}
         btnType={IconBtnType.deleteTransparent}
       />
-      {/* <IconButton
-          top={0}
-          right={0}
-          position='absolute'
-          disabled={isLoading}
-          btnType={iconBtnType.deleteTransparent}
-          width={44}
-          height={35}
-          icon={<AiOutlineDelete size={iconSizes.primaryIconSize} />}
-          onBtnClick={() => {
-            deleteContact(id);
-          }}
-        /> */}
     </li>
   );
 };

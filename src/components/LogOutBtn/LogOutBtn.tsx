@@ -10,7 +10,6 @@ const LogOutBtn = () => {
       }}
     >
       <button className={css.signOutBtn}>
-        {/* <PowerIcon className='w-6' /> */}
         <p>Sign Out</p>
       </button>
     </form>

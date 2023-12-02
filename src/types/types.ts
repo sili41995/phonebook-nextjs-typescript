@@ -85,7 +85,6 @@ export interface ICssProp {
 export interface ILink {
   name: string;
   href: string;
-  icon: null | HTMLElement;
   page: PagesTypes;
 }
 

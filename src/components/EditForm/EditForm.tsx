@@ -8,12 +8,6 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import 'react-toastify/dist/ReactToastify.css';
 import IconButton from '@/components/IconButton';
 import Input from '@/components/Input';
-// import { getContactInfo, makeBlur, toasts } from '@/utils';
-// import { useTargetContact } from '@/hooks';
-// import { pagesPath, iconBtnType, iconSizes } from '@/constants';
-// import { updateContact } from '@/redux/contacts/operations';
-// import { selectIsLoading } from '@/redux/contacts/selectors';
-// import { useParams } from 'next/navigation';
 import { useEffect } from 'react';
 import css from './EditForm.module.css';
 import getContactInfo from '@/utils/getContactInfo';
@@ -26,10 +20,6 @@ import { useRouter } from 'next/navigation';
 import { updateContact } from '@/app/lib/actions';
 
 const EditForm = ({ contact }: IProps) => {
-  // const isLoading = useSelector(selectIsLoading);
-  // const dispatch = useDispatch();
-  // const id = useParams()[pagesPath.dynamicParam];
-  // const targetContact = useTargetContact();
   const { name, number, id } = getContactInfo(contact);
   const {
     register,
