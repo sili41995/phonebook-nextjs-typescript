@@ -10,14 +10,13 @@ import Input from '../Input';
 import IconButton from '@/components/IconButton';
 import { IconBtnType } from '@/constants/iconBtnType';
 import { IconSizes } from '@/constants/iconSizes';
-import { useRouter } from 'next/navigation';
 import { BtnTypes, IContact } from '@/types/types';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import toasts from '@/utils/toasts';
 import { useEffect } from 'react';
+import GoBackBtn from '@/components/GoBackBtn';
 
 const AddContactForm = () => {
-  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -29,10 +28,6 @@ const AddContactForm = () => {
     errors.name && toasts.errorToast('Name is required');
     errors.number && toasts.errorToast('Phone is required');
   }, [errors, isSubmitting]);
-
-  const onCancelBtnClick = () => {
-    router.back();
-  };
 
   const handleFormSubmit: SubmitHandler<IContact> = async (
     data: IContact
@@ -73,7 +68,7 @@ const AddContactForm = () => {
             type={BtnTypes.submit}
             icon={<GiCheckMark size={IconSizes.primaryIconSize} />}
           />
-          <IconButton onBtnClick={onCancelBtnClick}>Cancel</IconButton>
+          <GoBackBtn />
         </div>
       </form>
     </>

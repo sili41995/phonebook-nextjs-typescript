@@ -9,9 +9,13 @@
 
 .buttonsContainer {
   display: flex;
-  gap: var(--primaryGap);
-  justify-content: flex-end;
+  justify-content: space-between;
   height: 40px;
+}
+
+.buttonsContainer div {
+  display: flex;
+  gap: var(--primaryGap);
 }
 
 .navLink {

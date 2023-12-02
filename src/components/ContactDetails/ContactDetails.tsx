@@ -6,9 +6,10 @@ import ContactInfo from '@/components/ContactInfo';
 import { IProps } from './ContactDetails.types';
 import { CiEdit } from 'react-icons/ci';
 import Link from 'next/link';
-import DelBtn from '../DelBtn';
+import DelBtn from '@/components/DelBtn';
 import { IconBtnType } from '@/constants/iconBtnType';
-import DefaultMessage from '../DefaultMessage';
+import DefaultMessage from '@/components/DefaultMessage';
+import GoBackBtn from '@/components/GoBackBtn';
 
 const ContactDetails = ({ contact }: IProps) => {
   const { name, role, avatar, id } = getContactInfo(contact);
@@ -19,14 +20,17 @@ const ContactDetails = ({ contact }: IProps) => {
       {id ? (
         <>
           <div className={css.buttonsContainer}>
-            <DelBtn
-              contactId={id as string}
-              width={50}
-              btnType={IconBtnType.delete}
-            />
-            <Link href={`/contacts/${id}/edit`} className={css.navLink}>
-              <CiEdit />
-            </Link>
+            <GoBackBtn title='<-- Go Back' />
+            <div>
+              <DelBtn
+                contactId={id as string}
+                width={50}
+                btnType={IconBtnType.delete}
+              />
+              <Link href={`/contacts/${id}/edit`} className={css.navLink}>
+                <CiEdit />
+              </Link>
+            </div>
           </div>
           <Image
             className={css.avatar}

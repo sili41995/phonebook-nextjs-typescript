@@ -1,29 +1,30 @@
-// import { useMemo } from 'react';
-// import { useSelector } from 'react-redux';
+'use client';
+
+import { useMemo } from 'react';
 import ContactsListItem from '@/components/ContactsListItem';
 import DefaultMessage from '@/components/DefaultMessage';
-// import { searchParamsKeys } from '@/constants';
-// import { filterContactsByName, sortContactsByName } from '@/utils';
-// import { selectContacts } from '@/redux/contacts/selectors';
-// import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import css from './ContactsList.module.css';
 import { IProps } from './ContactsList.types';
+import sortContactsByName from '@/utils/sortContactsByName';
+import filterContactsByName from '@/utils/filterContactsByName';
+import { SearchParamsKeys } from '@/constants/searchParamsKeys';
 
 const ContactsList = ({ contacts }: IProps) => {
-  // const searchParams = useSearchParams();
-  // const filter = searchParams.get(searchParamsKeys.FILTER_SP_KEY) ?? '';
-  // const sortType = searchParams.get(searchParamsKeys.SORT_SP_KEY) ?? '';
+  const searchParams = useSearchParams();
+  const filter = searchParams.get(SearchParamsKeys.FILTER_SP_KEY) ?? '';
+  const sortType = searchParams.get(SearchParamsKeys.SORT_SP_KEY) ?? '';
 
-  // const filteredContacts = useMemo(() => {
-  //   const sortedContacts = sortContactsByName(contacts, sortType);
-  //   return filterContactsByName(sortedContacts, filter);
-  // }, [contacts, filter, sortType]);
+  const filteredContacts = useMemo(() => {
+    const sortedContacts = sortContactsByName(contacts, sortType);
+    return filterContactsByName(sortedContacts, filter);
+  }, [contacts, filter, sortType]);
 
   return (
     <div className={css.container}>
-      {!!contacts.length ? (
+      {!!filteredContacts.length ? (
         <ul className={css.contactsList}>
-          {contacts.map((contact) => (
+          {filteredContacts.map((contact) => (
             <ContactsListItem contact={contact} key={contact.id} />
           ))}
         </ul>
