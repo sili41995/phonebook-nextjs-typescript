@@ -8,7 +8,7 @@
 
 .message {
   color: var(--primaryFontColor);
-  /* font-family: var(--font-jua); */
+  font-family: var(--font-jua);
   font-size: var(--titleFontSize);
   font-weight: var(--otherFontWeight);
   text-align: center;

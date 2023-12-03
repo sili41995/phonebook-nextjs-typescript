@@ -1,7 +1,3 @@
-// import { HiOutlinePhone } from 'react-icons/hi';
-// import { SlLocationPin } from 'react-icons/sl';
-// import { getUserInfo } from '@/utils';
-// import { selectUser } from '@/redux/auth/selectors';
 import Image from 'next/image';
 import css from './UserProfile.module.css';
 import getUserInfo from '@/utils/getUserInfo';
@@ -33,11 +29,11 @@ const UserProfile = ({ user }: IProps) => {
       </div>
       <div>
         <div className={css.info}>
-          <span className={css.iconWrap}>{/* <AiOutlineCalendar /> */}</span>
+          <span className={css.iconWrap}></span>
           {dateOfBirth}
         </div>
         <div className={css.info}>
-          <span className={css.iconWrap}>{/* <HiOutlinePhone /> */}</span>
+          <span className={css.iconWrap}></span>
           {phoneNumber}
         </div>
         <div className={css.info}>

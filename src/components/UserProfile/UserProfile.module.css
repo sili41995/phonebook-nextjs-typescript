@@ -7,8 +7,8 @@
 .name {
   color: primaryFontColor;
   font-family: var(--font-jua);
-  font-size: var(--titleFontSize);
   font-weight: var(--otherFontWeight);
+  font-size: var(--titleFontSize);
 }
 
 .data {
@@ -28,8 +28,8 @@
   margin-bottom: 4px;
   color: var(--primaryFontColor);
   font-family: var(--font-jua);
-  font-size: var(--subtitleFontSize);
   font-weight: var(--otherFontWeight);
+  font-size: var(--subtitleFontSize);
   text-align: center;
 }
 

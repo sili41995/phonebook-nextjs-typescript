@@ -1,16 +1,6 @@
 'use client';
 
 import 'react-toastify/dist/ReactToastify.css';
-// import { MdEmail, MdLock, MdPerson } from 'react-icons/md';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useForm } from 'react-hook-form';
-// import 'react-toastify/dist/ReactToastify.css';
-// import { toasts } from '@/utils';
-// import AuthFormMessage from '@/components/AuthFormMessage';
-// import { formType, iconSizes, pagesPath } from '@/constants';
-// import Input from '@/components/Input';
-// import { registerUser } from '@/redux/auth/operations';
-// import { selectIsLoading } from '@/redux/auth/selectors';
 import Input from '@/components/Input';
 import css from './RegisterForm.module.css';
 import { InputType } from '@/constants/inputType';

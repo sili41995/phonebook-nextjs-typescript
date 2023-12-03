@@ -1,13 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--primaryGap);
+}
+
 .title {
   color: var(--primaryFontColor);
   font-family: var(--font-jua);
-  font-size: var(--titleFontSize);
   font-weight: var(--otherFontWeight);
+  font-size: var(--titleFontSize);
 }
 
 .message {
   color: var(--otherFontColor);
   font-family: var(--font-jua);
-  font-size: var(--primaryFontSize);
   font-weight: var(--otherFontWeight);
+  font-size: var(--primaryFontSize);
+}
+
+.container button {
+  padding: 8px 12px;
+  background-color: var(--blueBtnColor);
+  color: var(--blueIconColor);
+  border-radius: var(--primaryBorderRadius);
+  outline: none;
+  border-color: transparent;
+  transition: background-color var(--transitionDurationAndFunc),
+    color var(--transitionDurationAndFunc);
+  align-self: center;
+}
+
+.container button:hover,
+.container button:focus {
+  background-color: var(--blueIconColor);
+  color: var(--whiteColor);
 }
