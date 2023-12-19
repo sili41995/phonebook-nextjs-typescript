@@ -1,12 +1,12 @@
-import Link from 'next/link';
-import css from './AuthFormMessage.module.css';
+import { Link } from 'react-router-dom';
 import { IProps } from './AuthFormMessage.types';
+import { Message } from './AuthFormMessage.styled';
 
 export const AuthFormMessage = ({ message, pageLink, action }: IProps) => (
-  <p className={css.message}>
-    <Link href={pageLink}>{action}</Link>
+  <Message>
+    <Link to={pageLink}>{action}</Link>
     {` ${message}`}
-  </p>
+  </Message>
 );
 
 export default AuthFormMessage;

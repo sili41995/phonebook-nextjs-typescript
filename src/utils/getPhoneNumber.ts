@@ -1,7 +1,7 @@
-const getPhoneNumber = (number = '') =>
+const getPhoneNumber = (number: string = ''): string =>
   number
     .split('')
-    .filter((symbol) => symbol === '+' || symbol !== '-')
+    .filter((symbol) => symbol === '+' || !isNaN(Number(symbol)))
     .join('');
 
 export default getPhoneNumber;

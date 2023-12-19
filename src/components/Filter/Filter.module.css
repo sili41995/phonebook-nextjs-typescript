@@ -1,6 +1,0 @@
-.container {
-  display: flex;
-  gap: var(--primaryGap);
-  justify-content: flex-end;
-  height: 40px;
-}

@@ -1,4 +1,4 @@
-export const enum IconBtnType {
+enum IconBtnType {
   delete = 'delete',
   edit = 'edit',
   phone = 'phone',
@@ -11,4 +11,7 @@ export const enum IconBtnType {
   deleteTransparent = 'deleteTransparent',
   toggleShowPassword = 'toggleShowPassword',
   clearFilter = 'clearFilter',
+  favorite = 'favorite',
 }
+
+export default IconBtnType;

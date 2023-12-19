@@ -1,27 +1,11 @@
-import './globals.css';
-import Toast from '@/components/Toast';
-import { Metadata } from 'next';
-import { jua } from './ui/fonts';
+import { ReactNode } from 'react';
 
-export const metadata: Metadata = {
-  title: {
-    template: '%s | Phonebook',
-    default: 'Contacts',
-  },
-  description: 'My Next.js App for for storing contacts',
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <html lang='en' className={`${jua.variable}`}>
-      <body>
-        {children}
-        <Toast />
-      </body>
+    <html>
+      <body>{children}</body>
     </html>
   );
-}
+};
+
+export default RootLayout;

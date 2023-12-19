@@ -1,13 +1,13 @@
-import AuthForm from '@/components/AuthForm';
-import LoginForm from '@/components/LoginForm';
+import ModalForm from '@/components/ModalForm';
 import SharedLayout from '@/components/SharedLayout';
+import SignInForm from '@/components/SignInForm';
 
 const Home = () => {
   return (
     <SharedLayout>
-      <AuthForm>
-        <LoginForm />
-      </AuthForm>
+      <ModalForm>
+        <SignInForm />
+      </ModalForm>
     </SharedLayout>
   );
 };
