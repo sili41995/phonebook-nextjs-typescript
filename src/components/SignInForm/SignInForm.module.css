@@ -6,28 +6,20 @@
   font-weight: var(--primaryFontWeight);
 }
 
-/* import styled from 'styled-components';
-
-export const Title = styled.h2`
-  
-`;
-
-export const Message = styled.p`
-  color: ${({ theme }) => theme.colors.primaryFontColor};
+.message {
+  color: var(--primaryFontColor);
   font-family: Inter;
-  font-size: ${({ theme }) => `${theme.fontSize.secondaryFontSize}px`};
-  font-weight: ${({ theme }) => theme.fontWeight.primaryFontWeight};
-`;
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--primaryFontWeight);
+}
 
-export const Form = styled.form`
+.form {
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => `${theme.primaryGap}px`};
-`;
+  gap: var(--primaryGap);
+}
 
-export const Image = styled.img`
-  width: 150px;
-  height: 150px;
+.image {
   align-self: center;
   border-radius: 50%;
-`; */
+}

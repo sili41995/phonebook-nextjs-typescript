@@ -2,7 +2,6 @@ export { default as filterContactsByName } from './filterContactsByName';
 export { default as getPhoneNumber } from './getPhoneNumber';
 export { default as getIsContactsPage } from './getIsContactsPage';
 export { default as makeBlur } from './makeBlur';
-export { default as setAuthPageBackgroundColor } from './setAuthPageBackgroundColor';
 export { default as setButtonColor } from './setButtonColor';
 export { default as setIconFill } from './setIconFill';
 export { default as setInputBorderColor } from './setInputBorderColor';

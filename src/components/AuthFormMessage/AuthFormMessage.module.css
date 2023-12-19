@@ -1,0 +1,10 @@
+.message {
+  color: primaryFontColor;
+  font-family: Inter;
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--primaryFontWeight);
+}
+
+.message a {
+  color: var(--primaryColor);
+}

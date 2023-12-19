@@ -1,19 +1,13 @@
 import { FC } from 'react';
-import { useAppSelector } from 'hooks/redux';
-import { selectIsLoading } from 'redux/auth/selectors';
-import Loader from 'components/Loader';
+import Loader from '@/components/Loader';
 import { IProps } from './AuthFormBtn.types';
-import { BtnType } from 'constants/index';
-import { Button } from './AuthFormBtn.styled';
+import { BtnType } from '@/constants';
+import css from './AuthFormBtn.module.css';
 
-const AuthFormBtn: FC<IProps> = ({ title }) => {
-  const isLoading = useAppSelector(selectIsLoading);
-
-  return (
-    <Button disabled={isLoading} type={BtnType.submit}>
-      {isLoading ? <Loader /> : title}
-    </Button>
-  );
-};
+const AuthFormBtn: FC<IProps> = ({ title, isLoading }) => (
+  <button className={css.button} disabled={isLoading} type={BtnType.submit}>
+    {isLoading ? <Loader /> : title}
+  </button>
+);
 
 export default AuthFormBtn;

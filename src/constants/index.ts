@@ -10,4 +10,3 @@ export { default as SearchParamsKeys } from './searchParamsKeys';
 export { default as FetchStatuses } from './fetchStatuses';
 export { default as SortTypes } from './sortTypes';
 export { default as Messages } from './messages';
-export { default as DefaultAvatars } from './defaultAvatars';
