@@ -1,3 +1,19 @@
+.header {
+  display: inline-block;
+  min-width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: var(--otherColor);
+}
+
+.container {
+  width: 1200px;
+  padding-left: var(--paddingContainer);
+  padding-right: var(--paddingContainer);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .section {
   padding-top: var(--paddingContainer);
   padding-bottom: var(--paddingContainer);

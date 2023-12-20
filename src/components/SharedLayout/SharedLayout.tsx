@@ -10,14 +10,14 @@ import css from './SharedLayout.module.css';
 const SharedLayout: FC<IStyledProps> = ({ children }) => {
   return (
     <>
-      <header>
-        <div className='container'>
+      <header className={css.header}>
+        <div className={css.container}>
           <NavigationBar />
         </div>
       </header>
       <main>
         <section className={css.section}>
-          <div className='container'>{children}</div>
+          <div className={css.container}>{children}</div>
         </section>
       </main>
     </>
