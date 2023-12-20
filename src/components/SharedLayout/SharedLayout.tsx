@@ -1,6 +1,6 @@
 // import { Suspense } from 'react';
 // import { Outlet, useLocation } from 'react-router-dom';
-// import NavigationBar from 'components/NavigationBar';
+import NavigationBar from '@/components/NavigationBar';
 // import Loader from 'components/Loader';
 // import { getIsContactsPage, setAuthPageBackgroundColor } from 'utils';
 import { FC } from 'react';
@@ -11,7 +11,9 @@ const SharedLayout: FC<IStyledProps> = ({ children }) => {
   return (
     <>
       <header>
-        <div className='container'>{/* <NavigationBar /> */}</div>
+        <div className='container'>
+          <NavigationBar />
+        </div>
       </header>
       <main>
         <section className={css.section}>

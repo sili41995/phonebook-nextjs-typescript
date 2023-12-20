@@ -1,0 +1,39 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navList {
+  display: flex;
+  gap: var(--primaryGap);
+}
+
+.navItem a {
+  display: block;
+  width: 100px;
+  padding: 12px;
+  border: 1px solid var(--whiteColor);
+  border-radius: var(--primaryBorderRadius);
+  color: var(--whiteColor);
+  font-family: Inter;
+  font-size: primaryFontSize;
+}
+
+/* import styled from '@emotion/styled';
+export const ListItem = styled.li`
+  & a {
+   
+    
+   
+    font-weight: ${({ theme }) => theme.fontWeight.primaryFontWeight};
+    text-align: center;
+    transition: color ${({ theme }) => theme.transitionDurationAndFunc},
+      background-color ${({ theme }) => theme.transitionDurationAndFunc};
+    &:hover,
+    &:focus,
+    &.active {
+      color: ${({ theme }) => theme.colors.otherColor};
+      background-color: ${({ theme }) => theme.colors.whiteColor};
+    }
+  }
+`; */
