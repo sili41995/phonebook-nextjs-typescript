@@ -1,13 +1,13 @@
 import ModalForm from '@/components/ModalForm';
-import SignInForm from '@/components/SignInForm';
+import SignUpForm from '@/components/SignUpForm';
 import { FormTypes } from '@/constants';
 
-const HomePage = () => {
+const SignUpPage = () => {
   return (
     <ModalForm formType={FormTypes.authForm}>
-      <SignInForm />
+      <SignUpForm />
     </ModalForm>
   );
 };
 
-export default HomePage;
+export default SignUpPage;
