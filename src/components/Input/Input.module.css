@@ -42,18 +42,18 @@
   color: var(--primaryColor);
 }
 
+.label input {
+  position: fixed;
+  transform: scale(0);
+}
+
 /*   
   
 `;
 
 export const Label = styled.label`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  & input {
-    position: fixed;
-    transform: scale(0);
-  }
+
+
   &:has([type='checkbox']) svg {
     width: ${({ formType }: IStyledProps) => setInputHeight(formType)};
     height: 100%;

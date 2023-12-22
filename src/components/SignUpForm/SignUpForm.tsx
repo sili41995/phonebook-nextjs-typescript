@@ -2,7 +2,6 @@
 
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-// import { useNavigate } from 'react-router-dom';
 import {
   FaUser,
   FaLock,
@@ -11,7 +10,7 @@ import {
   FaPhoneAlt,
   FaEnvelope,
 } from 'react-icons/fa';
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   filterEmptyFields,
   getProfileFormData,
@@ -21,8 +20,6 @@ import {
 import Input from '@/components/Input';
 import AuthFormBtn from '@/components/AuthFormBtn';
 import AuthFormMessage from '@/components/AuthFormMessage';
-// import { signUpUser } from 'redux/auth/operations';
-// import { useAppDispatch } from 'hooks/redux';
 import { ISignUpCredentials } from '@/types/types';
 import {
   PagePaths,
@@ -33,18 +30,19 @@ import {
   Messages,
   DefaultAvatars,
 } from '@/constants';
-// import { Form, Message, Title, Image } from './SignUpForm.styled';
 import css from './SignUpForm.module.css';
+import { signUp } from '@/app/lib/actions';
+import { useRouter } from 'next/navigation';
 
 const SignUpForm = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [userAvatar, setUserAvatar] = useState<FileList | null>(null);
-  // const navigate = useNavigate();
-  // const dispatch = useAppDispatch();
   const {
     register,
     formState: { errors, isSubmitting },
     handleSubmit,
   } = useForm<ISignUpCredentials>();
+  const { push: routerPush } = useRouter();
   const signInPageLink = `/${PagePaths.signInPath}`;
   const userAvatarRef = useRef<HTMLImageElement>(null);
 
@@ -52,46 +50,51 @@ const SignUpForm = () => {
     if (!e.target.files?.length) {
       return;
     }
-    console.log('setUserAvatar');
+
     setUserAvatar(e.target.files);
     onChangeAvatar({ e, ref: userAvatarRef });
   };
 
-  const onSubmit: SubmitHandler<ISignUpCredentials> = (data) => {
-    //   if (userAvatar) {
-    //     data.avatar = userAvatar;
-    //   }
-    //   const userData = filterEmptyFields<ISignUpCredentials>(data);
-    //   const userFormData = getProfileFormData(userData);
-    //   dispatch(signUpUser(userFormData))
-    //     .unwrap()
-    //     .then(() => {
-    //       toasts.successToast('User has been successfully registered');
-    //       navigate(signInPageLink);
-    //     })
-    //     .catch((error) => {
-    //       toasts.errorToast(error);
-    //     });
+  const onSubmit: SubmitHandler<ISignUpCredentials> = async (data) => {
+    if (userAvatar) {
+      data.avatar = userAvatar;
+    }
+
+    const userData = filterEmptyFields<ISignUpCredentials>(data);
+    const userFormData = getProfileFormData(userData);
+
+    try {
+      setIsLoading(true);
+      await signUp(userFormData);
+      toasts.successToast('User has been successfully registered');
+      routerPush(signInPageLink);
+    } catch (error) {
+      if (error instanceof Error) {
+        toasts.errorToast(error.message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  // useEffect(() => {
-  //   errors.name && toasts.errorToast('First name is required');
-  //   errors.email &&
-  //     toasts.errorToast(
-  //       errors.email.type === 'required'
-  //         ? Messages.emailReqErr
-  //         : Messages.emailRegExpErr
-  //     );
-  //   errors.password &&
-  //     toasts.errorToast(
-  //       errors.password.type === 'required'
-  //         ? Messages.passwordReqErr
-  //         : Messages.passwordMinLengthErr
-  //     );
-  //   errors.phone && toasts.errorToast(Messages.phoneRegExpErr);
-  //   errors.dateOfBirth &&
-  //     toasts.errorToast('Date of birth must be in DD-MM-YYYY format');
-  // }, [errors, isSubmitting]);
+  useEffect(() => {
+    errors.name && toasts.errorToast('First name is required');
+    errors.email &&
+      toasts.errorToast(
+        errors.email.type === 'required'
+          ? Messages.emailReqErr
+          : Messages.emailRegExpErr
+      );
+    errors.password &&
+      toasts.errorToast(
+        errors.password.type === 'required'
+          ? Messages.passwordReqErr
+          : Messages.passwordMinLengthErr
+      );
+    errors.phone && toasts.errorToast(Messages.phoneRegExpErr);
+    errors.dateOfBirth &&
+      toasts.errorToast('Date of birth must be in DD-MM-YYYY format');
+  }, [errors, isSubmitting]);
 
   return (
     <>
@@ -105,6 +108,7 @@ const SignUpForm = () => {
           type={InputTypes.file}
           altElem={
             <img
+              className={css.image}
               src={DefaultAvatars.signUpAvatar}
               alt='profile avatar'
               ref={userAvatarRef}
@@ -183,7 +187,7 @@ const SignUpForm = () => {
           pageLink={signInPageLink}
           message='if you have an account'
         />
-        <AuthFormBtn title='Enlist' />
+        <AuthFormBtn title='Enlist' disabled={isLoading} />
       </form>
     </>
   );

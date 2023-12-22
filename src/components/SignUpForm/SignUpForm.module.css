@@ -7,38 +7,32 @@
 }
 
 .message {
+  color: var(--primaryFontColor);
+  font-family: Inter;
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--primaryFontWeight);
 }
 
 .form {
-}
-
-/* port const Title = styled.h2`
-  
-  
- 
-`;
-
-export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => `${theme.primaryGap}px`};
-`;
+  gap: var(--primaryGap);
+}
 
-export const Message = styled.p`
-  color: ${({ theme }) => theme.colors.primaryFontColor};
-  font-family: Inter;
-  font-size: ${({ theme }) => `${theme.fontSize.secondaryFontSize}px`};
-  font-weight: ${({ theme }) => theme.fontWeight.primaryFontWeight};
-`;
+.form label {
+  margin-left: auto;
+  margin-right: auto;
+}
 
-export const Image = styled.img`
-width={150}
-              height={150}
+.image {
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   cursor: pointer;
-  transition: box-shadow ${({ theme }) => theme.transitionDurationAndFunc};
-  &:hover,
-  &:focus {
-    box-shadow: ${({ theme }) => theme.shadows.primaryShadow};
-  }
-`; */
+  transition: box-shadow var(--transitionDurationAndFunc);
+}
+
+.image:hover,
+.image:focus {
+  box-shadow: var(--primaryShadow);
+}

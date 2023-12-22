@@ -28,7 +28,7 @@ const Input: FC<IProps> = ({
 
   if (type === InputTypes.file || type === InputTypes.checkbox) {
     return (
-      <label>
+      <label className={css.label}>
         {altElem}
         {input}
       </label>
