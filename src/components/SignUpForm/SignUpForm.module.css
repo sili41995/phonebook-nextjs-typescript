@@ -1,4 +1,9 @@
 .title {
+  text-transform: uppercase;
+  color: var(--primaryFontColor);
+  font-family: Inter;
+  font-size: var(--titleFontSize);
+  font-weight: var(--primaryFontWeight);
 }
 
 .message {
@@ -8,11 +13,9 @@
 }
 
 /* port const Title = styled.h2`
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.primaryFontColor};
-  font-family: Inter;
-  font-size: ${({ theme }) => `${theme.fontSize.titleFontSize}px`};
-  font-weight: ${({ theme }) => theme.fontWeight.primaryFontWeight};
+  
+  
+ 
 `;
 
 export const Form = styled.form`
@@ -29,8 +32,8 @@ export const Message = styled.p`
 `;
 
 export const Image = styled.img`
-  width: 150px;
-  height: 150px;
+width={150}
+              height={150}
   border-radius: 50%;
   cursor: pointer;
   transition: box-shadow ${({ theme }) => theme.transitionDurationAndFunc};

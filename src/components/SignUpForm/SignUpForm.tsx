@@ -12,12 +12,12 @@ import {
   FaEnvelope,
 } from 'react-icons/fa';
 // import 'react-toastify/dist/ReactToastify.css';
-// import {
-//   filterEmptyFields,
-//   getProfileFormData,
-//   onChangeAvatar,
-//   toasts,
-// } from 'utils';
+import {
+  filterEmptyFields,
+  getProfileFormData,
+  onChangeAvatar,
+  toasts,
+} from '@/utils';
 import Input from '@/components/Input';
 import AuthFormBtn from '@/components/AuthFormBtn';
 import AuthFormMessage from '@/components/AuthFormMessage';
@@ -31,14 +31,13 @@ import {
   IconSizes,
   InputTypes,
   Messages,
+  DefaultAvatars,
 } from '@/constants';
-import image from '@/images/default-profile-avatar.png';
 // import { Form, Message, Title, Image } from './SignUpForm.styled';
 import css from './SignUpForm.module.css';
-import Image from 'next/image';
 
 const SignUpForm = () => {
-  // const [userAvatar, setUserAvatar] = useState<FileList | null>(null);
+  const [userAvatar, setUserAvatar] = useState<FileList | null>(null);
   // const navigate = useNavigate();
   // const dispatch = useAppDispatch();
   const {
@@ -50,11 +49,12 @@ const SignUpForm = () => {
   const userAvatarRef = useRef<HTMLImageElement>(null);
 
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-    //   if (!e.target.files?.length) {
-    //     return;
-    //   }
-    //   setUserAvatar(e.target.files);
-    //   onChangeAvatar({ e, ref: userAvatarRef });
+    if (!e.target.files?.length) {
+      return;
+    }
+    console.log('setUserAvatar');
+    setUserAvatar(e.target.files);
+    onChangeAvatar({ e, ref: userAvatarRef });
   };
 
   const onSubmit: SubmitHandler<ISignUpCredentials> = (data) => {
@@ -104,7 +104,11 @@ const SignUpForm = () => {
           onChange={onChangeInput}
           type={InputTypes.file}
           altElem={
-            <Image src={image} alt='profile avatar' ref={userAvatarRef} />
+            <img
+              src={DefaultAvatars.signUpAvatar}
+              alt='profile avatar'
+              ref={userAvatarRef}
+            />
           }
         />
         <Input
