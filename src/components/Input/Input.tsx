@@ -12,17 +12,17 @@ const Input: FC<IProps> = ({
   formType,
   placeholder,
   altElem,
-  ...otherProps
+  onChange,
 }) => {
   const inputClassName =
     formType === FormTypes.authForm ? css.authFormInput : css.input;
   const input = (
     <input
+      {...settings}
       className={inputClassName}
       type={type}
       placeholder={placeholder}
-      {...settings}
-      {...otherProps}
+      onChange={onChange}
     />
   );
 

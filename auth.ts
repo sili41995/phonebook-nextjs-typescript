@@ -5,7 +5,7 @@ import contactsServiceApi from './src/service/contactsServiceApi';
 
 async function getUser(credentials: any) {
   try {
-    const user = await contactsServiceApi.loginUser(credentials);
+    const user = await contactsServiceApi.signInUser(credentials);
     return user;
   } catch (error) {
     throw new Error('Failed to fetch user.');
@@ -17,6 +17,7 @@ export const { auth, signIn, signOut } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials): Promise<any> {
+        console.log('перед await getUser');
         const { user, token } = await getUser(credentials);
         if (!token) {
           throw new Error('Invalid credentials');

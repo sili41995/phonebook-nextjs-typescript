@@ -1,4 +1,4 @@
-import UserProfile from '@/components/UserProfile';
+// import UserProfile from '@/components/UserProfile';
 import { auth } from '../../../../auth';
 
 export const metadata = {
@@ -9,7 +9,8 @@ export const metadata = {
 const UserPage = async () => {
   const { user }: any = await auth();
 
-  return <UserProfile user={user.user} />;
+  return <div>user profile</div>;
+  // <UserProfile user={user.user} />;
 };
 
 export default UserPage;

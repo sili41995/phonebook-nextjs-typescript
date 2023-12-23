@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { FormTypes } from 'constants/index';
+import { FormTypes } from '@/constants';
 
 export interface IProps {
   children: ReactNode;

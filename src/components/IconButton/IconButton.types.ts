@@ -1,5 +1,5 @@
 import { MouseEvent, ReactNode } from 'react';
-import { BtnType, IconBtnType, Positions } from 'constants/index';
+import { BtnType, IconBtnType, Positions } from '@/constants';
 
 export interface IProps {
   icon: ReactNode;

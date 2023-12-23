@@ -1,5 +1,5 @@
 import { ChangeEvent, ReactElement } from 'react';
-import { FormTypes, InputTypes, IconBtnType } from 'constants/index';
+import { FormTypes, InputTypes, IconBtnType } from '@/constants';
 
 export interface IProps {
   settings?: object;

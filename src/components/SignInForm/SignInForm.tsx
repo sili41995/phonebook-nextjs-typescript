@@ -1,17 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from 'react-icons/fa';
-// import 'react-toastify/dist/ReactToastify.css';
-// import { toasts } from 'utils';
+import 'react-toastify/dist/ReactToastify.css';
 import AuthFormMessage from '@/components/AuthFormMessage';
 import Input from '@/components/Input';
 import AuthFormBtn from '@/components/AuthFormBtn';
-// import { useAppDispatch, useAppSelector } from 'hooks/redux';
-// import { signInUser } from 'redux/auth/operations';
-// import { selectUser } from 'redux/auth/selectors';
 import { ICredentials } from '@/types/types';
 import {
   Messages,
@@ -23,12 +19,13 @@ import {
 } from '@/constants';
 import defaultAvatar from '@/images/default-signin-avatar.png';
 import css from './SignInForm.module.css';
+import { authenticate } from '@/app/lib/actions';
+import { toasts } from '@/utils';
 
 const SignInForm = () => {
-  // const user = useAppSelector(selectUser);
-  // const [credentials, setCredentials] = useState<ICredentials | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [credentials, setCredentials] = useState<ICredentials | null>(null);
   // const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
-  // const dispatch = useAppDispatch();
   const {
     register,
     formState: { errors, isSubmitting },
@@ -52,41 +49,34 @@ const SignInForm = () => {
   //   setIsShowPassword((prevState) => !prevState);
   // };
 
-  // useEffect(() => {
-  //   if (credentials) {
-  //     const promise = dispatch(signInUser(credentials));
-  //     promise
-  //       .unwrap()
-  //       .then(() => {
-  //         toasts.successToast('Hello, my friend!');
-  //       })
-  //       .catch((error) => {
-  //         toasts.errorToast(error);
-  //       });
+  useEffect(() => {
+    errors.email &&
+      toasts.errorToast(
+        errors.email.type === 'required'
+          ? Messages.emailReqErr
+          : Messages.emailRegExpErr
+      );
+    errors.password &&
+      toasts.errorToast(
+        errors.password.type === 'required'
+          ? Messages.passwordReqErr
+          : Messages.passwordMinLengthErr
+      );
+  }, [isSubmitting, errors]);
 
-  //     return () => {
-  //       promise.abort();
-  //     };
-  //   }
-  // }, [credentials, dispatch]);
-
-  // useEffect(() => {
-  //   errors.email &&
-  //     toasts.errorToast(
-  //       errors.email.type === 'required'
-  //         ? Messages.emailReqErr
-  //         : Messages.emailRegExpErr
-  //     );
-  //   errors.password &&
-  //     toasts.errorToast(
-  //       errors.password.type === 'required'
-  //         ? Messages.passwordReqErr
-  //         : Messages.passwordMinLengthErr
-  //     );
-  // }, [isSubmitting, errors]);
-
-  const onSubmit: SubmitHandler<ICredentials> = (data) => {
-    // setCredentials(data);
+  const onSubmit: SubmitHandler<ICredentials> = async (
+    data: ICredentials
+  ): Promise<void> => {
+    try {
+      setIsLoading(true);
+      await authenticate(data);
+    } catch (error) {
+      if (error instanceof Error) {
+        toasts.errorToast(error.message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -126,14 +116,8 @@ const SignInForm = () => {
           pageLink={signUpPageLink}
           message="if you don't have an account yet"
         />
-        <AuthFormBtn title='Sign in' />
+        <AuthFormBtn title='Sign in' disabled={isLoading} />
       </form>
-      {/* 
-      
-      
-      <Form >
-        
-      </Form> */}
     </>
   );
 };
