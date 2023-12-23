@@ -1,0 +1,7 @@
+.message {
+  color: var(--primaryFontColor);
+  font-family: Inter;
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--primaryFontWeight);
+  text-align: justify;
+}
