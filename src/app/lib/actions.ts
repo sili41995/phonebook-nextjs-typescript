@@ -5,7 +5,6 @@ import { signIn } from '@/../auth';
 import { ICredentials } from '@/types/types';
 
 export const authenticate = async (data: ICredentials) => {
-  console.log('перед await signIn');
   await signIn('credentials', data);
 };
 

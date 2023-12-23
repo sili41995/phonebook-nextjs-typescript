@@ -71,9 +71,7 @@ const SignInForm = () => {
       setIsLoading(true);
       await authenticate(data);
     } catch (error) {
-      if (error instanceof Error) {
-        toasts.errorToast(error.message);
-      }
+      toasts.errorToast('Email or password is wrong');
     } finally {
       setIsLoading(false);
     }
