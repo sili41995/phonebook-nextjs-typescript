@@ -89,49 +89,58 @@ button {
   cursor: pointer;
 }
 
-.container {
+.trimText {
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/* .container {
   margin-left: auto;
   margin-right: auto;
   width: var(--deskContainerWidth);
-}
+} */
 
-.container.error {
+/* .container.error {
   display: flex;
   flex-direction: column;
   gap: var(--primaryGap);
   height: 100vh;
   justify-content: center;
-}
+} */
 
-.contacts-page {
+/* .contacts-page {
   display: flex;
   padding: var(--paddingContainer);
   gap: var(--primaryGap);
-}
+} */
 
-.section {
+/* .section {
   width: 100%;
-}
+} */
 
-.contacts {
+/* .contacts {
   display: flex;
   flex-direction: column;
   gap: var(--primaryGap);
-}
+} */
 
-.contacts header {
+/* .contacts header {
   border-radius: var(--navBarBorderRadius);
-}
+} */
 
-.error-message {
+/* .error-message {
   color: var(--primaryFontColor);
   font-family: var(--font-jua);
   font-size: var(--titleFontSize);
   font-weight: var(--otherFontWeight);
   text-align: center;
-}
+} */
 
-.reset-btn {
+/* .reset-btn {
   min-width: 200px;
   height: 48px;
   padding: 8px 12px;
@@ -143,10 +152,10 @@ button {
   transition: background-color var(--transitionDurationAndFunc),
     color var(--transitionDurationAndFunc);
   align-self: center;
-}
+} */
 
-.reset-btn:hover,
+/* .reset-btn:hover,
 .reset-btn:focus {
   background-color: var(--blueIconColor);
   color: var(--whiteColor);
-}
+} */

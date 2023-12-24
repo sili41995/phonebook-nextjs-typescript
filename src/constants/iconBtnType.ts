@@ -12,6 +12,7 @@ enum IconBtnType {
   toggleShowPassword = 'toggleShowPassword',
   clearFilter = 'clearFilter',
   favorite = 'favorite',
+  default = 'button',
 }
 
 export default IconBtnType;

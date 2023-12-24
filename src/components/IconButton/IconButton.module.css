@@ -1,0 +1,133 @@
+.button {
+  display: flex;
+  gap: var(--primaryGap);
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing);
+  background-color: var(--lightgreyBtnColor);
+  border-color: transparent;
+  border-radius: var(--secondaryBorderRadius);
+  color: var(--primaryFontColor);
+  font-family: Inter;
+  font-size: var(--primaryFontSize);
+  font-weight: var(--primaryFontWeight);
+  transition: box-shadow var(--transitionDurationAndFunc);
+}
+
+.button:hover,
+.button:focus {
+  box-shadow: primaryShadow;
+}
+
+.button svg {
+  transition: color var(--transitionDurationAndFunc);
+  color: var(--lightgreyIconColor);
+}
+
+.delete {
+  composes: button;
+  background-color: var(--redBtnColor);
+}
+
+.delete svg {
+  color: var(--redIconColor);
+}
+
+.edit {
+  composes: button;
+  background-color: var(--blueBtnColor);
+}
+
+.edit svg {
+  color: var(--blueIconColor);
+}
+
+.phone {
+  composes: button;
+  background-color: var(--greenBtnColor);
+}
+
+.phone svg {
+  color: var(--greenIconColor);
+}
+
+.message {
+  composes: button;
+  background-color: var(--yellowBtnColor);
+}
+
+.message svg {
+  color: var(--yellowIconColor);
+}
+
+.favorite {
+  composes: button;
+  background-color: var(--yellowBtnColor);
+}
+
+.favorite svg {
+  color: var(--yellowIconColor);
+}
+
+.chat {
+  composes: button;
+  background-color: var(--blueBtnColor);
+}
+
+.chat svg {
+  color: var(--blueIconColor);
+}
+
+.logout {
+  composes: button;
+  background-color: var(--redBtnColor);
+}
+
+.logout svg {
+  color: var(--redIconColor);
+}
+
+.accept {
+  composes: button;
+  background-color: var(--greenBtnColor);
+}
+
+.accept svg {
+  color: var(--greenIconColor);
+}
+
+.cancel {
+  composes: button;
+  background-color: var(--redBtnColor);
+}
+
+.cancel svg {
+  color: var(--redIconColor);
+}
+
+.deleteTransparent {
+  composes: button;
+  background-color: transparent;
+}
+
+.deleteTransparent svg {
+  color: var(--redIconColor);
+}
+
+.toggleShowPassword {
+  composes: button;
+  background-color: transparent;
+}
+
+.toggleShowPassword svg {
+  color: var(--primaryColor);
+}
+
+.clearFilter {
+  composes: button;
+  color: transparent;
+}
+
+.clearFilter svg {
+  color: var(--whiteColor);
+}

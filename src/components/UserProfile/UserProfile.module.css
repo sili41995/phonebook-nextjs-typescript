@@ -1,0 +1,81 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  flex-shrink: 0;
+  gap: calc(var(--spacing) * 10);
+}
+
+.name {
+  color: var(--primaryFontColor);
+  font-family: Jua;
+  font-size: var(--titleFontSize);
+  font-weight: var(--otherFontWeight);
+}
+
+.data {
+  text-align: center;
+}
+
+.imageContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+  border-radius: 30%;
+}
+
+.fullName {
+  margin-top: calc(var(--spacing) * 2);
+  color: var(--primaryFontColor);
+  font-family: Jua;
+  font-size: var(--subtitleFontSize);
+  font-weight: var(--otherFontWeight);
+  text-align: center;
+}
+
+.email {
+  color: var(--secondaryFontColor);
+  font-family: Inter;
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--primaryFontWeight);
+  text-align: center;
+}
+
+/* export const FullName = styled.p`
+
+`;
+
+export const Email = styled.p`
+  
+  ${({ theme }) => theme.trimText}
+`;
+
+export const UserInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(6)};
+`;
+
+export const ContactInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(3)};
+  color: ${({ theme }) => theme.colors.secondaryFontColor};
+  font-family: Inter;
+  font-size: ${({ theme }) => `${theme.fontSize.primaryFontSize}px`};
+  font-weight: ${({ theme }) => theme.fontWeight.primaryFontWeight};
+  &:not(:last-child) {
+  }
+  & p {
+    ${({ theme }) => theme.trimText}
+  }
+`;
+
+export const ContactInfoIconWrap = styled.span`
+  display: flex;
+  align-items: center;
+`; */

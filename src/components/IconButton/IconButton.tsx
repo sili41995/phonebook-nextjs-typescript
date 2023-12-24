@@ -1,9 +1,15 @@
-import { BtnType } from '@/constants';
+import { BtnType, IconBtnType } from '@/constants';
 import { IProps } from './IconButton.types';
+import css from './IconButton.module.css';
 
-const { button } = BtnType;
-
-const IconButton = ({ icon, onBtnClick, title, type = button }: IProps) => {
+const IconButton = ({
+  icon,
+  onBtnClick,
+  title,
+  type = BtnType.button,
+  disabled,
+  btnType = IconBtnType.default,
+}: IProps) => {
   const btnChildren = title ? (
     <>
       {icon}
@@ -14,7 +20,12 @@ const IconButton = ({ icon, onBtnClick, title, type = button }: IProps) => {
   );
 
   return (
-    <button type={type} onClick={onBtnClick}>
+    <button
+      className={css[btnType]}
+      type={type}
+      onClick={onBtnClick}
+      disabled={disabled}
+    >
       {btnChildren}
     </button>
   );

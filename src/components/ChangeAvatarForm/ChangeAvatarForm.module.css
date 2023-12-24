@@ -1,0 +1,31 @@
+.form {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  color: var(--greyColor);
+  transition: color var(--transitionDurationAndFunc);
+}
+
+.container {
+}
+
+/* import styled from '@emotion/styled';
+
+export const Form = styled.form`
+ 
+  & label svg {
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      color: ${({ theme }) => theme.colors.blueIconColor};
+    }
+  }
+`;
+
+
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing()};
+`; */

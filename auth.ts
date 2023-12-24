@@ -22,12 +22,12 @@ export const { auth, signIn, signOut } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials): Promise<any> {
-        const { user, token } = await getUser(credentials);
-        if (!token) {
+        const response = await getUser(credentials);
+        if (!response.token) {
           throw new Error('Invalid credentials');
         }
 
-        return { user, token };
+        return response;
       },
     }),
   ],
