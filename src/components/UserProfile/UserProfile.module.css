@@ -45,37 +45,23 @@
   text-align: center;
 }
 
-/* export const FullName = styled.p`
-
-`;
-
-export const Email = styled.p`
-  
-  ${({ theme }) => theme.trimText}
-`;
-
-export const UserInfo = styled.div`
+.userInfo {
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(6)};
-`;
+  gap: calc(var(--spacing) * 6);
+}
 
-export const ContactInfo = styled.div`
+.contactInfo {
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(3)};
-  color: ${({ theme }) => theme.colors.secondaryFontColor};
+  gap: calc(var(--spacing) * 3);
+  color: var(--secondaryFontColor);
   font-family: Inter;
-  font-size: ${({ theme }) => `${theme.fontSize.primaryFontSize}px`};
-  font-weight: ${({ theme }) => theme.fontWeight.primaryFontWeight};
-  &:not(:last-child) {
-  }
-  & p {
-    ${({ theme }) => theme.trimText}
-  }
-`;
+  font-size: var(--primaryFontSize);
+  font-weight: var(--primaryFontWeight);
+}
 
-export const ContactInfoIconWrap = styled.span`
+.iconWrap {
   display: flex;
   align-items: center;
-`; */
+}

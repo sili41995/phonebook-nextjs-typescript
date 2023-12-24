@@ -1,9 +1,9 @@
 'use client';
 
 import { ChangeEvent, FC, useRef, useState } from 'react';
-// import { SlPhone, SlEvent, SlLocationPin } from 'react-icons/sl';
+import { SlPhone, SlEvent, SlLocationPin } from 'react-icons/sl';
 // import 'react-toastify/dist/ReactToastify.css';
-// import { IconSizes, Messages } from 'constants/index';
+import { IconSizes, Messages } from '@/constants';
 import { IProps } from './UserProfile.types';
 import ChangeAvatarForm from '@/components/ChangeAvatarForm';
 import { SubmitHandler } from 'react-hook-form';
@@ -78,36 +78,35 @@ const UserProfile: FC<IProps> = ({ user }) => {
         <p className={`${css.fullName} trimText`}>{fullName}</p>
         <p className={`${css.email} trimText`}>{email}</p>
       </div>
+      {(phone || dateOfBirth || location) && (
+        <div className={css.userInfo}>
+          {dateOfBirth && (
+            <div className={css.contactInfo}>
+              <span className={css.iconWrap}>
+                <SlEvent size={IconSizes.secondaryIconSize} />
+              </span>
+              <p className='trimText'>{dateOfBirth}</p>
+            </div>
+          )}
+          {phone && (
+            <div className={css.contactInfo}>
+              <span className={css.iconWrap}>
+                <SlPhone size={IconSizes.secondaryIconSize} />
+              </span>
+              <p className='trimText'>{phone}</p>
+            </div>
+          )}
+          {location && (
+            <div className={css.contactInfo}>
+              <span className={css.iconWrap}>
+                <SlLocationPin size={IconSizes.secondaryIconSize} />
+              </span>
+              <p className='trimText'>{location}</p>
+            </div>
+          )}
+        </div>
+      )}
     </div>
-
-    //   {(phone || dateOfBirth || location) && (
-    //     <UserInfo>
-    //       {dateOfBirth && (
-    //         <ContactInfo>
-    //           <ContactInfoIconWrap>
-    //             <SlEvent size={IconSizes.secondaryIconSize} />
-    //           </ContactInfoIconWrap>
-    //           <p>{dateOfBirth}</p>
-    //         </ContactInfo>
-    //       )}
-    //       {phone && (
-    //         <ContactInfo>
-    //           <ContactInfoIconWrap>
-    //             <SlPhone size={IconSizes.secondaryIconSize} />
-    //           </ContactInfoIconWrap>
-    //           <p>{phone}</p>
-    //         </ContactInfo>
-    //       )}
-    //       {location && (
-    //         <ContactInfo>
-    //           <ContactInfoIconWrap>
-    //             <SlLocationPin size={IconSizes.secondaryIconSize} />
-    //           </ContactInfoIconWrap>
-    //           <p>{location}</p>
-    //         </ContactInfo>
-    //       )}
-    //     </UserInfo>
-    //   )}
   );
 };
 
