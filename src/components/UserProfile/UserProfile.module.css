@@ -17,17 +17,6 @@
   text-align: center;
 }
 
-.imageContainer {
-  position: relative;
-  display: inline-block;
-}
-
-.image {
-  width: 150px;
-  height: 150px;
-  border-radius: 30%;
-}
-
 .fullName {
   margin-top: calc(var(--spacing) * 2);
   color: var(--primaryFontColor);

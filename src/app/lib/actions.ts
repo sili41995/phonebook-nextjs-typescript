@@ -1,7 +1,7 @@
 'use server';
 
 import contactsServiceApi from '@/service/contactsServiceApi';
-import { signIn } from '@/../auth';
+import { auth, signIn } from '@/../auth';
 import { ICredentials } from '@/types/types';
 
 export const authenticate = async (data: ICredentials) => {
@@ -9,5 +9,11 @@ export const authenticate = async (data: ICredentials) => {
 };
 
 export const signUp = async (data: FormData) => {
-  const response = await contactsServiceApi.signUpUser(data);
+  await contactsServiceApi.signUpUser(data);
+};
+
+export const updateAvatar = async (data: FormData): Promise<void> => {
+  const { user }: any = await auth();
+  contactsServiceApi.token = user.token;
+  await contactsServiceApi.updateUserAvatar(data);
 };

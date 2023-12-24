@@ -1,0 +1,10 @@
+.imageContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+  border-radius: 30%;
+}
