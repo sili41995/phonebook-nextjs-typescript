@@ -23,7 +23,13 @@ const ContactsListItem = ({ contact }: IProps) => {
     <li className={css.item}>
       <LinkWithQuery href={path}>
         <div className={css.imageWrap}>
-          <Image src={avatar as string} alt={name} className={css.image} />
+          <Image
+            src={avatar as string}
+            alt={name}
+            className={css.image}
+            width={70}
+            height={70}
+          />
           {favorite && <AiFillStar size={IconSizes.primaryIconSize} />}
         </div>
         <div className={css.infoWrap}>

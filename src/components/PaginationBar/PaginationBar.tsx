@@ -1,14 +1,16 @@
 import { FC, MouseEvent } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { IProps } from './PaginationBar.types';
-import { getPageNumbers, getPaginationBarSettings, makeBlur } from 'utils';
-import { SearchParamsKeys } from 'constants/index';
-import { Button, Item, List, TemplateItem } from './PaginationBar.styled';
+import { getPageNumbers, getPaginationBarSettings, makeBlur } from '@/utils';
+import { SearchParamsKeys } from '@/constants';
+import { useSearchParams } from 'next/navigation';
+import css from './PaginationBar.module.css';
+import useSetQueryString from '@/hooks/useSetQueryString';
 
 const { PAGE_SP_KEY } = SearchParamsKeys;
 
 const PaginationBar: FC<IProps> = ({ itemsQuantity, quantity, step = 1 }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const searchParams = useSearchParams();
+  const setQueryString = useSetQueryString();
   const pageQuantity = Math.ceil(itemsQuantity / quantity);
   const pageNumbers = getPageNumbers(pageQuantity);
   const currentPage = Number(searchParams.get(PAGE_SP_KEY) ?? 1);
@@ -36,83 +38,87 @@ const PaginationBar: FC<IProps> = ({ itemsQuantity, quantity, step = 1 }) => {
     page: number;
   }): void => {
     makeBlur(e.currentTarget);
-    searchParams.set(PAGE_SP_KEY, String(page));
-    setSearchParams(searchParams);
+    setQueryString(PAGE_SP_KEY, String(page));
   };
 
   return (
-    <List>
-      <Item>
-        <Button
+    <ul className={css.list}>
+      <li>
+        <button
+          className={css.navButton}
           disabled={isBackNavBtnDisable}
           onClick={(e) => {
             onPageBtnClick({ e, page: currentPage - 1 });
           }}
         >
           {'<< Previous'}
-        </Button>
-      </Item>
+        </button>
+      </li>
       {isShowFirstPageBtn && (
-        <Item>
-          <Button
+        <li>
+          <button
+            className={css.navButton}
             onClick={(e) => {
               onPageBtnClick({ e, page: firstPage });
             }}
           >
             {firstPage}
-          </Button>
-        </Item>
+          </button>
+        </li>
       )}
       {isShowPrevTemplateBtn && (
-        <TemplateItem>
-          <Button disabled>...</Button>
-        </TemplateItem>
+        <li>
+          <button className={css.navButton} disabled>
+            ...
+          </button>
+        </li>
       )}
       {isValidPage &&
         pageNumbers.map((number) => (
-          <Item
-            key={number}
-            page={number}
-            currentPage={currentPage}
-            step={step}
-          >
-            <Button
-              className={number === currentPage ? 'active' : ''}
+          <li key={number}>
+            <button
+              className={`${css.navButton}${
+                number === currentPage ? ' active' : ''
+              }`}
               onClick={(e) => {
                 onPageBtnClick({ e, page: number });
               }}
             >
               {number}
-            </Button>
-          </Item>
+            </button>
+          </li>
         ))}
       {isShowNextTemplateBtn && (
-        <TemplateItem>
-          <Button disabled>...</Button>
-        </TemplateItem>
+        <li>
+          <button className={css.navButton} disabled>
+            ...
+          </button>
+        </li>
       )}
       {isShowLastPageBtn && (
-        <Item>
-          <Button
+        <li>
+          <button
+            className={css.navButton}
             onClick={(e) => {
               onPageBtnClick({ e, page: lastPage });
             }}
           >
             {lastPage}
-          </Button>
-        </Item>
+          </button>
+        </li>
       )}
-      <Item>
-        <Button
+      <li>
+        <button
+          className={css.navButton}
           disabled={isNextNavBtnDisable}
           onClick={(e) => {
             onPageBtnClick({ e, page: currentPage + 1 });
           }}
         >
           {'Next >>'}
-        </Button>
-      </Item>
-    </List>
+        </button>
+      </li>
+    </ul>
   );
 };
 
