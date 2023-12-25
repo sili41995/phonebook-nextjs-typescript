@@ -8,24 +8,15 @@
 }
 
 .container {
+  display: flex;
+  gap: var(--spacing);
 }
 
-/* import styled from '@emotion/styled';
+.form label svg {
+  cursor: pointer;
+}
 
-export const Form = styled.form`
- 
-  & label svg {
-    cursor: pointer;
-    &:hover,
-    &:focus {
-      color: ${({ theme }) => theme.colors.blueIconColor};
-    }
-  }
-`;
-
-
-
-export const ButtonsContainer = styled.div`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing()};
-`; */
+.form label svg:hover,
+.form label svg:focus {
+  color: var(--blueIconColor);
+}

@@ -115,9 +115,8 @@ class ContactsServiceApi {
       });
   }
 
-  fetchContacts(signal: AbortSignal): Promise<IFetchContactsRes> {
+  fetchContacts(): Promise<IFetchContactsRes> {
     const options = {
-      signal,
       method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',

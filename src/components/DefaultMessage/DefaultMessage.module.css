@@ -1,0 +1,6 @@
+.message {
+  color: var(--primaryFontColor);
+  font-family: Jua;
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--otherFontWeight);
+}

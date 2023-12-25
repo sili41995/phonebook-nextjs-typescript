@@ -1,0 +1,81 @@
+.item {
+  position: relative;
+  border: 0.5px solid;
+  border-radius: var(--secondaryBorderRadius);
+  border-color: var(--borderColor);
+  transition: box-shadow var(--transitionDurationAndFunc);
+}
+
+.item:hover,
+.item:focus {
+  box-shadow: var(--primaryShadow);
+}
+
+.item a {
+  display: flex;
+  gap: var(--primaryGap);
+  padding: calc(var(--spacing) * 3);
+  color: var(--primaryFontColor);
+}
+
+.imageWrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.imageWrap svg {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  color: var(--yellowIconColor);
+}
+
+.image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.infoWrap {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.infoWrap div,
+.infoWrap p {
+  width: 165px;
+}
+
+.name {
+  color: var(--primaryFontColor);
+  font-family: Inter;
+  font-size: var(--otherFontSize);
+  font-weight: var(--secondaryFontWeight);
+  text-align: center;
+}
+
+.role {
+  color: var(--contactPrimaryTextColor);
+  font-family: Inter;
+  font-size: var(--primaryFontSize);
+  font-weight: var(--primaryFontWeight);
+  text-align: center;
+}
+
+.phone {
+  color: var(--primaryFontColor);
+  font-family: Inter;
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--primaryFontWeight);
+  text-align: center;
+}
+
+.email {
+  color: var(--contactSecondaryTextColor);
+  font-family: Inter;
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--secondaryFontWeight);
+}
