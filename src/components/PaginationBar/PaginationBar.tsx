@@ -1,3 +1,5 @@
+'use client';
+
 import { FC, MouseEvent } from 'react';
 import { IProps } from './PaginationBar.types';
 import { getPageNumbers, getPaginationBarSettings, makeBlur } from '@/utils';
@@ -45,7 +47,7 @@ const PaginationBar: FC<IProps> = ({ itemsQuantity, quantity, step = 1 }) => {
     <ul className={css.list}>
       <li>
         <button
-          className={css.navButton}
+          className={css.navBtn}
           disabled={isBackNavBtnDisable}
           onClick={(e) => {
             onPageBtnClick({ e, page: currentPage - 1 });
@@ -57,7 +59,7 @@ const PaginationBar: FC<IProps> = ({ itemsQuantity, quantity, step = 1 }) => {
       {isShowFirstPageBtn && (
         <li>
           <button
-            className={css.navButton}
+            className={css.navBtn}
             onClick={(e) => {
               onPageBtnClick({ e, page: firstPage });
             }}
@@ -68,29 +70,34 @@ const PaginationBar: FC<IProps> = ({ itemsQuantity, quantity, step = 1 }) => {
       )}
       {isShowPrevTemplateBtn && (
         <li>
-          <button className={css.navButton} disabled>
+          <button className={css.templateBtn} disabled>
             ...
           </button>
         </li>
       )}
       {isValidPage &&
-        pageNumbers.map((number) => (
-          <li key={number}>
-            <button
-              className={`${css.navButton}${
-                number === currentPage ? ' active' : ''
-              }`}
-              onClick={(e) => {
-                onPageBtnClick({ e, page: number });
-              }}
-            >
-              {number}
-            </button>
-          </li>
-        ))}
+        pageNumbers.map((number) => {
+          const isHidden =
+            number - Number(step) > currentPage ||
+            number + Number(step) < currentPage;
+          const className =
+            number === currentPage ? css.activeNavBtn : css.navBtn;
+          return (
+            <li key={number} className={isHidden ? css.hidden : ''}>
+              <button
+                className={className}
+                onClick={(e) => {
+                  onPageBtnClick({ e, page: number });
+                }}
+              >
+                {number}
+              </button>
+            </li>
+          );
+        })}
       {isShowNextTemplateBtn && (
         <li>
-          <button className={css.navButton} disabled>
+          <button className={css.templateBtn} disabled>
             ...
           </button>
         </li>
@@ -98,7 +105,7 @@ const PaginationBar: FC<IProps> = ({ itemsQuantity, quantity, step = 1 }) => {
       {isShowLastPageBtn && (
         <li>
           <button
-            className={css.navButton}
+            className={css.navBtn}
             onClick={(e) => {
               onPageBtnClick({ e, page: lastPage });
             }}
@@ -109,7 +116,7 @@ const PaginationBar: FC<IProps> = ({ itemsQuantity, quantity, step = 1 }) => {
       )}
       <li>
         <button
-          className={css.navButton}
+          className={css.navBtn}
           disabled={isNextNavBtnDisable}
           onClick={(e) => {
             onPageBtnClick({ e, page: currentPage + 1 });

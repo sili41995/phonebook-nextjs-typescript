@@ -3,32 +3,7 @@
   justify-content: space-between;
 }
 
-/*
-
-export const TemplateItem = styled.li`
-  & button {
-    cursor: default;
-    &:hover,
-    &:focus {
-      box-shadow: none;
-    }
-  }
-`;
-
-export const Button = styled.button`
- 
-  &.active {
-    background-color: ${({ theme }) => theme.colors.otherColor};
-  }
-  &:hover,
-  &:focus,
-  &:active {
-    outline: none;
-    box-shadow: ${({ theme }) => theme.shadows.primaryShadow};
-  }
-`; */
-
-.navButton {
+.navBtn {
   min-width: 30px;
   height: 40px;
   padding: calc(var(--spacing) * 2);
@@ -40,4 +15,30 @@ export const Button = styled.button`
   font-size: var(--secondaryFontSize);
   font-weight: var(--otherFontWeight);
   transition: box-shadow var(--transitionDurationAndFunc);
+}
+
+.activeNavBtn {
+  composes: navBtn;
+  background-color: var(--otherColor);
+}
+
+.navButton:hover,
+.navButton:focus,
+.navButton:active {
+  outline: none;
+  box-shadow: var(--primaryShadow);
+}
+
+.templateBtn {
+  composes: navBtn;
+  cursor: default;
+}
+
+.templateBtn:hover,
+.templateBtn:focus {
+  box-shadow: none;
+}
+
+.hidden {
+  display: none;
 }
