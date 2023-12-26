@@ -4,9 +4,11 @@ import { FormTypes } from '@/constants';
 
 const SignInPage = () => {
   return (
-    <ModalForm formType={FormTypes.authForm}>
-      <SignInForm />
-    </ModalForm>
+    <div className='container'>
+      <ModalForm formType={FormTypes.authForm}>
+        <SignInForm />
+      </ModalForm>
+    </div>
   );
 };
 

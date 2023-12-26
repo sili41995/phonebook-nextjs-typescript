@@ -18,6 +18,12 @@
   color: var(--primaryFontColor);
 }
 
+.item button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .imageWrap {
   position: relative;
   flex-shrink: 0;

@@ -3,6 +3,8 @@
   gap: var(--primaryGap);
   justify-content: center;
   align-items: center;
+  width: 44px;
+  height: 36px;
   padding: var(--spacing);
   background-color: var(--lightgreyBtnColor);
   border-color: transparent;
@@ -16,7 +18,7 @@
 
 .button:hover,
 .button:focus {
-  box-shadow: primaryShadow;
+  box-shadow: var(--primaryShadow);
 }
 
 .button svg {

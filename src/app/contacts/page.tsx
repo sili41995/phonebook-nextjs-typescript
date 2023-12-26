@@ -10,10 +10,10 @@ const ContactsPage = async () => {
   const { contacts, count } = await contactsServiceApi.fetchContacts();
 
   return (
-    <>
+    <div className='container contacts'>
       <UserProfile user={currentUser} />
       <ContactsContainer quantity={6} contacts={contacts} count={count} />
-    </>
+    </div>
   );
 };
 

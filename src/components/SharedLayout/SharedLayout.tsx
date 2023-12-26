@@ -11,14 +11,12 @@ const SharedLayout: FC<IStyledProps> = ({ children }) => {
   return (
     <>
       <header className={css.header}>
-        <div className={css.container}>
+        <div className='container'>
           <NavigationBar />
         </div>
       </header>
       <main>
-        <section className={css.section}>
-          <div className={css.container}>{children}</div>
-        </section>
+        <section className={css.section}>{children}</section>
       </main>
     </>
   );
