@@ -1,3 +1,3 @@
-const ContactsPage = async () => {};
+const ContactsPage = () => {};
 
 export default ContactsPage;

@@ -8,12 +8,12 @@ import { IconBtnType } from '@/constants';
 import Image from 'next/image';
 import css from './ContactsListItem.module.css';
 
-const { contactsPath, contactPath } = PagePaths;
+const { contactsPath } = PagePaths;
 
 const ContactsListItem = ({ contact }: IProps) => {
   const { avatar, name, _id: id, role, phone, email, favorite } = contact;
   const { isLoading, setContactId } = useDeleteContact();
-  const path = `${contactsPath}/${id}/${contactPath}`;
+  const path = `/${contactsPath}/${id}`;
 
   const handleDelBtnClick = () => {
     setContactId(id as string);

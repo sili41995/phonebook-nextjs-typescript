@@ -134,15 +134,8 @@ class ContactsServiceApi {
       });
   }
 
-  fetchContactById({
-    signal,
-    id,
-  }: {
-    signal: AbortSignal;
-    id: string;
-  }): Promise<IContact> {
+  fetchContactById(id: string): Promise<IContact> {
     const options = {
-      signal,
       method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',

@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--primaryGap);
+  align-items: center;
+  flex-grow: 1;
+}
+
+.btnContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.btnWrap {
+  display: flex;
+  gap: calc(var(--spacing) * 3);
+}

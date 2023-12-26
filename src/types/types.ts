@@ -98,3 +98,7 @@ export interface IAvatar {
   _id?: string;
   avatar: FileList | string;
 }
+
+export interface IParams {
+  params: { id: string };
+}
