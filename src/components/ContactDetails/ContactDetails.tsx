@@ -1,163 +1,76 @@
-// import { MouseEvent, useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
-// import {
-//   AiFillStar,
-//   AiOutlineDelete,
-//   AiOutlineEdit,
-//   AiOutlineStar,
-// } from 'react-icons/ai';
-// import DefaultMessage from 'components/DefaultMessage';
-// import ContactProfile from 'components/ContactProfile';
+'use client';
+
+import { MouseEvent } from 'react';
+import {
+  AiFillStar,
+  AiOutlineDelete,
+  AiOutlineEdit,
+  AiOutlineStar,
+} from 'react-icons/ai';
+import ContactProfile from '@/components/ContactProfile';
 import GoBackLink from '@/components/GoBackLink';
-// import IconButton from 'components/IconButton';
-// import Loader from 'components/Loader';
-// import {
-//   FetchStatuses,
-//   IconBtnType,
-//   IconSizes,
-//   PagePaths,
-// } from 'constants/index';
-// import { IContact } from 'types/types';
-// import contactsServiceApi from 'service/contactsServiceApi';
-// import { makeBlur, toasts } from 'utils';
-// import { useAppDispatch, useAppSelector } from 'hooks/redux';
-// import useDeleteContact from 'hooks/useDeleteContact';
-// import { selectIsLoading } from 'redux/contacts/selectors';
-// import { updateContactStatus } from 'redux/contacts/operations';
-// import {
-//   ButtonsContainer,
-//   Container,
-//   ManipulationButtons,
-// } from './ContactDetails.styled';
+import IconButton from '@/components/IconButton';
+import { IconBtnType, IconSizes, PagePaths } from '@/constants';
+import { makeBlur, toasts } from '@/utils';
+import useDeleteContact from '@/hooks/useDeleteContact';
 import { IProps } from './ContactDetails.types';
 import css from './ContactDetails.module.css';
-
-// const { idle, pending, resolved, rejected } = FetchStatuses;
+import { updateContactStatus } from '@/app/lib/actions';
+import Link from 'next/link';
 
 const ContactDetails = ({ contact }: IProps) => {
-  // const deleteContact = useDeleteContact();
-  // const dispatch = useAppDispatch();
-  // const [editContact, setEditContact] = useState<boolean>(false);
-  // const [fetchContactStatus, setFetchContactStatus] = useState<FetchStatuses>(
-  //   () => idle
-  // );
-  // const id = useParams()[PagePaths.dynamicParam];
-  // const isLoading = useAppSelector(selectIsLoading);
-  // const isLoadingContact = fetchContactStatus === pending;
-  // const isLoadedContact = fetchContactStatus === resolved && contact;
-  // const isFetchError = fetchContactStatus === rejected;
-  // const favoriteBtnIcon = contact?.favorite ? (
-  //   <AiFillStar size={IconSizes.primaryIconSize} />
-  // ) : (
-  //   <AiOutlineStar size={IconSizes.primaryIconSize} />
-  // );
+  const { setContactId, isLoading: isDeleting } = useDeleteContact();
+  const contactId = contact._id;
+  const favoriteBtnIcon = contact?.favorite ? (
+    <AiFillStar size={IconSizes.primaryIconSize} />
+  ) : (
+    <AiOutlineStar size={IconSizes.primaryIconSize} />
+  );
 
-  // useEffect(() => {
-  //   setEditContact(false);
-  // }, [id]);
+  const onDelBtnClick = () => {
+    if (contactId) {
+      setContactId(contactId);
+    }
+  };
 
-  // useEffect(() => {
-  //   const controller = new AbortController();
+  const onFavoriteBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
+    makeBlur(e.currentTarget);
 
-  //   const getContact = async (id: string) => {
-  //     setFetchContactStatus(pending);
-  //     try {
-  //       const contact = await contactsServiceApi.fetchContactById({
-  //         id,
-  //         signal: controller.signal,
-  //       });
-  //       setContact(contact);
-  //       setFetchContactStatus(resolved);
-  //     } catch (error) {
-  //       if (error instanceof Error && error.name !== 'AbortError') {
-  //         toasts.errorToast(error.message);
-  //         setFetchContactStatus(rejected);
-  //       }
-  //     }
-  //   };
+    if (!contactId) return;
 
-  //   id && getContact(id);
-
-  //   return () => {
-  //     controller.abort();
-  //   };
-  // }, [id]);
-
-  // const onDelBtnClick = () => {
-  //   if (id) {
-  //     deleteContact(id);
-  //   }
-  // };
-
-  // const onEditBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
-  //   setEditContact((prevState) => !prevState);
-  //   makeBlur(e.currentTarget);
-  // };
-
-  // const onFavoriteBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
-  //   makeBlur(e.currentTarget);
-
-  //   if (!contact?._id) return;
-
-  //   const { favorite, _id: id } = contact;
-  //   const data = { favorite: !favorite };
-  //   dispatch(updateContactStatus({ data, id }))
-  //     .unwrap()
-  //     .then(() => {
-  //       toasts.successToast('Contact status updated successfully');
-  //       setContact(
-  //         (prevState) =>
-  //           ({ ...prevState, favorite: !prevState?.favorite } as IContact)
-  //       );
-  //     })
-  //     .catch((error) => {
-  //       toasts.errorToast(error);
-  //     });
-  // };
-
-  // const updateContact = (data: IContact): void => {
-  //   setContact(data);
-  // };
+    const { favorite } = contact;
+    const data = { favorite: !favorite };
+    updateContactStatus({ data, id: contactId })
+      .then(() => {
+        toasts.successToast('Contact status updated successfully');
+      })
+      .catch((error) => {
+        toasts.errorToast(error);
+      });
+  };
 
   return (
     <div className={css.container}>
       <div className={css.btnContainer}>
         <GoBackLink />
-        {isLoadedContact && (
-          <div className={css.btnWrap}>
-            {!editContact && (
-              <>
-                <IconButton
-                  disabled={isLoading}
-                  btnType={IconBtnType.favorite}
-                  onBtnClick={onFavoriteBtnClick}
-                  icon={favoriteBtnIcon}
-                />
-                <IconButton
-                  disabled={isLoading}
-                  btnType={IconBtnType.delete}
-                  onBtnClick={onDelBtnClick}
-                  icon={<AiOutlineDelete size={IconSizes.primaryIconSize} />}
-                />
-              </>
-            )}
-            <IconButton
-              btnType={IconBtnType.edit}
-              onBtnClick={onEditBtnClick}
-              icon={<AiOutlineEdit size={IconSizes.primaryIconSize} />}
-            />
-          </div>
-        )}
+        <div className={css.btnWrap}>
+          <IconButton
+            btnType={IconBtnType.favorite}
+            onBtnClick={onFavoriteBtnClick}
+            icon={favoriteBtnIcon}
+          />
+          <IconButton
+            disabled={isDeleting}
+            btnType={IconBtnType.delete}
+            onBtnClick={onDelBtnClick}
+            icon={<AiOutlineDelete size={IconSizes.primaryIconSize} />}
+          />
+          <Link href={`/${PagePaths.contactsPath}/${contactId}/edit`}>
+            <AiOutlineEdit size={IconSizes.primaryIconSize} />
+          </Link>
+        </div>
       </div>
-      {isLoadedContact && (
-        <ContactProfile
-          contact={contact}
-          editContact={editContact}
-          onEditBtnClick={onEditBtnClick}
-          setContact={updateContact}
-        />
-      )}
-      {isFetchError && <DefaultMessage message='Contact is absent' />}
+      <ContactProfile contact={contact} />
     </div>
   );
 };

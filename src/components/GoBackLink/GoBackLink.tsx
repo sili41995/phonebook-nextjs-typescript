@@ -8,7 +8,7 @@ const GoBackLink: FC<IProps> = ({ title = 'Go Back' }) => {
   const searchParams = useSearchParams();
 
   return (
-    <Link href={`/${PagePaths.contactsPath}$?${searchParams}`}>{title}</Link>
+    <Link href={`/${PagePaths.contactsPath}?${searchParams}`}>{title}</Link>
   );
 };
 
