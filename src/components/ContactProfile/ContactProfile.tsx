@@ -13,16 +13,8 @@ import ImageContainer from '../ImageContainer';
 // import { IAvatar } from 'types/types';
 // import { useAppDispatch } from 'hooks/redux';
 // import { updateContactAvatar } from 'redux/contacts/operations';
-// import {
-//   ContactDesc,
-//   ContactName,
-//   ContactTitle,
-//   Image,
-//   ListItem,
-//   NavBar,
-//   NavList,
-//   ImageContainer,
-// } from './ContactProfile.styled';
+import css from './ContactProfile.module.css';
+import ContactInfo from '@/components/ContactInfo';
 
 const ContactProfile: FC<IProps> = ({ contact }) => {
   // const [contactAvatar, setContactAvatar] = useState<FileList | null>(null);
@@ -69,27 +61,12 @@ const ContactProfile: FC<IProps> = ({ contact }) => {
 
   return (
     <>
-      <ImageContainer avatar={avatar as string} />
-      {/*
-      <>
-          <ContactTitle>
-            <ContactName>{name}</ContactName>
-            {role && <ContactDesc>{role}</ContactDesc>}
-          </ContactTitle>
-          <NavBar>
-            <NavList>
-              <ListItem>
-                <NavLink to={PagePaths.contactPath}>Contact</NavLink>
-              </ListItem>
-              <ListItem>
-                <NavLink to={PagePaths.aboutPath}>About</NavLink>
-              </ListItem>
-            </NavList>
-          </NavBar>
-          <Suspense fallback={<Loader />}>
-            <Outlet context={contact} />
-          </Suspense> 
-        </>*/}
+      <ImageContainer avatar={avatar as string} imgSize={200} />
+      <div className={css.titleWrap}>
+        <p className={css.name}>{name}</p>
+        {role && <p className={css.role}>{role}</p>}
+      </div>
+      <ContactInfo contact={contact} />
     </>
   );
 };

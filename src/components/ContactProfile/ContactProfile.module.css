@@ -1,39 +1,42 @@
-import styled from '@emotion/styled';
+.titleWrap {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
+}
+
+.name {
+  color: var(--primaryFontColor);
+  font-family: Jua;
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--otherFontWeight);
+  text-align: center;
+  word-break: normal;
+}
+
+.role {
+  color: var(--secondaryFontColor);
+  font-family: Inter;
+  font-size: var(--primaryFontSize);
+  font-weight: var(--primaryFontWeight);
+  text-align: center;
+  word-break: normal;
+}
+
+/* import styled from '@emotion/styled';
 
 export const ImageContainer = styled.div`
   position: relative;
   display: inline-block;
 `;
 
-export const Image = styled.img`
-  width: 200px;
-  height: 200px;
-  border-radius: 30%;
-`;
 
 export const ContactTitle = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(2)};
+
 `;
 
-export const ContactName = styled.p`
-  color: ${({ theme }) => theme.colors.primaryFontColor};
-  font-family: Jua;
-  font-size: ${({ theme }) => `${theme.fontSize.secondaryFontSize}px`};
-  font-weight: ${({ theme }) => theme.fontWeight.otherFontWeight};
-  text-align: center;
-  word-break: normal;
-`;
 
-export const ContactDesc = styled.p`
-  color: ${({ theme }) => theme.colors.secondaryFontColor};
-  font-family: Inter;
-  font-size: ${({ theme }) => `${theme.fontSize.primaryFontSize}px`};
-  font-weight: ${({ theme }) => theme.fontWeight.primaryFontWeight};
-  text-align: center;
-  word-break: normal;
-`;
+
+
 
 export const NavBar = styled.nav`
   width: 100%;
@@ -65,4 +68,4 @@ export const ListItem = styled.li`
       background-color: ${({ theme }) => theme.colors.otherLinkColor};
     }
   }
-`;
+`; */

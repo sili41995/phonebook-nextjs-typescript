@@ -1,0 +1,22 @@
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 36px;
+  border-radius: var(--secondaryBorderRadius);
+  transition: box-shadow var(--transitionDurationAndFunc);
+}
+
+.link:hover,
+.link:focus {
+  box-shadow: var(--primaryShadow);
+}
+
+/* export const Link = styled.a`
+ 
+  background-color: ${({ btnType }: IStyledProps) => setButtonColor(btnType)};
+  & svg {
+    color: ${({ btnType }) => setIconFill(btnType)};
+  }
+`; */

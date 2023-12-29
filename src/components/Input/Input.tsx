@@ -7,12 +7,13 @@ import { FormTypes, InputTypes } from '@/constants';
 const Input: FC<IProps> = ({
   settings,
   inputWrap,
-  type,
   icon,
   formType,
   placeholder,
   altElem,
   onChange,
+  type,
+  ...otherProps
 }) => {
   const inputClassName =
     formType === FormTypes.authForm ? css.authFormInput : css.input;
@@ -20,9 +21,10 @@ const Input: FC<IProps> = ({
     <input
       {...settings}
       className={inputClassName}
-      type={type}
       placeholder={placeholder}
       onChange={onChange}
+      type={type}
+      {...otherProps}
     />
   );
 

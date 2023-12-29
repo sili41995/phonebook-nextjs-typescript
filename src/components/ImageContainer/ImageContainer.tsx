@@ -11,7 +11,7 @@ import ChangeAvatarForm from '../ChangeAvatarForm';
 import { Messages } from '@/constants';
 import { updateAvatar } from '@/app/lib/actions';
 
-const ImageContainer: FC<IProps> = ({ avatar }) => {
+const ImageContainer: FC<IProps> = ({ avatar, imgSize }) => {
   const [userAvatar, setUserAvatar] = useState<FileList | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const userAvatarRef = useRef<HTMLImageElement>(null);
@@ -59,6 +59,8 @@ const ImageContainer: FC<IProps> = ({ avatar }) => {
         src={avatar}
         alt='user avatar'
         ref={userAvatarRef}
+        width={imgSize}
+        height={imgSize}
       />
       <ChangeAvatarForm
         isLoading={isLoading}

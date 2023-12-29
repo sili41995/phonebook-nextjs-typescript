@@ -1,0 +1,29 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 10);
+}
+
+.field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoWrap {
+  width: 180px;
+}
+
+.subtitle {
+  color: var(--secondaryFontColor);
+  font-family: Inter;
+  font-size: var(--primaryFontSize);
+  font-weight: var(--primaryFontWeight);
+}
+
+.description {
+  color: var(--primaryFontColor);
+  font-family: Inter;
+  font-size: var(--primaryFontSize);
+  font-weight: var(--primaryFontWeight);
+}

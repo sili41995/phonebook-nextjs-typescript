@@ -15,7 +15,7 @@ const UserProfile: FC<IProps> = ({ user }) => {
     <div className={css.container}>
       <p className={`${css.name} trimText`}>{name}</p>
       <div className={css.data}>
-        <ImageContainer avatar={avatar} />
+        <ImageContainer avatar={avatar} imgSize={150} />
         <p className={`${css.fullName} trimText`}>{fullName}</p>
         <p className={`${css.email} trimText`}>{email}</p>
       </div>
