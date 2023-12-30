@@ -17,9 +17,11 @@ import { IProps } from './ContactDetails.types';
 import css from './ContactDetails.module.css';
 import { updateContactStatus } from '@/app/lib/actions';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 const ContactDetails = ({ contact }: IProps) => {
   const { setContactId, isLoading: isDeleting } = useDeleteContact();
+  const searchParams = useSearchParams();
   const contactId = contact._id;
   const favoriteBtnIcon = contact?.favorite ? (
     <AiFillStar size={IconSizes.primaryIconSize} />
@@ -65,7 +67,10 @@ const ContactDetails = ({ contact }: IProps) => {
             onBtnClick={onDelBtnClick}
             icon={<AiOutlineDelete size={IconSizes.primaryIconSize} />}
           />
-          <Link href={`/${PagePaths.contactsPath}/${contactId}/edit`}>
+          <Link
+            href={`/${PagePaths.contactsPath}/${contactId}/${PagePaths.editPage}?${searchParams}`}
+            className={css.editLink}
+          >
             <AiOutlineEdit size={IconSizes.primaryIconSize} />
           </Link>
         </div>

@@ -16,3 +16,26 @@
   display: flex;
   gap: calc(var(--spacing) * 3);
 }
+
+.editLink {
+  display: flex;
+  gap: var(--primaryGap);
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 36px;
+  padding: var(--spacing);
+  background-color: var(--blueBtnColor);
+  border-color: transparent;
+  border-radius: var(--secondaryBorderRadius);
+  color: var(--blueIconColor);
+  font-family: Inter;
+  font-size: var(--primaryFontSize);
+  font-weight: var(--primaryFontWeight);
+  transition: box-shadow var(--transitionDurationAndFunc);
+}
+
+.editLink:hover,
+.editLink:focus {
+  box-shadow: var(--primaryShadow);
+}

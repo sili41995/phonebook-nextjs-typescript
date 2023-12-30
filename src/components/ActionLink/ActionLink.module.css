@@ -6,6 +6,7 @@
   height: 36px;
   border-radius: var(--secondaryBorderRadius);
   transition: box-shadow var(--transitionDurationAndFunc);
+  background-color: var(--lightgreyBtnColor);
 }
 
 .link:hover,
@@ -13,10 +14,115 @@
   box-shadow: var(--primaryShadow);
 }
 
-/* export const Link = styled.a`
- 
-  background-color: ${({ btnType }: IStyledProps) => setButtonColor(btnType)};
-  & svg {
-    color: ${({ btnType }) => setIconFill(btnType)};
-  }
-`; */
+.link svg {
+  transition: color var(--transitionDurationAndFunc);
+  color: var(--lightgreyIconColor);
+}
+
+.delete {
+  composes: link;
+  background-color: var(--redBtnColor);
+}
+
+.delete svg {
+  color: var(--redIconColor);
+}
+
+.edit {
+  composes: link;
+  background-color: var(--blueBtnColor);
+}
+
+.edit svg {
+  color: var(--blueIconColor);
+}
+
+.phone {
+  composes: link;
+  background-color: var(--greenBtnColor);
+}
+
+.phone svg {
+  color: var(--greenIconColor);
+}
+
+.message {
+  composes: link;
+  background-color: var(--yellowBtnColor);
+}
+
+.message svg {
+  color: var(--yellowIconColor);
+}
+
+.favorite {
+  composes: link;
+  background-color: var(--yellowBtnColor);
+}
+
+.favorite svg {
+  color: var(--yellowIconColor);
+}
+
+.chat {
+  composes: link;
+  background-color: var(--blueBtnColor);
+}
+
+.chat svg {
+  color: var(--blueIconColor);
+}
+
+.logout {
+  composes: link;
+  background-color: var(--redBtnColor);
+}
+
+.logout svg {
+  color: var(--redIconColor);
+}
+
+.accept {
+  composes: link;
+  background-color: var(--greenBtnColor);
+}
+
+.accept svg {
+  color: var(--greenIconColor);
+}
+
+.cancel {
+  composes: link;
+  background-color: var(--redBtnColor);
+}
+
+.cancel svg {
+  color: var(--redIconColor);
+}
+
+.deleteTransparent {
+  composes: link;
+  background-color: transparent;
+}
+
+.deleteTransparent svg {
+  color: var(--redIconColor);
+}
+
+.toggleShowPassword {
+  composes: link;
+  background-color: transparent;
+}
+
+.toggleShowPassword svg {
+  color: var(--primaryColor);
+}
+
+.clearFilter {
+  composes: link;
+  color: transparent;
+}
+
+.clearFilter svg {
+  color: var(--whiteColor);
+}

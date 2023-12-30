@@ -4,22 +4,17 @@
   align-items: center;
   height: 36px;
   padding: var(--spacing);
+  background-color: var(--btnBackgroundColor);
+  border-radius: var(--secondaryBorderRadius);
+  border-color: transparent;
+  color: var(--primaryFontColor);
+  font-family: Inter;
+  font-size: var(--primaryFontSize);
+  font-weight: var(--primaryFontWeight);
+  transition: var(--transitionDurationAndFunc);
 }
 
-/* export const StyledLink = styled(Link)`
- 
-  
-  background-color: ${({ theme }) => theme.colors.btnBackgroundColor};
-  border-radius: ${({ theme }) =>
-    `${theme.borderRadius.secondaryBorderRadius}px`};
-  border-color: transparent;
-  color: ${({ theme }) => theme.colors.primaryFontColor};
-  font-family: Inter;
-  font-size: ${({ theme }) => `${theme.fontSize.primaryFontSize}px`};
-  font-weight: ${({ theme }) => theme.fontWeight.primaryFontWeight};
-  transition: box-shadow ${({ theme }) => theme.transitionDurationAndFunc};
-  &:hover,
-  &:focus {
-    box-shadow: ${({ theme }) => theme.shadows.primaryShadow};
-  }
-`; */
+.link:hover,
+.link:focus {
+  box-shadow: var(--primaryShadow);
+}

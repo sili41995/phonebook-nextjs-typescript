@@ -17,47 +17,7 @@ import css from './ContactProfile.module.css';
 import ContactInfo from '@/components/ContactInfo';
 
 const ContactProfile: FC<IProps> = ({ contact }) => {
-  // const [contactAvatar, setContactAvatar] = useState<FileList | null>(null);
-  // const contactAvatarRef = useRef<HTMLImageElement>(null);
-  // const dispatch = useAppDispatch();
   const { avatar, name, role, _id: id } = contact;
-
-  // const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-  //   if (!e.target.files?.length) {
-  //     return;
-  //   }
-
-  //   setContactAvatar(e.target.files);
-  //   onChangeAvatar({ e, ref: contactAvatarRef });
-  // };
-
-  // const handleFormSubmit: SubmitHandler<IAvatar> = (data) => {
-  //   if (!contactAvatar?.length) {
-  //     return;
-  //   }
-
-  //   data.avatar = contactAvatar;
-  //   const contactFormData = getProfileFormData(data);
-
-  //   if (!id) return;
-
-  //   dispatch(updateContactAvatar({ data: contactFormData, id }))
-  //     .unwrap()
-  //     .then(() => {
-  //       toasts.successToast(Messages.updateAvatar);
-  //       setContactAvatar(null);
-  //     })
-  //     .catch((error) => {
-  //       toasts.errorToast(error);
-  //     });
-  // };
-
-  // const onCancelBtnClick = () => {
-  //   if (contactAvatarRef.current) {
-  //     contactAvatarRef.current.src = avatar as string;
-  //     setContactAvatar(null);
-  //   }
-  // };
 
   return (
     <>

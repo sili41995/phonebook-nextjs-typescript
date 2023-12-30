@@ -26,4 +26,5 @@
   font-family: Inter;
   font-size: var(--primaryFontSize);
   font-weight: var(--primaryFontWeight);
+  text-align: justify;
 }
