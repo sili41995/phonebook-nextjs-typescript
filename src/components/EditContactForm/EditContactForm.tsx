@@ -1,75 +1,69 @@
-// import { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 // import { useParams } from 'react-router-dom';
-// import { SubmitHandler, useForm } from 'react-hook-form';
-// import { FaTimes } from 'react-icons/fa';
-// import 'react-toastify/dist/ReactToastify.css';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { FaTimes } from 'react-icons/fa';
+import 'react-toastify/dist/ReactToastify.css';
 // import { selectIsLoading } from 'redux/contacts/selectors';
 // import { updateContact } from 'redux/contacts/operations';
 // import { useAppDispatch, useAppSelector } from 'hooks/redux';
-// import { IContact } from 'types/types';
+import { IContact } from '@/types/types';
 import { IProps } from './EditContactForm.types';
-// import IconButton from 'components/IconButton';
-// import ContactFormInputs from 'components/ContactFormInputs';
-// import ModalForm from 'components/ModalForm';
-// import AcceptBtn from 'components/AcceptBtn';
-// import { IconBtnType, IconSizes, PagePaths } from 'constants/index';
-// import { toasts } from 'utils';
+import ContactFormInputs from '@/components/ContactFormInputs';
+import ModalForm from '@/components/ModalForm';
+import AcceptBtn from '@/components/AcceptBtn';
+import { IconBtnType, IconSizes, PagePaths } from '@/constants';
+import { toasts } from '@/utils';
 // import { ButtonsContainer, Form, Title } from './EditContactForm.styled';
-// import { useRouter } from 'next/navigation';
+import css from './EditContactForm.module.css';
+import GoBackLink from '@/components/GoBackLink';
 
 const EditContactForm = ({ contact }: IProps) => {
-  // const [checked, setChecked] = useState<boolean>(
-  //   () => contact.favorite as boolean
-  // );
-  // const router = useRouter();
-  // const isLoading = useAppSelector(selectIsLoading);
-  // const dispatch = useAppDispatch();
-  // const id = useParams()[PagePaths.dynamicParam] as string;
-  // const {
-  //   register,
-  //   formState: { errors, isSubmitting },
-  //   handleSubmit,
-  // } = useForm<IContact>();
+  const [checked, setChecked] = useState<boolean>(
+    () => contact.favorite as boolean
+  );
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const id = contact._id;
+  const {
+    register,
+    formState: { errors, isSubmitting },
+    handleSubmit,
+  } = useForm<IContact>();
 
-  // const handleFormSubmit: SubmitHandler<IContact> = (data) => {
-  //   dispatch(updateContact({ data, id }))
-  //     .unwrap()
-  //     .then((data) => {
-  //       toasts.successToast('Contact updated successfully');
-  //     })
-  //     .catch((error) => {
-  //       toasts.errorToast(error);
-  //     });
-  // };
+  const handleFormSubmit: SubmitHandler<IContact> = (data) => {
+    // dispatch(updateContact({ data, id }))
+    //     .unwrap()
+    //     .then((data) => {
+    //       toasts.successToast('Contact updated successfully');
+    //     })
+    //     .catch((error) => {
+    //       toasts.errorToast(error);
+    // });
+  };
 
-  // const onCheckboxChange = () => {
-  //   setChecked((prevState) => !prevState);
-  // };
+  const onCheckboxChange = () => {
+    setChecked((prevState) => !prevState);
+  };
 
   return (
-    <></>
-    // <ModalForm>
-    //   <Title>Contact editing</Title>
-    //   <Form onSubmit={handleSubmit(handleFormSubmit)}>
-    //     <ContactFormInputs
-    //       register={register}
-    //       errors={errors}
-    //       isSubmitting={isSubmitting}
-    //       contact={contact}
-    //       onCheckboxChange={onCheckboxChange}
-    //       checked={checked}
-    //       {...otherProps}
-    //     />
-    //     <ButtonsContainer>
-    //       <AcceptBtn disabled={isLoading} />
-    //       <IconButton
-    //         btnType={IconBtnType.cancel}
-    //         onBtnClick={router.back}
-    //         icon={<FaTimes size={IconSizes.primaryIconSize} />}
-    //       />
-    //     </ButtonsContainer>
-    //   </Form>
-    // </ModalForm>
+    <ModalForm>
+      <p className={css.title}>Contact editing</p>
+      <form className={css.form} onSubmit={handleSubmit(handleFormSubmit)}>
+        <ContactFormInputs
+          register={register}
+          errors={errors}
+          isSubmitting={isSubmitting}
+          contact={contact}
+          onCheckboxChange={onCheckboxChange}
+          checked={checked}
+        />
+        <div className={css.btnWrap}>
+          <AcceptBtn disabled={isLoading} />
+          <GoBackLink />
+        </div>
+      </form>
+    </ModalForm>
   );
 };
 

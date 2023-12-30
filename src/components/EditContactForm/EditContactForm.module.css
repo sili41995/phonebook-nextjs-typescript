@@ -1,0 +1,19 @@
+.title {
+  color: var(--primaryFontColor);
+  font-family: Inter;
+  font-size: var(--otherFontSize);
+  font-weight: var(--secondaryFontWeight);
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
+}
+
+.btnWrap {
+  display: flex;
+  gap: calc(var(--spacing) * 2);
+  justify-content: center;
+}
