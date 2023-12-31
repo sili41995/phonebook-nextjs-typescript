@@ -58,33 +58,22 @@
   border: 1px solid;
   border-color: var(--borderColor);
   border-radius: var(--secondaryBorderRadius);
+  background-color: transparent;
+  fill: transparent;
+  cursor: pointer;
+  transition: box-shadow var(--transitionDurationAndFunc),
+    background-color var(--transitionDurationAndFunc),
+    color var(--transitionDurationAndFunc),
+    border-color var(--transitionDurationAndFunc);
 }
 
 .input:checked + svg {
   border-color: transparent;
+  background-color: var(--otherColor);
+  fill: var(--whiteColor);
 }
 
-/*   
-  
-`;
-
-export const Label = styled.label`
-
-
-  &:has([type='checkbox']) svg {
-    
-    background-color: ${({ theme, checked }) =>
-      checked ? theme.colors.otherColor : 'transparent'};
-    color: ${({ theme, checked }) =>
-      checked ? theme.colors.whiteColor : 'transparent'};
-    cursor: pointer;
-    transition: box-shadow ${({ theme }) => theme.transitionDurationAndFunc},
-      background-color ${({ theme }) => theme.transitionDurationAndFunc},
-      color ${({ theme }) => theme.transitionDurationAndFunc},
-      border-color ${({ theme }) => theme.transitionDurationAndFunc};
-    &:hover,
-    &:focus {
-      box-shadow: ${({ theme }) => theme.shadows.primaryShadow};
-    }
-  }
-`; */
+.checkbox svg:hover,
+.checkbox svg:focus {
+  box-shadow: var(--primaryShadow);
+}

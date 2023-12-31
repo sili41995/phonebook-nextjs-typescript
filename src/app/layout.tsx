@@ -2,12 +2,16 @@ import { ReactNode } from 'react';
 import './globals.css';
 import SharedLayout from '@/components/SharedLayout';
 import Toast from '@/components/Toast';
+import { auth } from '../../auth';
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
+const RootLayout = async ({ children }: { children: ReactNode }) => {
+  const session: any = await auth();
+  const isSignIn = Boolean(session);
+
   return (
     <html>
       <body>
-        <SharedLayout>{children}</SharedLayout>
+        <SharedLayout isSignIn={isSignIn}>{children}</SharedLayout>
         <Toast />
       </body>
     </html>

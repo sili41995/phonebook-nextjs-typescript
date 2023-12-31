@@ -213,13 +213,7 @@ class ContactsServiceApi {
       });
   }
 
-  updateContactAvatar({
-    id,
-    data,
-  }: {
-    id: string;
-    data: FormData;
-  }): Promise<IAvatar> {
+  updateContactAvatar(id: string, data: FormData): Promise<IAvatar> {
     const options = {
       method: 'PATCH',
       body: data,

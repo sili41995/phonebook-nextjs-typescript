@@ -2,8 +2,11 @@ import PublicLinks from '@/components/PublicLinks';
 import { PagePaths } from '@/constants';
 import css from './NavigationBar.module.css';
 import Link from 'next/link';
+import { FC } from 'react';
+import { IProps } from './NavigationBar.types';
+import PrivateLinks from '@/components/PrivateLinks';
 
-const NavigationBar = () => {
+const NavigationBar: FC<IProps> = ({ isSignIn }) => {
   const contactsPagePath = `/${PagePaths.contactsPath}`;
   const aboutPagePath = `/${PagePaths.aboutPath}`;
 
@@ -17,7 +20,7 @@ const NavigationBar = () => {
           <Link href={aboutPagePath}>About</Link>
         </li>
       </ul>
-      <PublicLinks />
+      {isSignIn ? <PrivateLinks /> : <PublicLinks />}
     </nav>
   );
 };

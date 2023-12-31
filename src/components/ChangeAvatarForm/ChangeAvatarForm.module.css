@@ -4,7 +4,6 @@
   top: 0;
   right: 0;
   color: var(--greyColor);
-  transition: color var(--transitionDurationAndFunc);
 }
 
 .container {
@@ -13,6 +12,7 @@
 }
 
 .form label svg {
+  transition: color var(--transitionDurationAndFunc);
   cursor: pointer;
 }
 

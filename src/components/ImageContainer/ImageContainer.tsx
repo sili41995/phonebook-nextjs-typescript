@@ -9,40 +9,39 @@ import { SubmitHandler } from 'react-hook-form';
 import { IAvatar } from '@/types/types';
 import ChangeAvatarForm from '../ChangeAvatarForm';
 import { Messages } from '@/constants';
-import { updateAvatar } from '@/app/lib/actions';
 
-const ImageContainer: FC<IProps> = ({ avatar, imgSize }) => {
-  const [userAvatar, setUserAvatar] = useState<FileList | null>(null);
+const ImageContainer: FC<IProps> = ({ avatar, imgSize, updateAvatarFunc }) => {
+  const [previewAvatar, setPreviewAvatar] = useState<FileList | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const userAvatarRef = useRef<HTMLImageElement>(null);
+  const previewAvatarRef = useRef<HTMLImageElement>(null);
 
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.length) {
       return;
     }
 
-    setUserAvatar(e.target.files);
-    onChangeAvatar({ e, ref: userAvatarRef });
+    setPreviewAvatar(e.target.files);
+    onChangeAvatar({ e, ref: previewAvatarRef });
   };
 
   const onCancelBtnClick = () => {
-    if (userAvatarRef.current) {
-      userAvatarRef.current.src = avatar;
-      setUserAvatar(null);
+    if (previewAvatarRef.current) {
+      previewAvatarRef.current.src = avatar;
+      setPreviewAvatar(null);
     }
   };
 
   const handleFormSubmit: SubmitHandler<IAvatar> = async (data) => {
-    if (!userAvatar?.length) return;
+    if (!previewAvatar?.length) return;
 
-    data.avatar = userAvatar;
+    data.avatar = previewAvatar;
     const userFormData = getProfileFormData(data);
 
     try {
       setIsLoading(true);
-      await updateAvatar(userFormData);
+      await updateAvatarFunc(userFormData);
       toasts.successToast(Messages.updateAvatar);
-      setUserAvatar(null);
+      setPreviewAvatar(null);
     } catch (error) {
       if (error instanceof Error) {
         toasts.errorToast(error.message);
@@ -58,13 +57,13 @@ const ImageContainer: FC<IProps> = ({ avatar, imgSize }) => {
         className={css.image}
         src={avatar}
         alt='user avatar'
-        ref={userAvatarRef}
+        ref={previewAvatarRef}
         width={imgSize}
         height={imgSize}
       />
       <ChangeAvatarForm
         isLoading={isLoading}
-        avatar={userAvatar}
+        avatar={previewAvatar}
         handleFormSubmit={handleFormSubmit}
         onChangeInput={onChangeInput}
         onCancelBtnClick={onCancelBtnClick}

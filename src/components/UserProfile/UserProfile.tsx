@@ -4,6 +4,7 @@ import { IconSizes } from '@/constants';
 import { IProps } from './UserProfile.types';
 import ImageContainer from '@/components/ImageContainer';
 import css from './UserProfile.module.css';
+import { updateUserAvatar } from '@/app/lib/actions';
 
 const UserProfile: FC<IProps> = ({ user }) => {
   if (!user) return <div className={css.container}></div>;
@@ -15,7 +16,11 @@ const UserProfile: FC<IProps> = ({ user }) => {
     <div className={css.container}>
       <p className={`${css.name} trimText`}>{name}</p>
       <div className={css.data}>
-        <ImageContainer avatar={avatar} imgSize={150} />
+        <ImageContainer
+          avatar={avatar}
+          imgSize={150}
+          updateAvatarFunc={updateUserAvatar}
+        />
         <p className={`${css.fullName} trimText`}>{fullName}</p>
         <p className={`${css.email} trimText`}>{email}</p>
       </div>

@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import { toasts } from '@/utils';
 import { PagePaths } from '@/constants/index';
 import { deleteContact } from '@/app/lib/actions';
-import { redirect, usePathname, useSearchParams } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const useDeleteContact = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -11,6 +10,7 @@ const useDeleteContact = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const redirectPath = `/${PagePaths.contactsPath}?${searchParams}`;
+  const { replace } = useRouter();
 
   useEffect(() => {
     if (contactId) {
@@ -18,9 +18,8 @@ const useDeleteContact = () => {
       deleteContact(contactId)
         .then(() => {
           if (pathname.includes(contactId)) {
-            redirect(redirectPath);
+            replace(redirectPath);
           }
-          revalidatePath(PagePaths.contactsPath);
           toasts.successToast('Contact successfully removed');
         })
         .catch(() => {
@@ -30,7 +29,7 @@ const useDeleteContact = () => {
           setIsLoading(false);
         });
     }
-  }, [contactId, pathname, redirectPath]);
+  }, [contactId, pathname, redirectPath, replace]);
 
   return { setContactId, isLoading };
 };
