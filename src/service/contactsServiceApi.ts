@@ -7,6 +7,8 @@ import {
   IFetchContactsRes,
   ISignInRes,
   ISignUpRes,
+  IUpdContactStatusProps,
+  IUpdateContactProps,
 } from '@/types/types';
 
 class ContactsServiceApi {
@@ -191,13 +193,7 @@ class ContactsServiceApi {
     );
   }
 
-  updateContact({
-    id,
-    data,
-  }: {
-    id: string;
-    data: IContact;
-  }): Promise<IContact> {
+  updateContact({ id, data }: IUpdateContactProps): Promise<IContact> {
     const options = {
       method: 'PUT',
       body: JSON.stringify(data),
@@ -242,13 +238,7 @@ class ContactsServiceApi {
       });
   }
 
-  updateContactStatus({
-    id,
-    data,
-  }: {
-    id: string;
-    data: IContactStatus;
-  }): Promise<IContact> {
+  updateContactStatus({ id, data }: IUpdContactStatusProps): Promise<IContact> {
     const options = {
       method: 'PATCH',
       body: JSON.stringify(data),

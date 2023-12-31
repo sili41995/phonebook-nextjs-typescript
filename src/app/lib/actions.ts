@@ -2,7 +2,16 @@
 
 import contactsServiceApi from '@/service/contactsServiceApi';
 import { auth, signIn } from '@/../auth';
-import { IAvatar, IContact, ICredentials } from '@/types/types';
+import {
+  IAvatar,
+  IContact,
+  IContactStatus,
+  ICredentials,
+  IUpdContactStatusProps,
+  IUpdateContactProps,
+} from '@/types/types';
+import { revalidatePath } from 'next/cache';
+import { PagePaths } from '@/constants';
 
 export const authenticate = async (data: ICredentials): Promise<void> => {
   await signIn('credentials', data);
@@ -28,13 +37,19 @@ export const deleteContact = async (id: string): Promise<IContact> => {
   return response;
 };
 
-export const updateContactStatus = async (data: {
-  data: { favorite: boolean };
-  id: string;
-}) => {
+export const updateContactStatus = async (data: IUpdContactStatusProps) => {
   const { user }: any = await auth();
   contactsServiceApi.token = user.token;
   const response = await contactsServiceApi.updateContactStatus(data);
+
+  return response;
+};
+
+export const updateContact = async (data: IUpdateContactProps) => {
+  const { user }: any = await auth();
+  contactsServiceApi.token = user.token;
+  const response = await contactsServiceApi.updateContact(data);
+  revalidatePath(`/${PagePaths.contactsPath}`);
 
   return response;
 };

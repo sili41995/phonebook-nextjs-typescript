@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { IconBtnType } from 'constants/index';
+import { IconBtnType } from '@/constants';
 
 export interface IProps {
   link: string;

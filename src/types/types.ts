@@ -102,3 +102,13 @@ export interface IAvatar {
 export interface IParams {
   params: { id: string };
 }
+
+export interface IUpdateContactProps {
+  id: string;
+  data: IContact;
+}
+
+export interface IUpdContactStatusProps {
+  data: IContactStatus;
+  id: string;
+}

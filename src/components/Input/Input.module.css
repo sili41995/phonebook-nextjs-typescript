@@ -47,6 +47,15 @@
   transform: scale(0);
 }
 
+.checkbox svg {
+  border: 1px solid;
+  border-color: brown;
+}
+
+.input:checked + svg {
+  border-color: greenyellow;
+}
+
 /*   
   
 `;

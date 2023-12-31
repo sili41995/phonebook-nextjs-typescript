@@ -1,5 +1,6 @@
+'use client';
+
 import { FC } from 'react';
-import IconButton from '@/components/IconButton';
 import { IProps } from './Input.types';
 import css from './Input.module.css';
 import { FormTypes, InputTypes } from '@/constants';
@@ -13,6 +14,7 @@ const Input: FC<IProps> = ({
   altElem,
   onChange,
   type,
+  checked,
   ...otherProps
 }) => {
   const inputClassName =
@@ -24,15 +26,25 @@ const Input: FC<IProps> = ({
       placeholder={placeholder}
       onChange={onChange}
       type={type}
+      checked={checked}
       {...otherProps}
     />
   );
 
-  if (type === InputTypes.file || type === InputTypes.checkbox) {
+  if (type === InputTypes.file) {
     return (
       <label className={css.label}>
         {altElem}
         {input}
+      </label>
+    );
+  }
+
+  if (type === InputTypes.checkbox) {
+    return (
+      <label className={css.checkbox}>
+        {input}
+        {altElem}
       </label>
     );
   }

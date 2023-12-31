@@ -1,0 +1,12 @@
+.inputWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  color: var(--secondaryFontColor);
+  font-family: Inter;
+  font-size: var(--primaryFontSize);
+  font-weight: var(--primaryFontWeight);
+}
