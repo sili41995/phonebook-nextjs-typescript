@@ -16,7 +16,7 @@ export interface IProps {
   value?: string;
   defaultValue?: string;
   checked?: boolean;
-  action?: () => void;
+  onBtnClick?: () => void;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 

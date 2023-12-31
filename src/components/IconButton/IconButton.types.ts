@@ -1,5 +1,5 @@
 import { MouseEvent, ReactNode } from 'react';
-import { BtnType, IconBtnType, Positions } from '@/constants';
+import { BtnType, IconBtnType } from '@/constants';
 
 export interface IProps {
   icon: ReactNode;
@@ -8,10 +8,4 @@ export interface IProps {
   type?: BtnType;
   disabled?: boolean;
   btnType: IconBtnType;
-  // position?: Positions;
-  // top?: number | 'center';
-  // right?: number;
-  // width?: number;
-  // height?: number;
-  // inputWrap?: boolean;
 }

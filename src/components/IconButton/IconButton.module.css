@@ -1,6 +1,7 @@
 .button {
   display: flex;
   gap: var(--primaryGap);
+  flex-shrink: 0;
   justify-content: center;
   align-items: center;
   width: 44px;
@@ -129,7 +130,17 @@
 
 .clearFilter {
   composes: button;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   color: transparent;
+  background-color: transparent;
+}
+
+.clearFilter:hover,
+.clearFilter:focus {
+  box-shadow: none;
 }
 
 .clearFilter svg {

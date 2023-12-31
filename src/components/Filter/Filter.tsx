@@ -1,15 +1,15 @@
-import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
-// import { useSearchParams } from 'react-router-dom';
+import { ChangeEvent, FC, MouseEvent, useEffect, useState } from 'react';
 import {
   FaSortAlphaDown,
   FaSortAlphaUp,
   FaSistrix,
   FaTimes,
 } from 'react-icons/fa';
-// import { makeBlur, updateSortSearchParams } from 'utils';
+import { makeBlur } from '@/utils';
 import IconButton from '@/components/IconButton';
 import Input from '@/components/Input';
 import {
+  BtnType,
   FormTypes,
   IconBtnType,
   IconSizes,
@@ -19,15 +19,18 @@ import {
 } from '@/constants';
 import css from './Filter.module.css';
 import { useSearchParams } from 'next/navigation';
+import useSetQueryString from '@/hooks/useSetQueryString';
+import { useDebouncedCallback } from 'use-debounce';
 
 const { FILTER_SP_KEY, SORT_SP_KEY } = SearchParamsKeys;
-const { DESC_SORT_TYPE } = SortTypes;
+const { DESC_SORT_TYPE, ASC_SORT_TYPE } = SortTypes;
 
-const Filter = () => {
+const Filter: FC = () => {
+  const setQueryString = useSetQueryString();
   const searchParams = useSearchParams();
   const filter = searchParams.get(FILTER_SP_KEY) ?? '';
-  const [showFilter, setShowFilter] = useState<boolean>(() => Boolean(filter));
   const deskSortType = searchParams.get(SORT_SP_KEY) === DESC_SORT_TYPE;
+  const [showFilter, setShowFilter] = useState<boolean>(() => Boolean(filter));
   const clearFilterBtnIcon = Boolean(filter) && (
     <FaTimes size={IconSizes.primaryIconSize} />
   );
@@ -37,34 +40,30 @@ const Filter = () => {
     <FaSortAlphaUp size={IconSizes.primaryIconSize} />
   );
 
-  // useEffect(() => {
-  //   if (!showFilter) {
-  //     searchParams.delete(FILTER_SP_KEY);
-  //     setSearchParams(searchParams);
-  //   }
-  // }, [searchParams, setSearchParams, showFilter]);
+  useEffect(() => {
+    if (!showFilter) {
+      setQueryString(FILTER_SP_KEY, '');
+    }
+  }, [setQueryString, showFilter]);
 
   const onSortBtnClick = ({ currentTarget }: MouseEvent<HTMLButtonElement>) => {
-    //   makeBlur(currentTarget);
-    //   updateSortSearchParams(searchParams, setSearchParams, SORT_SP_KEY);
+    makeBlur(currentTarget);
+    const updateSortValue = deskSortType ? ASC_SORT_TYPE : DESC_SORT_TYPE;
+    setQueryString(SORT_SP_KEY, updateSortValue);
   };
 
   const onFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
-    //   const { value } = e.target;
-    //   value
-    //     ? searchParams.set(FILTER_SP_KEY, value)
-    //     : searchParams.delete(FILTER_SP_KEY);
-    //   setSearchParams(searchParams);
+    const { value } = e.target;
+    setQueryString(FILTER_SP_KEY, value);
   };
 
   const onFilterBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
-    //   makeBlur(e.currentTarget);
-    //   setShowFilter((showFilter) => !showFilter);
+    makeBlur(e.currentTarget);
+    setShowFilter((showFilter) => !showFilter);
   };
 
   const onClearFilterBtnClick = () => {
-    //   searchParams.delete(FILTER_SP_KEY);
-    //   setSearchParams(searchParams);
+    setQueryString(FILTER_SP_KEY, '');
   };
 
   return (
@@ -77,9 +76,9 @@ const Filter = () => {
           formType={FormTypes.filter}
           autoFocus
           inputWrap
+          onBtnClick={onClearFilterBtnClick}
           btnIcon={clearFilterBtnIcon}
           btnType={IconBtnType.clearFilter}
-          action={onClearFilterBtnClick}
         />
       )}
       <IconButton

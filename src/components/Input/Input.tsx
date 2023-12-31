@@ -3,26 +3,28 @@
 import { FC } from 'react';
 import { IProps } from './Input.types';
 import css from './Input.module.css';
-import { FormTypes, InputTypes } from '@/constants';
+import { FormTypes, IconBtnType, InputTypes } from '@/constants';
+import IconButton from '@/components/IconButton';
 
 const Input: FC<IProps> = ({
   settings,
   inputWrap,
   icon,
-  formType,
+  formType = FormTypes.default,
   placeholder,
   altElem,
   onChange,
   type,
   checked,
+  onBtnClick,
+  btnIcon,
+  btnType = IconBtnType.default,
   ...otherProps
 }) => {
-  const inputClassName =
-    formType === FormTypes.authForm ? css.authFormInput : css.input;
   const input = (
     <input
       {...settings}
-      className={inputClassName}
+      className={css[formType]}
       placeholder={placeholder}
       onChange={onChange}
       type={type}
@@ -53,6 +55,9 @@ const Input: FC<IProps> = ({
     <div className={css.inputContainer}>
       {input}
       {icon}
+      {btnIcon && (
+        <IconButton btnType={btnType} onBtnClick={onBtnClick} icon={btnIcon} />
+      )}
     </div>
   );
 

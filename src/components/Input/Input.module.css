@@ -25,11 +25,16 @@
   transition: border-color var(--transitionDurationAndFunc);
 }
 
-.authFormInput {
+.authForm {
   composes: input;
   height: 60px;
   padding: 8px 40px 8px;
   font-size: var(--otherFontSize);
+}
+
+.filter {
+  composes: input;
+  background-color: transparent;
 }
 
 .input:focus {
