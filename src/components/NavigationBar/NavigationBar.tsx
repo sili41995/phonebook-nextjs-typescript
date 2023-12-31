@@ -6,7 +6,7 @@ import { FC } from 'react';
 import { IProps } from './NavigationBar.types';
 import PrivateLinks from '@/components/PrivateLinks';
 
-const NavigationBar: FC<IProps> = ({ isSignIn }) => {
+const NavigationBar: FC<IProps> = ({ isSignIn, contactsCount }) => {
   const contactsPagePath = `/${PagePaths.contactsPath}`;
   const aboutPagePath = `/${PagePaths.aboutPath}`;
 
@@ -20,7 +20,11 @@ const NavigationBar: FC<IProps> = ({ isSignIn }) => {
           <Link href={aboutPagePath}>About</Link>
         </li>
       </ul>
-      {isSignIn ? <PrivateLinks /> : <PublicLinks />}
+      {isSignIn ? (
+        <PrivateLinks contactsCount={contactsCount} />
+      ) : (
+        <PublicLinks />
+      )}
     </nav>
   );
 };

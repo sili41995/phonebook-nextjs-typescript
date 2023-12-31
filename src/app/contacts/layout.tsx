@@ -3,12 +3,13 @@ import UserProfile from '@/components/UserProfile';
 import contactsServiceApi from '@/service/contactsServiceApi';
 import { auth } from '../../../auth';
 import { ReactNode } from 'react';
+import { redirect } from 'next/navigation';
+import { PagePaths } from '@/constants';
+import { getContacts, getCurrentUser, signOutApp } from '../lib/actions';
 
 const Layout = async ({ children }: { children: ReactNode }) => {
-  const { user }: any = await auth();
-  contactsServiceApi.token = user.token;
-  const { contacts, count } = await contactsServiceApi.fetchContacts();
-  const currentUser = await contactsServiceApi.refreshUser();
+  const currentUser = await getCurrentUser();
+  const { contacts, count } = await getContacts();
 
   return (
     <div className='container contacts'>

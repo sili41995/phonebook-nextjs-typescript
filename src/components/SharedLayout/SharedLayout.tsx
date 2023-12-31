@@ -7,12 +7,12 @@ import { FC } from 'react';
 import { IStyledProps } from './SharedLayout.types';
 import css from './SharedLayout.module.css';
 
-const SharedLayout: FC<IStyledProps> = ({ children, isSignIn }) => {
+const SharedLayout: FC<IStyledProps> = ({ children, ...otherProps }) => {
   return (
     <>
       <header className={css.header}>
         <div className='container'>
-          <NavigationBar isSignIn={isSignIn} />
+          <NavigationBar {...otherProps} />
         </div>
       </header>
       <main>

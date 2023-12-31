@@ -82,6 +82,8 @@
 
 .logout {
   composes: button;
+  height: auto;
+  width: auto;
   background-color: var(--redBtnColor);
 }
 
@@ -132,4 +134,9 @@
 
 .clearFilter svg {
   color: var(--whiteColor);
+}
+
+.filter {
+  composes: button;
+  height: auto;
 }
