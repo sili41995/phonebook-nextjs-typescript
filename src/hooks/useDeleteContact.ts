@@ -13,22 +13,23 @@ const useDeleteContact = () => {
   const { replace } = useRouter();
 
   useEffect(() => {
-    if (contactId) {
-      setIsLoading(true);
-      deleteContact(contactId)
-        .then(() => {
+    contactId &&
+      (async (contactId) => {
+        try {
+          setIsLoading(true);
+          await deleteContact(contactId);
           if (pathname.includes(contactId)) {
             replace(redirectPath);
           }
           toasts.successToast('Contact successfully removed');
-        })
-        .catch(() => {
-          toasts.errorToast('Deleting a contact failed');
-        })
-        .finally(() => {
+        } catch (error) {
+          if (error instanceof Error) {
+            toasts.errorToast(error.message);
+          }
+        } finally {
           setIsLoading(false);
-        });
-    }
+        }
+      })(contactId);
   }, [contactId, pathname, redirectPath, replace]);
 
   return { setContactId, isLoading };

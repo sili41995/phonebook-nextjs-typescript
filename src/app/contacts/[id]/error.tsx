@@ -1,5 +1,7 @@
 'use client';
 
+import ErrorMessage from '@/components/ErrorMessage';
+
 export default function Error({
   error,
   reset,
@@ -7,12 +9,5 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  return (
-    <div>
-      <p className='error-message'>{error.message}</p>
-      <button className='reset-btn' onClick={reset}>
-        Try again
-      </button>
-    </div>
-  );
+  return <ErrorMessage reset={reset} message={error.message} />;
 }

@@ -183,14 +183,14 @@ class ContactsServiceApi {
       },
     };
 
-    return fetch(`${this.BASE_URL}/contacts/${id}`, options).then(
-      (response) => {
-        if (!response.ok) {
-          throw new Error('Deleting a contact failed');
+    return fetch(`${this.BASE_URL}/contacts/${id}`, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          throw Error(data.message);
         }
-        return response.json();
-      }
-    );
+        return data;
+      });
   }
 
   updateContact({ id, data }: IUpdateContactProps): Promise<IContact> {

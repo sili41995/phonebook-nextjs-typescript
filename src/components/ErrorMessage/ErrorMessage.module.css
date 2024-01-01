@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--primaryGap);
+}
+
+.message {
+  color: var(--redIconColor);
+  font-family: Inter;
+  font-size: var(--otherFontSize);
+  font-weight: var(--secondaryFontWeight);
+  text-align: center;
+}
+
+.button {
+  height: 48px;
+  text-decoration: none;
+  padding: 8px 12px;
+  background-color: var(--redBtnColor);
+  color: var(--redIconColor);
+  border-radius: var(--primaryBorderRadius);
+  outline: none;
+  border-color: transparent;
+  transition: background-color var(--transitionDurationAndFunc);
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--redIconColor);
+  color: var(--whiteColor);
+}

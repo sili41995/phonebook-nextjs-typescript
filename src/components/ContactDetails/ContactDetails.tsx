@@ -47,7 +47,9 @@ const ContactDetails = ({ contact }: IProps) => {
         toasts.successToast('Contact status updated successfully');
       })
       .catch((error) => {
-        toasts.errorToast(error);
+        if (error instanceof Error) {
+          toasts.errorToast(error.message);
+        }
       });
   };
 
