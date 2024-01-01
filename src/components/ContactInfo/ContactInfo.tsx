@@ -1,54 +1,60 @@
-import { HiOutlinePhone } from 'react-icons/hi';
-import { IoMdMail } from 'react-icons/io';
-import { RiChat1Line } from 'react-icons/ri';
-import getContactInfo from '@/utils/getContactInfo';
-import css from './ContactInfo.module.css';
-import getPhoneNumber from '@/utils/getPhoneNumber';
+import { FaEnvelope, FaPhoneAlt, FaRegComment } from 'react-icons/fa';
 import ActionLink from '@/components/ActionLink';
-import { IconBtnType } from '@/constants/iconBtnType';
+import { IconBtnType, IconSizes } from '@/constants';
+import { getPhoneNumber, getTelegramLink } from '@/utils';
+import { FC } from 'react';
+import css from './ContactInfo.module.css';
 import { IProps } from './ContactInfo.types';
 
-const ContactInfo = ({ contact }: IProps) => {
-  const { number, email, chat, description } = getContactInfo(contact);
-  const phoneNumber = getPhoneNumber(number);
+const ContactInfo: FC<IProps> = ({ contact }) => {
+  const { phone, email, tgUsername, description } = contact;
+  const phoneNumber = getPhoneNumber(phone);
+  const telegramLink = getTelegramLink(tgUsername);
 
   return (
     <div className={css.container}>
       <div className={css.field}>
-        <div>
-          <p className={css.infoDesc}>Phone number</p>
-          <p className={css.infoData}>{number}</p>
-        </div>
-        <ActionLink link={`tel:${phoneNumber}`} btnType={IconBtnType.phone}>
-          <HiOutlinePhone />
-        </ActionLink>
-      </div>
-      <div className={css.field}>
-        <div>
-          <p className={css.infoDesc}>Email Address</p>
-          <p className={css.infoData}>{email}</p>
-        </div>
-        <ActionLink link={`mailto:${email}`} btnType={IconBtnType.message}>
-          <IoMdMail />
-        </ActionLink>
-      </div>
-      <div className={css.field}>
-        <div>
-          <p className={css.infoDesc}>Chat</p>
-          <p className={css.infoData}>{chat}</p>
+        <div className={css.infoWrap}>
+          <p className={css.subtitle}>Phone number</p>
+          <p className={`${css.description} trimText`}>{phone}</p>
         </div>
         <ActionLink
-          link={`tg://resolve?domain=${chat}`}
-          btnType={IconBtnType.chat}
-        >
-          <RiChat1Line />
-        </ActionLink>
+          link={`tel:${phoneNumber}`}
+          btnType={IconBtnType.phone}
+          icon={<FaPhoneAlt size={IconSizes.otherIconSize} />}
+        />
       </div>
-      <div className={css.field}>
-        <div>
-          <p className={css.infoDesc}>Description</p>
-          <p className={css.infoData}>{description}</p>
+      {email && (
+        <div className={css.field}>
+          <div className={css.infoWrap}>
+            <p className={css.subtitle}>Email Address</p>
+            <p className={`${css.description} trimText`}>{email}</p>
+          </div>
+          <ActionLink
+            link={`mailto:${email}`}
+            btnType={IconBtnType.message}
+            icon={<FaEnvelope size={IconSizes.otherIconSize} />}
+          />
         </div>
+      )}
+      {tgUsername && (
+        <div className={css.field}>
+          <div className={css.infoWrap}>
+            <p className={css.subtitle}>Username on Telegram</p>
+            <p className={`${css.description} trimText`}>{tgUsername}</p>
+          </div>
+          <ActionLink
+            link={`tg://resolve?domain=${telegramLink}`}
+            btnType={IconBtnType.chat}
+            icon={<FaRegComment size={IconSizes.otherIconSize} />}
+          />
+        </div>
+      )}
+      <div className={css.descWrap}>
+        <p className={css.subtitle}>Description</p>
+        <p className={css.description}>
+          {description ? description : 'No description'}
+        </p>
       </div>
     </div>
   );

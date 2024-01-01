@@ -1,46 +1,67 @@
-import getInputClassName from '@/utils/getInputClassName';
-import css from './Input.module.css';
-import { IProps } from './Input.types';
-import IconButton from '@/components/IconButton';
-import { Position } from '@/types/types';
+'use client';
 
-const Input = ({
-  inputWrap,
-  inputType,
+import { FC } from 'react';
+import { IProps } from './Input.types';
+import css from './Input.module.css';
+import { FormTypes, IconBtnType, InputTypes } from '@/constants';
+import IconButton from '@/components/IconButton';
+
+const Input: FC<IProps> = ({
   settings,
-  fieldIcon,
-  btnType,
-  action,
-  children,
-  right = 0,
+  inputWrap,
+  icon,
+  formType = FormTypes.default,
+  placeholder,
+  altElem,
+  onChange,
+  type,
+  checked,
+  onBtnClick,
+  btnIcon,
+  btnType = IconBtnType.default,
   ...otherProps
-}: IProps) => {
-  const inputClassName = getInputClassName(css, inputType);
-  const styledInput = (
-    <input {...settings} className={inputClassName} {...otherProps} />
+}) => {
+  const input = (
+    <input
+      {...settings}
+      className={css[formType]}
+      placeholder={placeholder}
+      onChange={onChange}
+      type={type}
+      checked={checked}
+      {...otherProps}
+    />
   );
+
+  if (type === InputTypes.file) {
+    return (
+      <label className={css.label}>
+        {altElem}
+        {input}
+      </label>
+    );
+  }
+
+  if (type === InputTypes.checkbox) {
+    return (
+      <label className={css.checkbox}>
+        {input}
+        {altElem}
+      </label>
+    );
+  }
+
   const inputWithWrap = (
-    <div className={css.container} {...otherProps}>
-      {styledInput}
-      {fieldIcon}
-      {btnType && (
-        <IconButton
-          position={Position.absolute}
-          top='center'
-          right={right}
-          btnType={btnType}
-          width={44}
-          height={35}
-          onBtnClick={action}
-          inputWrap
-        >
-          {children}
-        </IconButton>
+    <div className={css.inputContainer}>
+      {input}
+      {icon}
+      {btnIcon && (
+        <IconButton btnType={btnType} onBtnClick={onBtnClick} icon={btnIcon} />
       )}
     </div>
   );
 
-  return inputWrap ? inputWithWrap : styledInput;
+  return inputWrap ? inputWithWrap : input;
 };
 
 export default Input;

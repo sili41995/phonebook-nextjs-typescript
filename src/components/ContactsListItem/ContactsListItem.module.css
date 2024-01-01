@@ -1,45 +1,61 @@
-.contactItem {
+.item {
   position: relative;
-  align-items: center;
-  border-radius: var(--secondaryBorderRadius);
   border: 0.5px solid;
+  border-radius: var(--secondaryBorderRadius);
   border-color: var(--borderColor);
   transition: box-shadow var(--transitionDurationAndFunc);
 }
 
-.contactItem:hover,
-.contactItem:focus {
+.item:hover,
+.item:focus {
   box-shadow: var(--primaryShadow);
 }
 
-.contactLink {
-  padding: 12px;
+.item a {
   display: flex;
   gap: var(--primaryGap);
-  text-decoration: none;
+  padding: calc(var(--spacing) * 3);
   color: var(--primaryFontColor);
 }
 
-.avatar {
-  width: 70px;
-  height: auto;
+.item button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.imageWrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.imageWrap svg {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  color: var(--yellowIconColor);
+}
+
+.image {
+  border-radius: 50%;
 }
 
 .infoWrap {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  gap: var(--primaryGap);
   align-items: center;
 }
 
-.infoWrap div {
-  flex-basis: calc((100% - var(--primaryGap) * 2) / 3);
+.infoWrap div,
+.infoWrap p {
+  width: 165px;
 }
 
 .name {
   color: var(--primaryFontColor);
-  font-family: var(--font-inter);
+  font-family: Inter;
   font-size: var(--otherFontSize);
   font-weight: var(--secondaryFontWeight);
   text-align: center;
@@ -47,7 +63,7 @@
 
 .role {
   color: var(--contactPrimaryTextColor);
-  font-family: var(--font-inter);
+  font-family: Inter;
   font-size: var(--primaryFontSize);
   font-weight: var(--primaryFontWeight);
   text-align: center;
@@ -55,7 +71,7 @@
 
 .phone {
   color: var(--primaryFontColor);
-  font-family: var(--font-inter);
+  font-family: Inter;
   font-size: var(--secondaryFontSize);
   font-weight: var(--primaryFontWeight);
   text-align: center;
@@ -63,14 +79,7 @@
 
 .email {
   color: var(--contactSecondaryTextColor);
-  font-family: var(--font-inter);
+  font-family: Inter;
   font-size: var(--secondaryFontSize);
   font-weight: var(--secondaryFontWeight);
-  text-align: center;
-}
-
-.contactItem form {
-  position: absolute;
-  top: 0;
-  right: 0;
 }

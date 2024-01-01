@@ -1,15 +1,15 @@
-import AuthForm from '@/components/AuthForm';
-import LoginForm from '@/components/LoginForm';
-import SharedLayout from '@/components/SharedLayout';
+import ModalForm from '@/components/ModalForm';
+import SignInForm from '@/components/SignInForm';
+import { FormTypes } from '@/constants';
 
-const Home = () => {
+const HomePage = () => {
   return (
-    <SharedLayout>
-      <AuthForm>
-        <LoginForm />
-      </AuthForm>
-    </SharedLayout>
+    <div className='container'>
+      <ModalForm formType={FormTypes.authForm}>
+        <SignInForm />
+      </ModalForm>
+    </div>
   );
 };
 
-export default Home;
+export default HomePage;

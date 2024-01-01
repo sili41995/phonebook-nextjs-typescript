@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import css from './AuthFormMessage.module.css';
 import { IProps } from './AuthFormMessage.types';
+import css from './AuthFormMessage.module.css';
 
 export const AuthFormMessage = ({ message, pageLink, action }: IProps) => (
   <p className={css.message}>

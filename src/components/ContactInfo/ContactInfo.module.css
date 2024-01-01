@@ -1,7 +1,8 @@
 .container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: calc(var(--spacing) * 10);
 }
 
 .field {
@@ -9,16 +10,21 @@
   justify-content: space-between;
 }
 
-.infoDesc {
+.infoWrap {
+  width: 180px;
+}
+
+.subtitle {
   color: var(--secondaryFontColor);
-  font-family: var(--font-inter);
+  font-family: Inter;
   font-size: var(--primaryFontSize);
   font-weight: var(--primaryFontWeight);
 }
 
-.infoData {
+.description {
   color: var(--primaryFontColor);
-  font-family: var(--font-inter);
+  font-family: Inter;
   font-size: var(--primaryFontSize);
   font-weight: var(--primaryFontWeight);
+  text-align: justify;
 }

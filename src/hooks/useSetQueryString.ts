@@ -7,7 +7,7 @@ const useSetQueryString = () => {
   const searchParams = useSearchParams();
 
   const createQueryString = useCallback(
-    (name: string, value: string): string => {
+    (name: string, value: string) => {
       const params = new URLSearchParams(searchParams);
       if (value) {
         params.set(name, value);
@@ -20,7 +20,7 @@ const useSetQueryString = () => {
     [searchParams]
   );
 
-  return (key: string, value: string): void => {
+  return (key: string, value: string) => {
     replace(`${pathname}?${createQueryString(key, value)}`, {
       scroll: false,
     });

@@ -1,0 +1,27 @@
+.button {
+  min-width: 170px;
+  height: 60px;
+  padding: 16px 32px;
+  align-self: center;
+  background-color: var(--primaryColor);
+  border-color: transparent;
+  border-radius: var(--primaryBorderRadius);
+  color: var(--whiteColor);
+  text-align: center;
+  font-family: Inter;
+  font-size: var(--primaryFontSize);
+  font-weight: var(--primaryFontWeight);
+  line-height: 1.5;
+  letter-spacing: 0.64px;
+  transition: background-color var(--transitionDurationAndFunc);
+}
+
+.button svg {
+  height: 20px;
+  fill: var(--whiteColor);
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--secondaryColor);
+}

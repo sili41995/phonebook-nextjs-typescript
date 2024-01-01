@@ -1,44 +1,51 @@
-// import { useSelector } from 'react-redux';
-// import { AiOutlineDelete } from 'react-icons/ai';
-// import IconButton from '@/components/IconButton';
-// import { pagesPath, iconBtnType, iconSizes } from '@/constants';
-// import { useDeleteContact } from '@/hooks';
-// import { selectIsLoading } from '@/redux/contacts/selectors';
-import Link from 'next/link';
-// import { useSearchParams } from 'next/navigation';
-import css from './ContactsListItem.module.css';
-import Image from 'next/image';
-import getContactInfo from '@/utils/getContactInfo';
-import DelBtn from '../DelBtn';
+import { AiFillStar, AiOutlineDelete } from 'react-icons/ai';
+import IconButton from '@/components/IconButton';
+import LinkWithQuery from '@/components/LinkWithQuery';
+import useDeleteContact from '@/hooks/useDeleteContact';
 import { IProps } from './ContactsListItem.types';
-import { IconBtnType } from '@/constants/iconBtnType';
+import { IconSizes, PagePaths, Positions } from '@/constants';
+import { IconBtnType } from '@/constants';
+import Image from 'next/image';
+import css from './ContactsListItem.module.css';
+
+const { contactsPath } = PagePaths;
 
 const ContactsListItem = ({ contact }: IProps) => {
-  const { userAvatar, name, id, role, number, email } = getContactInfo(contact);
+  const { avatar, name, _id: id, role, phone, email, favorite } = contact;
+  const { isLoading, setContactId } = useDeleteContact();
+  const path = `/${contactsPath}/${id}`;
+
+  const handleDelBtnClick = () => {
+    setContactId(id as string);
+  };
 
   return (
-    <li className={css.contactItem}>
-      <Link className={css.contactLink} href={`/contacts/${id}`}>
-        <Image
-          className={css.avatar}
-          src={userAvatar as string}
-          alt={name}
-          priority
-        />
+    <li className={css.item}>
+      <LinkWithQuery href={path}>
+        <div className={css.imageWrap}>
+          <Image
+            src={avatar as string}
+            alt={name}
+            className={css.image}
+            width={70}
+            height={70}
+          />
+          {favorite && <AiFillStar size={IconSizes.primaryIconSize} />}
+        </div>
         <div className={css.infoWrap}>
           <div>
-            <p className={css.name}>{name}</p>
-            <p className={css.role}>{role}</p>
+            <p className={`${css.name} trimText`}>{name}</p>
+            {role && <p className={`${css.role} trimText`}>{role}</p>}
           </div>
-          <p className={css.phone}>{number}</p>
-          <p className={css.email}>{email}</p>
+          <p className={`${css.phone} trimText`}>{phone}</p>
+          <p className={`${css.email} trimText`}>{email}</p>
         </div>
-      </Link>
-      <DelBtn
-        contactId={contact.id as string}
-        width={44}
-        height={35}
+      </LinkWithQuery>
+      <IconButton
+        disabled={isLoading}
         btnType={IconBtnType.deleteTransparent}
+        onBtnClick={handleDelBtnClick}
+        icon={<AiOutlineDelete size={IconSizes.primaryIconSize} />}
       />
     </li>
   );

@@ -1,0 +1,8 @@
+.imageContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.image {
+  border-radius: 30%;
+}

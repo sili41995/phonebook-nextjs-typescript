@@ -3,11 +3,10 @@
   justify-content: center;
   align-items: center;
   width: 44px;
-  height: 35px;
-  background-color: var(--lightgreyBtnColor);
-  padding: var(--spacing);
+  height: 36px;
   border-radius: var(--secondaryBorderRadius);
   transition: box-shadow var(--transitionDurationAndFunc);
+  background-color: var(--lightgreyBtnColor);
 }
 
 .link:hover,
@@ -15,11 +14,9 @@
   box-shadow: var(--primaryShadow);
 }
 
-.link > svg {
-  width: 100%;
-  height: 100%;
-  stroke: inherit;
-  fill: var(--lightgreyIconColor);
+.link svg {
+  transition: color var(--transitionDurationAndFunc);
+  color: var(--lightgreyIconColor);
 }
 
 .delete {
@@ -27,8 +24,8 @@
   background-color: var(--redBtnColor);
 }
 
-.delete > svg {
-  fill: var(--redIconColor);
+.delete svg {
+  color: var(--redIconColor);
 }
 
 .edit {
@@ -36,8 +33,8 @@
   background-color: var(--blueBtnColor);
 }
 
-.edit > svg {
-  fill: var(--blueIconColor);
+.edit svg {
+  color: var(--blueIconColor);
 }
 
 .phone {
@@ -45,8 +42,8 @@
   background-color: var(--greenBtnColor);
 }
 
-.phone > svg {
-  fill: var(--greenIconColor);
+.phone svg {
+  color: var(--greenIconColor);
 }
 
 .message {
@@ -54,8 +51,17 @@
   background-color: var(--yellowBtnColor);
 }
 
-.message > svg {
-  fill: var(--yellowIconColor);
+.message svg {
+  color: var(--yellowIconColor);
+}
+
+.favorite {
+  composes: link;
+  background-color: var(--yellowBtnColor);
+}
+
+.favorite svg {
+  color: var(--yellowIconColor);
 }
 
 .chat {
@@ -63,8 +69,8 @@
   background-color: var(--blueBtnColor);
 }
 
-.chat > svg {
-  fill: var(--blueIconColor);
+.chat svg {
+  color: var(--blueIconColor);
 }
 
 .logout {
@@ -72,17 +78,35 @@
   background-color: var(--redBtnColor);
 }
 
-.logout > svg {
-  fill: var(--redIconColor);
+.logout svg {
+  color: var(--redIconColor);
 }
 
-.delete-transparent {
+.accept {
+  composes: link;
+  background-color: var(--greenBtnColor);
+}
+
+.accept svg {
+  color: var(--greenIconColor);
+}
+
+.cancel {
+  composes: link;
+  background-color: var(--redBtnColor);
+}
+
+.cancel svg {
+  color: var(--redIconColor);
+}
+
+.deleteTransparent {
   composes: link;
   background-color: transparent;
 }
 
-.deleteTransparent > svg {
-  fill: var(--redIconColor);
+.deleteTransparent svg {
+  color: var(--redIconColor);
 }
 
 .toggleShowPassword {
@@ -90,15 +114,15 @@
   background-color: transparent;
 }
 
-.toggle-show-password > svg {
-  fill: var(--primaryColor);
+.toggleShowPassword svg {
+  color: var(--primaryColor);
 }
 
-.clear-filter {
+.clearFilter {
   composes: link;
-  background-color: transparent;
+  color: transparent;
 }
 
-.clearFilter > svg {
-  fill: var(--whiteColor);
+.clearFilter svg {
+  color: var(--whiteColor);
 }

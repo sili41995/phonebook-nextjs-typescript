@@ -1,42 +1,30 @@
 .button {
   display: flex;
+  gap: var(--primaryGap);
+  flex-shrink: 0;
   justify-content: center;
   align-items: center;
-  gap: var(--primaryGap);
+  width: 44px;
+  height: 36px;
   padding: var(--spacing);
-  border-radius: var(--secondaryBorderRadius);
+  background-color: var(--lightgreyBtnColor);
   border-color: transparent;
+  border-radius: var(--secondaryBorderRadius);
   color: var(--primaryFontColor);
-  font-family: var(--font-inter);
+  font-family: Inter;
   font-size: var(--primaryFontSize);
   font-weight: var(--primaryFontWeight);
-  text-decoration: none;
   transition: box-shadow var(--transitionDurationAndFunc);
-  z-index: 10;
-  background-color: var(--lightgreyBtnColor);
 }
 
-.button > svg {
-  color: var(--lightgreyIconColor);
-  transition: var(--transitionDurationAndFunc);
-}
-
-.buttonWithShadow {
-  composes: button;
-}
-
-.buttonWithShadow:hover,
-.buttonWithShadow:focus {
+.button:hover,
+.button:focus {
   box-shadow: var(--primaryShadow);
 }
 
-.hoveredIcon {
-  composes: button;
-}
-
-.hoveredIcon > svg:hover,
-.hoveredIcon > svg:focus {
-  color: var(--secondaryColor);
+.button svg {
+  transition: color var(--transitionDurationAndFunc);
+  color: var(--lightgreyIconColor);
 }
 
 .delete {
@@ -44,7 +32,7 @@
   background-color: var(--redBtnColor);
 }
 
-.delete > svg {
+.delete svg {
   color: var(--redIconColor);
 }
 
@@ -53,7 +41,7 @@
   background-color: var(--blueBtnColor);
 }
 
-.edit > svg {
+.edit svg {
   color: var(--blueIconColor);
 }
 
@@ -62,7 +50,7 @@
   background-color: var(--greenBtnColor);
 }
 
-.phone > svg {
+.phone svg {
   color: var(--greenIconColor);
 }
 
@@ -71,7 +59,16 @@
   background-color: var(--yellowBtnColor);
 }
 
-.message > svg {
+.message svg {
+  color: var(--yellowIconColor);
+}
+
+.favorite {
+  composes: button;
+  background-color: var(--yellowBtnColor);
+}
+
+.favorite svg {
   color: var(--yellowIconColor);
 }
 
@@ -80,12 +77,14 @@
   background-color: var(--blueBtnColor);
 }
 
-.chat > svg {
+.chat svg {
   color: var(--blueIconColor);
 }
 
 .logout {
   composes: button;
+  height: auto;
+  width: auto;
   background-color: var(--redBtnColor);
 }
 
@@ -98,7 +97,7 @@
   background-color: var(--greenBtnColor);
 }
 
-.accept > svg {
+.accept svg {
   color: var(--greenIconColor);
 }
 
@@ -107,7 +106,7 @@
   background-color: var(--redBtnColor);
 }
 
-.cancel > svg {
+.cancel svg {
   color: var(--redIconColor);
 }
 
@@ -116,7 +115,7 @@
   background-color: transparent;
 }
 
-.deleteTransparent > svg {
+.deleteTransparent svg {
   color: var(--redIconColor);
 }
 
@@ -125,15 +124,30 @@
   background-color: transparent;
 }
 
-.toggleShowPassword > svg {
+.toggleShowPassword svg {
   color: var(--primaryColor);
 }
 
 .clearFilter {
   composes: button;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: transparent;
   background-color: transparent;
 }
 
-.clearFilter > svg {
+.clearFilter:hover,
+.clearFilter:focus {
+  box-shadow: none;
+}
+
+.clearFilter svg {
   color: var(--whiteColor);
+}
+
+.filter {
+  composes: button;
+  height: auto;
 }

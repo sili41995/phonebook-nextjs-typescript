@@ -1,25 +1,17 @@
-import AuthForm from '@/components/AuthForm';
-import EditForm from '@/components/EditForm/EditForm';
-import ErrorMessage from '@/components/ErrorMessage';
-import { IContact } from '@/types/types';
-import getContact from '@/utils/getContact';
-import getCurrentUser from '@/utils/getCurrentUser';
+import EditContactForm from '@/components/EditContactForm';
+import GoBackLink from '@/components/GoBackLink';
+import ModalForm from '@/components/ModalForm';
+import { IParams } from '@/types/types';
 import React from 'react';
+import { auth } from '../../../../../auth';
+import contactsServiceApi from '@/service/contactsServiceApi';
 
-const page = async ({ params }: { params: { id: string } }) => {
-  const error = await getCurrentUser();
+const EditPage = async ({ params }: IParams) => {
+  const { user }: any = await auth();
+  contactsServiceApi.token = user.token;
+  const contact = await contactsServiceApi.fetchContactById(params.id);
 
-  if (error) {
-    return <ErrorMessage />;
-  }
-
-  const contact = await getContact(params.id);
-
-  return (
-    <AuthForm>
-      <EditForm contact={contact as IContact} />
-    </AuthForm>
-  );
+  return <EditContactForm contact={contact} />;
 };
 
-export default page;
+export default EditPage;

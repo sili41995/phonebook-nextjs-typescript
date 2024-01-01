@@ -1,0 +1,22 @@
+.form {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  color: var(--greyColor);
+}
+
+.container {
+  display: flex;
+  gap: var(--spacing);
+}
+
+.form label svg {
+  transition: color var(--transitionDurationAndFunc);
+  cursor: pointer;
+}
+
+.form label svg:hover,
+.form label svg:focus {
+  color: var(--blueIconColor);
+}

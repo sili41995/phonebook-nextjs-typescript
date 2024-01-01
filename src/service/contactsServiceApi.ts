@@ -1,18 +1,45 @@
-import { IAuthResponse, IContact, ICredentials, Token } from '@/types/types';
+import {
+  IAvatar,
+  IContact,
+  IContactStatus,
+  ICredentials,
+  ICurrentUser,
+  IFetchContactsRes,
+  ISignInRes,
+  ISignUpRes,
+  IUpdContactStatusProps,
+  IUpdateContactProps,
+} from '@/types/types';
 
 class ContactsServiceApi {
-  private BASE_URL = 'https://connections-api.herokuapp.com';
-  private TOKEN: Token = null;
+  private BASE_URL = 'https://contacts-rest-api-dvg7.onrender.com/api';
+  private TOKEN: string | null = null;
 
-  get token(): Token {
+  get token() {
     return this.TOKEN;
   }
 
-  set token(newToken: string) {
+  set token(newToken) {
     this.TOKEN = newToken;
   }
 
-  registerUser(data: ICredentials): Promise<IAuthResponse> {
+  signUpUser(data: FormData): Promise<ISignUpRes> {
+    const options = {
+      method: 'POST',
+      body: data,
+    };
+
+    return fetch(`${this.BASE_URL}/auth/signup`, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          throw Error(data.message);
+        }
+        return data;
+      });
+  }
+
+  signInUser(data: ICredentials): Promise<ISignInRes> {
     const options = {
       method: 'POST',
       body: JSON.stringify(data),
@@ -21,40 +48,38 @@ class ContactsServiceApi {
       },
     };
 
-    return fetch(`${this.BASE_URL}/users/signup`, options).then((response) =>
-      response.json()
-    );
+    return fetch(`${this.BASE_URL}/auth/signin`, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          throw Error(data.message);
+        }
+        return data;
+      });
   }
 
-  loginUser(data: ICredentials): Promise<IAuthResponse> {
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    };
-
-    return fetch(`${this.BASE_URL}/users/login`, options).then((response) =>
-      response.json()
-    );
-  }
-
-  logoutUser(): Promise<{ message?: string }> {
+  signOutUser(): Promise<void> {
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
         Authorization: `Bearer ${this.TOKEN}`,
       },
     };
 
-    return fetch(`${this.BASE_URL}/users/logout`, options).then((response) =>
-      response.json()
-    );
+    return fetch(`${this.BASE_URL}/auth/signout`, options)
+      .then((response) => {
+        if (!response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        if (data?.message) {
+          throw Error(data.message);
+        }
+      });
   }
 
-  refreshUser(): Promise<IAuthResponse> {
+  refreshUser(): Promise<ICurrentUser> {
     const options = {
       method: 'GET',
       headers: {
@@ -63,12 +88,36 @@ class ContactsServiceApi {
       },
     };
 
-    return fetch(`${this.BASE_URL}/users/current`, options).then((response) =>
-      response.json()
-    );
+    return fetch(`${this.BASE_URL}/auth/current`, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          throw Error(data.message);
+        }
+        return data;
+      });
   }
 
-  fetchContacts(): Promise<IContact[]> {
+  updateUserAvatar(data: FormData): Promise<IAvatar> {
+    const options = {
+      method: 'PATCH',
+      body: data,
+      headers: {
+        Authorization: `Bearer ${this.TOKEN}`,
+      },
+    };
+
+    return fetch(`${this.BASE_URL}/auth/avatars`, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          throw Error(data.message);
+        }
+        return data;
+      });
+  }
+
+  fetchContacts(): Promise<IFetchContactsRes> {
     const options = {
       method: 'GET',
       headers: {
@@ -77,30 +126,52 @@ class ContactsServiceApi {
       },
     };
 
-    return fetch(`${this.BASE_URL}/contacts`, options).then((response) => {
-      if (!response.ok) {
-        throw new Error('Loading contacts failed');
-      }
-      return response.json();
-    });
+    return fetch(`${this.BASE_URL}/contacts?limit=0`, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          throw Error(data.message);
+        }
+        return data;
+      });
   }
 
-  addContact(data: IContact): Promise<IContact> {
+  fetchContactById(id: string): Promise<IContact> {
     const options = {
-      method: 'POST',
-      body: JSON.stringify(data),
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         Authorization: `Bearer ${this.TOKEN}`,
       },
     };
 
-    return fetch(`${this.BASE_URL}/contacts`, options).then((response) => {
-      if (!response.ok) {
-        throw new Error('Adding a contact failed');
-      }
-      return response.json();
-    });
+    return fetch(`${this.BASE_URL}/contacts/${id}`, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          throw Error(data.message);
+        }
+        return data;
+      });
+  }
+
+  addContact(data: FormData): Promise<IContact> {
+    const options = {
+      method: 'POST',
+      body: data,
+      headers: {
+        Authorization: `Bearer ${this.TOKEN}`,
+      },
+    };
+
+    return fetch(`${this.BASE_URL}/contacts`, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          throw Error(data.message);
+        }
+        return data;
+      });
   }
 
   deleteContact(id: string): Promise<IContact> {
@@ -122,13 +193,46 @@ class ContactsServiceApi {
     );
   }
 
-  updateContact({
-    id,
-    data,
-  }: {
-    id: string;
-    data: IContact;
-  }): Promise<IContact> {
+  updateContact({ id, data }: IUpdateContactProps): Promise<IContact> {
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        Authorization: `Bearer ${this.TOKEN}`,
+      },
+    };
+
+    return fetch(`${this.BASE_URL}/contacts/${id}`, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          throw Error(data.message);
+        }
+        return data;
+      });
+  }
+
+  updateContactAvatar(id: string, data: FormData): Promise<IAvatar> {
+    const options = {
+      method: 'PATCH',
+      body: data,
+      headers: {
+        Authorization: `Bearer ${this.TOKEN}`,
+      },
+    };
+
+    return fetch(`${this.BASE_URL}/contacts/${id}/avatar`, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          throw Error(data.message);
+        }
+        return data;
+      });
+  }
+
+  updateContactStatus({ id, data }: IUpdContactStatusProps): Promise<IContact> {
     const options = {
       method: 'PATCH',
       body: JSON.stringify(data),
@@ -138,14 +242,14 @@ class ContactsServiceApi {
       },
     };
 
-    return fetch(`${this.BASE_URL}/contacts/${id}`, options).then(
-      (response) => {
-        if (!response.ok) {
-          throw new Error('Contact update failed');
+    return fetch(`${this.BASE_URL}/contacts/${id}/favorite`, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          throw Error(data.message);
         }
-        return response.json();
-      }
-    );
+        return data;
+      });
   }
 }
 

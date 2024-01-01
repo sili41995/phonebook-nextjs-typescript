@@ -1,0 +1,25 @@
+.title {
+  text-transform: uppercase;
+  color: var(--primaryFontColor);
+  font-family: Inter;
+  font-size: var(--titleFontSize);
+  font-weight: var(--primaryFontWeight);
+}
+
+.message {
+  color: var(--primaryFontColor);
+  font-family: Inter;
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--primaryFontWeight);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--primaryGap);
+}
+
+.image {
+  align-self: center;
+  border-radius: 50%;
+}

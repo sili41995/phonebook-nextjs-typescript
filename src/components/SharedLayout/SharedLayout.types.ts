@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface IProps {
+export interface IStyledProps {
   children: ReactNode;
+  isSignIn: boolean;
 }

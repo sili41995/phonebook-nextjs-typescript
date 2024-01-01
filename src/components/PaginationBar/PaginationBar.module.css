@@ -1,0 +1,44 @@
+.list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navBtn {
+  min-width: 30px;
+  height: 40px;
+  padding: calc(var(--spacing) * 2);
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: var(--primaryBorderRadius);
+  color: var(--primaryFontColor);
+  font-family: Jua;
+  font-size: var(--secondaryFontSize);
+  font-weight: var(--otherFontWeight);
+  transition: box-shadow var(--transitionDurationAndFunc);
+}
+
+.activeNavBtn {
+  composes: navBtn;
+  background-color: var(--otherColor);
+}
+
+.navButton:hover,
+.navButton:focus,
+.navButton:active {
+  outline: none;
+  box-shadow: var(--primaryShadow);
+}
+
+.templateBtn {
+  composes: navBtn;
+  cursor: default;
+}
+
+.templateBtn:hover,
+.templateBtn:focus {
+  box-shadow: none;
+}
+
+.hidden {
+  display: none;
+}

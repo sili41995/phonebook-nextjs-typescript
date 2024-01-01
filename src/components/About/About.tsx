@@ -1,13 +1,15 @@
+import { FC } from 'react';
 import css from './About.module.css';
 
-const About = () => (
+const About: FC = () => (
   <p className={css.message}>
-    This application was created to demonstrate my skills to potential employers
-    skills in working with HTML, CSS, JavaScript, React, React Router, and Redux
-    Toolkit. This application was created without the Axios library to improve
-    work skills with HTTP requests. Because under the hood of the Redux Toolkit
-    is Immer - we can freely &quot;mutate&quot; the state, and Immer will do it
-    correctly for us to update.
+    This app was developed for demonstrate to showcase my skills in HTML, CSS,
+    JavaScript, TypeScript, React, React Router, and Redux Toolkit to future
+    employers. A server application was developed to securely store information.
+    This application was developed without the Axios to improve skills in
+    working with HTTP requests. Because under the hood of the Redux Toolkit is
+    Immer - we can freely &#34;mutate&#34; the state, and Immer will do it right
+    to keep us updated.
   </p>
 );
 

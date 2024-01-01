@@ -1,0 +1,7 @@
+.container {
+  display: flex;
+  flex-shrink: 0;
+  width: 650px;
+  flex-direction: column;
+  gap: var(--primaryGap);
+}

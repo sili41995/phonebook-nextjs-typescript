@@ -1,18 +1,11 @@
-import { IconBtnType } from '@/constants/iconBtnType';
-import { BtnTypes, Position } from '@/types/types';
-import { MouseEvent, ReactElement, ReactNode } from 'react';
+import { MouseEvent, ReactNode } from 'react';
+import { BtnType, IconBtnType } from '@/constants';
 
 export interface IProps {
-  icon?: ReactElement;
-  children?: ReactNode;
-  type?: BtnTypes;
+  icon: ReactNode;
   onBtnClick?: (e: MouseEvent<HTMLButtonElement>) => void;
-  btnType?: IconBtnType;
-  position?: Position;
-  right?: number;
-  width?: number;
-  height?: number;
-  top?: 'center' | number;
-  inputWrap?: boolean;
+  title?: string;
+  type?: BtnType;
   disabled?: boolean;
+  btnType: IconBtnType;
 }

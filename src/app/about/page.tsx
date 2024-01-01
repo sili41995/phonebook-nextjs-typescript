@@ -1,15 +1,10 @@
 import About from '@/components/About';
-import SharedLayout from '@/components/SharedLayout';
-
-export const metadata = {
-  title: 'About',
-  description: 'Info about app',
-};
+import React from 'react';
 
 const AboutPage = () => (
-  <SharedLayout>
+  <div className='container'>
     <About />
-  </SharedLayout>
+  </div>
 );
 
 export default AboutPage;

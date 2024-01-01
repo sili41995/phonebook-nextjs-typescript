@@ -1,66 +1,41 @@
 .container {
-  width: 400px;
   display: flex;
   flex-direction: column;
   gap: var(--primaryGap);
-  margin-left: auto;
-  margin-right: auto;
+  align-items: center;
+  flex-grow: 1;
 }
 
-.buttonsContainer {
+.btnContainer {
   display: flex;
+  width: 100%;
   justify-content: space-between;
-  height: 40px;
 }
 
-.buttonsContainer div {
+.btnWrap {
+  display: flex;
+  gap: calc(var(--spacing) * 3);
+}
+
+.editLink {
   display: flex;
   gap: var(--primaryGap);
-}
-
-.navLink {
-  width: 50px;
-  background-color: var(--blueBtnColor);
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 36px;
   padding: var(--spacing);
+  background-color: var(--blueBtnColor);
+  border-color: transparent;
   border-radius: var(--secondaryBorderRadius);
+  color: var(--blueIconColor);
+  font-family: Inter;
+  font-size: var(--primaryFontSize);
+  font-weight: var(--primaryFontWeight);
   transition: box-shadow var(--transitionDurationAndFunc);
 }
 
-.navLink:hover,
-.navLink:focus {
+.editLink:hover,
+.editLink:focus {
   box-shadow: var(--primaryShadow);
-}
-
-.navLink svg {
-  width: 100%;
-  height: 100%;
-  fill: var(--blueIconColor);
-}
-
-.avatar {
-  width: 112px;
-  height: auto;
-  margin: 0 auto 8px;
-}
-
-.infoWrap {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.name {
-  color: var(--primaryFontColor);
-  font-family: var(--font-jua);
-  font-size: var(--secondaryFontSize);
-  font-weight: var(--otherFontWeight);
-  text-align: center;
-}
-
-.role {
-  color: var(--secondaryFontColor);
-  font-family: var(--font-inter);
-  font-size: var(--primaryFontSize);
-  font-weight: var(--primaryFontWeight);
-  text-align: center;
 }

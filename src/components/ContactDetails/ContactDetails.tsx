@@ -1,52 +1,81 @@
-import Image from 'next/image';
-import css from './ContactDetails.module.css';
-import getContactInfo from '@/utils/getContactInfo';
-import getAvatar from '@/utils/getAvatar';
-import ContactInfo from '@/components/ContactInfo';
+'use client';
+
+import { MouseEvent } from 'react';
+import {
+  AiFillStar,
+  AiOutlineDelete,
+  AiOutlineEdit,
+  AiOutlineStar,
+} from 'react-icons/ai';
+import ContactProfile from '@/components/ContactProfile';
+import GoBackLink from '@/components/GoBackLink';
+import IconButton from '@/components/IconButton';
+import { IconBtnType, IconSizes, PagePaths } from '@/constants';
+import { makeBlur, toasts } from '@/utils';
+import useDeleteContact from '@/hooks/useDeleteContact';
 import { IProps } from './ContactDetails.types';
-import { CiEdit } from 'react-icons/ci';
+import css from './ContactDetails.module.css';
+import { updateContactStatus } from '@/app/lib/actions';
 import Link from 'next/link';
-import DelBtn from '@/components/DelBtn';
-import { IconBtnType } from '@/constants/iconBtnType';
-import DefaultMessage from '@/components/DefaultMessage';
-import GoBackBtn from '@/components/GoBackBtn';
+import { useSearchParams } from 'next/navigation';
 
 const ContactDetails = ({ contact }: IProps) => {
-  const { name, role, avatar, id } = getContactInfo(contact);
-  const userAvatar = getAvatar.getContactAvatar(avatar);
+  const { setContactId, isLoading: isDeleting } = useDeleteContact();
+  const searchParams = useSearchParams();
+  const contactId = contact._id;
+  const favoriteBtnIcon = contact?.favorite ? (
+    <AiFillStar size={IconSizes.primaryIconSize} />
+  ) : (
+    <AiOutlineStar size={IconSizes.primaryIconSize} />
+  );
+
+  const onDelBtnClick = () => {
+    if (contactId) {
+      setContactId(contactId);
+    }
+  };
+
+  const onFavoriteBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
+    makeBlur(e.currentTarget);
+
+    if (!contactId) return;
+
+    const { favorite } = contact;
+    const data = { favorite: !favorite };
+    updateContactStatus({ data, id: contactId })
+      .then(() => {
+        toasts.successToast('Contact status updated successfully');
+      })
+      .catch((error) => {
+        toasts.errorToast(error);
+      });
+  };
 
   return (
     <div className={css.container}>
-      {id ? (
-        <>
-          <div className={css.buttonsContainer}>
-            <GoBackBtn title='<-- Go Back' />
-            <div>
-              <DelBtn
-                contactId={id as string}
-                width={50}
-                btnType={IconBtnType.delete}
-              />
-              <Link href={`/contacts/${id}/edit`} className={css.navLink}>
-                <CiEdit />
-              </Link>
-            </div>
-          </div>
-          <Image
-            className={css.avatar}
-            src={userAvatar}
-            alt={`${name} photo`}
-            priority
+      <div className={css.btnContainer}>
+        <GoBackLink />
+        <div className={css.btnWrap}>
+          <IconButton
+            btnType={IconBtnType.favorite}
+            onBtnClick={onFavoriteBtnClick}
+            icon={favoriteBtnIcon}
           />
-          <div className={css.infoWrap}>
-            <p className={css.name}>{name}</p>
-            <p className={css.role}>{role}</p>
-          </div>
-          <ContactInfo contact={contact} />
-        </>
-      ) : (
-        <DefaultMessage message='Contact is absent' />
-      )}
+          <IconButton
+            disabled={isDeleting}
+            btnType={IconBtnType.delete}
+            onBtnClick={onDelBtnClick}
+            icon={<AiOutlineDelete size={IconSizes.primaryIconSize} />}
+          />
+          <Link
+            href={`/${PagePaths.contactsPath}/${contactId}/${PagePaths.editPage}?${searchParams}`}
+            className={css.editLink}
+          >
+            <AiOutlineEdit size={IconSizes.primaryIconSize} />
+          </Link>
+        </div>
+      </div>
+      <ContactProfile contact={contact} />
     </div>
   );
 };

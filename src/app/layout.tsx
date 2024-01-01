@@ -1,27 +1,22 @@
+import { ReactNode } from 'react';
 import './globals.css';
+import SharedLayout from '@/components/SharedLayout';
 import Toast from '@/components/Toast';
-import { Metadata } from 'next';
-import { jua } from './ui/fonts';
+import { auth } from '../../auth';
+import { getContacts } from './lib/actions';
 
-export const metadata: Metadata = {
-  title: {
-    template: '%s | Phonebook',
-    default: 'Contacts',
-  },
-  description: 'My Next.js App for for storing contacts',
-};
+const RootLayout = async ({ children }: { children: ReactNode }) => {
+  const session: any = await auth();
+  const isSignIn = Boolean(session);
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
   return (
-    <html lang='en' className={`${jua.variable}`}>
+    <html>
       <body>
-        {children}
+        <SharedLayout isSignIn={isSignIn}>{children}</SharedLayout>
         <Toast />
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

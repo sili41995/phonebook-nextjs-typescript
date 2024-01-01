@@ -1,5 +1,5 @@
-import { IUser } from '@/types/types';
+import { ICurrentUser } from '@/types/types';
 
 export interface IProps {
-  user: IUser;
+  user: ICurrentUser | null;
 }

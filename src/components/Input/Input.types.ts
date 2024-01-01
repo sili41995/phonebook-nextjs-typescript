@@ -1,24 +1,26 @@
-import { IconBtnType } from '@/constants/iconBtnType';
-import { InputType } from '@/constants/inputType';
-import { InputTypes } from '@/types/types';
-import { ChangeEvent, ReactElement, ReactNode } from 'react';
+import { ChangeEvent, ReactElement } from 'react';
+import { FormTypes, InputTypes, IconBtnType } from '@/constants';
 
 export interface IProps {
-  icon?: ReactNode;
-  right?: number;
-  position?: string;
-  fieldIcon?: ReactNode;
-  inputWrap?: boolean;
-  inputType?: InputType;
-  type?: InputTypes;
+  settings?: object;
+  type: InputTypes;
   placeholder?: string;
-  required?: boolean;
+  icon?: ReactElement;
+  formType?: FormTypes;
+  inputWrap?: boolean;
   autoFocus?: boolean;
-  settings?: { [key: string]: any };
-  defaultValue?: string;
-  value?: string;
   btnType?: IconBtnType;
-  children?: ReactNode;
+  btnIcon?: ReactElement | boolean;
+  accept?: string;
+  altElem?: ReactElement;
+  value?: string;
+  defaultValue?: string;
+  checked?: boolean;
+  onBtnClick?: () => void;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  action?: () => void;
+}
+
+export interface IStyledProps {
+  formType?: FormTypes;
+  checked?: boolean;
 }

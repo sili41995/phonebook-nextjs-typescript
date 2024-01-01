@@ -1,0 +1,26 @@
+.navList {
+  display: flex;
+  gap: var(--primaryGap);
+}
+
+.navItem a {
+  display: block;
+  width: 100px;
+  padding: 12px;
+  border: 1px solid var(--whiteColor);
+  border-radius: var(--primaryBorderRadius);
+  color: var(--whiteColor);
+  font-family: Inter;
+  font-size: primaryFontSize;
+  font-weight: var(--primaryFontWeight);
+  text-align: center;
+  transition: color var(--transitionDurationAndFunc),
+    background-color var(--transitionDurationAndFunc);
+}
+
+.navItem a.active,
+.navItem a:hover,
+.navItem a:focus {
+  color: var(--otherColor);
+  background-color: var(--whiteColor);
+}

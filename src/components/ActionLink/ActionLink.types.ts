@@ -1,8 +1,12 @@
-import { IconBtnType } from '@/constants/iconBtnType';
 import { ReactNode } from 'react';
+import { IconBtnType } from '@/constants';
 
 export interface IProps {
   link: string;
-  children: ReactNode;
+  icon: ReactNode;
+  btnType: IconBtnType;
+}
+
+export interface IStyledProps {
   btnType: IconBtnType;
 }

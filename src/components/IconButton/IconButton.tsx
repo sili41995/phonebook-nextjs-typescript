@@ -1,34 +1,32 @@
-import getIconButtonClassName from '@/utils/getIconButtonClassName';
-import css from './IconButton.module.css';
-import getIconButtonStyleProp from '@/utils/getIconButtonStyleProp';
-import { BtnTypes } from '@/types/types';
+import { BtnType, IconBtnType } from '@/constants';
 import { IProps } from './IconButton.types';
+import css from './IconButton.module.css';
 
 const IconButton = ({
   icon,
-  children,
-  type = BtnTypes.button,
   onBtnClick,
-  btnType,
+  title,
+  type = BtnType.button,
   disabled,
-  ...otherProps
+  btnType = IconBtnType.default,
 }: IProps) => {
-  const className = getIconButtonClassName(css, btnType);
-  const styleProp = getIconButtonStyleProp({
-    ...otherProps,
-    btnType,
-    css,
-  });
+  const btnChildren = title ? (
+    <>
+      {icon}
+      {title}
+    </>
+  ) : (
+    icon
+  );
 
   return (
     <button
-      className={`${styleProp.hoverClassName} ${className}`}
-      style={styleProp.styles}
+      className={css[btnType]}
       type={type}
       onClick={onBtnClick}
       disabled={disabled}
     >
-      {children ? children : icon}
+      {btnChildren}
     </button>
   );
 };

@@ -2,7 +2,7 @@ import { ToastContainer } from 'react-toastify';
 
 const Toast = () => (
   <ToastContainer
-    position='top-right'
+    position="top-right"
     autoClose={2000}
     hideProgressBar
     newestOnTop={false}
@@ -11,7 +11,7 @@ const Toast = () => (
     pauseOnFocusLoss
     draggable
     pauseOnHover
-    theme='colored'
+    theme="colored"
   />
 );
 
