@@ -14,14 +14,13 @@ import { signOutAccount } from '@/app/lib/actions';
 
 const PrivateLinks: FC = () => {
   const isContactsPage = usePathname().includes(PagePaths.contactsPath);
-  const addNewContactPath = `/${PagePaths.addNewContactPath}`;
+  const addNewContactPath = `${PagePaths.addNewContactPath}`;
 
   const onLogoutBtnClick = async (e: MouseEvent<HTMLButtonElement>) => {
     makeBlur(e.currentTarget);
 
     try {
       await signOutAccount();
-      toasts.successToast('Goodbye!');
     } catch (error) {
       if (error instanceof Error) {
         toasts.errorToast(error.message);
