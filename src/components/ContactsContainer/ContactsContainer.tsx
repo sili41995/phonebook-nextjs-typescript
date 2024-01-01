@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, FC } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { IProps } from './ContactsContainer.types';
 import { SearchParamsKeys } from '@/constants';
 import {
@@ -12,7 +13,6 @@ import ContactsList from '@/components/ContactsList';
 import PaginationBar from '@/components/PaginationBar';
 import DefaultMessage from '@/components/DefaultMessage';
 import css from './ContactsContainer.module.css';
-import { useSearchParams } from 'next/navigation';
 
 const { FILTER_SP_KEY, SORT_SP_KEY, PAGE_SP_KEY } = SearchParamsKeys;
 

@@ -1,5 +1,3 @@
-'use client';
-
 import { FC } from 'react';
 import { IProps } from './ModalForm.types';
 import { FormTypes } from '@/constants';

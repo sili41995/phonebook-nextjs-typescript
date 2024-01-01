@@ -1,9 +1,9 @@
 'use client';
 
+import { FC, useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from 'react-icons/fa';
+import { FaEnvelope, FaLock } from 'react-icons/fa';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthFormMessage from '@/components/AuthFormMessage';
 import Input from '@/components/Input';
@@ -16,13 +16,13 @@ import {
   IconSizes,
   InputTypes,
   PagePaths,
+  DefaultAvatars,
 } from '@/constants';
-import defaultAvatar from '@/images/default-signin-avatar.png';
-import css from './SignInForm.module.css';
 import { authenticate } from '@/app/lib/actions';
 import { toasts } from '@/utils';
+import css from './SignInForm.module.css';
 
-const SignInForm = () => {
+const SignInForm: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [credentials, setCredentials] = useState<ICredentials | null>(null);
   // const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
@@ -83,7 +83,7 @@ const SignInForm = () => {
       <p className={css.message}>{Messages.greetings}</p>
       <Image
         className={css.image}
-        src={defaultAvatar}
+        src={DefaultAvatars.signInAvatar}
         alt='user avatar'
         width={150}
         height={150}

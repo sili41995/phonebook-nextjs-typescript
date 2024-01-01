@@ -1,7 +1,7 @@
+import { FC } from 'react';
 import About from '@/components/About';
-import React from 'react';
 
-const AboutPage = () => (
+const AboutPage: FC = () => (
   <div className='container'>
     <About />
   </div>

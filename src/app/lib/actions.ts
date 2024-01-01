@@ -1,5 +1,6 @@
 'use server';
 
+import { revalidatePath } from 'next/cache';
 import contactsServiceApi from '@/service/contactsServiceApi';
 import { signIn, signOut } from '@/../auth';
 import {
@@ -11,7 +12,6 @@ import {
   IUpdContactStatusProps,
   IUpdateContactProps,
 } from '@/types/types';
-import { revalidatePath } from 'next/cache';
 import { PagePaths } from '@/constants';
 import { setToken } from '@/utils';
 
@@ -29,7 +29,7 @@ export const signOutAccount = async (): Promise<void> => {
   await signOut();
 };
 
-export const signOutApp = async () => {
+export const signOutApp = async (): Promise<void> => {
   await signOut();
 };
 

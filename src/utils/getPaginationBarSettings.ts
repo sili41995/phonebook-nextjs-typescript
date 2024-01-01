@@ -4,11 +4,23 @@ interface IFuncProps {
   step: number;
 }
 
+interface IFuncRet {
+  isValidPage: boolean;
+  firstPage: number;
+  lastPage: number;
+  isBackNavBtnDisable: boolean;
+  isNextNavBtnDisable: boolean;
+  isShowNextTemplateBtn: boolean;
+  isShowLastPageBtn: boolean;
+  isShowFirstPageBtn: boolean;
+  isShowPrevTemplateBtn: boolean;
+}
+
 const getPaginationBarSettings = ({
   pageNumbers,
   currentPage,
   step,
-}: IFuncProps) => {
+}: IFuncProps): IFuncRet => {
   const firstPage = pageNumbers[0];
   const lastPage = pageNumbers[pageNumbers.length - 1];
   const isFirstPage = currentPage === firstPage;

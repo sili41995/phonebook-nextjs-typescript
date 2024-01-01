@@ -1,16 +1,17 @@
+import { FC } from 'react';
 import { AiFillStar, AiOutlineDelete } from 'react-icons/ai';
+import Image from 'next/image';
 import IconButton from '@/components/IconButton';
 import LinkWithQuery from '@/components/LinkWithQuery';
 import useDeleteContact from '@/hooks/useDeleteContact';
 import { IProps } from './ContactsListItem.types';
-import { IconSizes, PagePaths, Positions } from '@/constants';
+import { IconSizes, PagePaths } from '@/constants';
 import { IconBtnType } from '@/constants';
-import Image from 'next/image';
 import css from './ContactsListItem.module.css';
 
 const { contactsPath } = PagePaths;
 
-const ContactsListItem = ({ contact }: IProps) => {
+const ContactsListItem: FC<IProps> = ({ contact }) => {
   const { avatar, name, _id: id, role, phone, email, favorite } = contact;
   const { isLoading, setContactId } = useDeleteContact();
   const path = `/${contactsPath}/${id}`;

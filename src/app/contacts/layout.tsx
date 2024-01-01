@@ -1,14 +1,11 @@
+import { FC } from 'react';
 import ContactsContainer from '@/components/ContactsContainer';
 import UserProfile from '@/components/UserProfile';
-import contactsServiceApi from '@/service/contactsServiceApi';
-import { auth } from '../../../auth';
-import { ReactNode } from 'react';
-import { redirect } from 'next/navigation';
-import { PagePaths } from '@/constants';
-import { getContacts, getCurrentUser, signOutApp } from '../lib/actions';
 import AuthError from '@/components/AuthError';
+import { getContacts, getCurrentUser } from '@/app/lib/actions';
+import { ILayoutProps } from '@/types/types';
 
-const Layout = async ({ children }: { children: ReactNode }) => {
+const Layout: FC<ILayoutProps> = async ({ children }) => {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {

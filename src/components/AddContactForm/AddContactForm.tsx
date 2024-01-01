@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { InputTypes } from '@/constants';
 import {
   filterEmptyFields,
-  getIsContact,
   getProfileFormData,
   onChangeAvatar,
   toasts,

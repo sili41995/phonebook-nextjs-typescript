@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import LogOutBtn from '../LogOutBtn';
 import css from './AuthError.module.css';
 
-const AuthError = () => {
+const AuthError: FC = () => {
   return (
     <div className={css.container}>
       <p className={css.message}>

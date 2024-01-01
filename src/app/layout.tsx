@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
-import './globals.css';
+import { FC } from 'react';
 import SharedLayout from '@/components/SharedLayout';
 import Toast from '@/components/Toast';
-import { auth } from '../../auth';
-import { getContacts } from './lib/actions';
+import { auth } from '@/../auth';
+import { ILayoutProps } from '@/types/types';
+import './globals.css';
 
-const RootLayout = async ({ children }: { children: ReactNode }) => {
+const RootLayout: FC<ILayoutProps> = async ({ children }) => {
   const session = await auth();
   const isSignIn = Boolean(session);
 

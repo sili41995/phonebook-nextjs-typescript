@@ -1,5 +1,3 @@
-'use client';
-
 import { FC } from 'react';
 import { IProps } from './Input.types';
 import css from './Input.module.css';

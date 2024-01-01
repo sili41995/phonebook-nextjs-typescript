@@ -1,9 +1,5 @@
-// import { Suspense } from 'react';
-// import { Outlet, useLocation } from 'react-router-dom';
-import NavigationBar from '@/components/NavigationBar';
-// import Loader from 'components/Loader';
-// import { getIsContactsPage, setAuthPageBackgroundColor } from 'utils';
 import { FC } from 'react';
+import NavigationBar from '@/components/NavigationBar';
 import { IStyledProps } from './SharedLayout.types';
 import css from './SharedLayout.module.css';
 

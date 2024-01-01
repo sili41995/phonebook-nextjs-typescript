@@ -1,9 +1,10 @@
-import { PagePaths } from '@/constants';
 import Link from 'next/link';
-import css from './PublicLinks.module.css';
 import { usePathname } from 'next/navigation';
+import { PagePaths } from '@/constants';
+import css from './PublicLinks.module.css';
+import { FC } from 'react';
 
-const PublicLinks = () => {
+const PublicLinks: FC = () => {
   const pathname = usePathname();
   const signUpPagePath = `/${PagePaths.signUpPath}`;
   const signInPagePath = `/${PagePaths.signInPath}`;

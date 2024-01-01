@@ -1,7 +1,9 @@
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-const useSetQueryString = () => {
+type FuncRet = (key: string, value: string) => void;
+
+const useSetQueryString = (): FuncRet => {
   const { replace } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();

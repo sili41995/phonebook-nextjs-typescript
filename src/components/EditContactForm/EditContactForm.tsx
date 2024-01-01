@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import 'react-toastify/dist/ReactToastify.css';
 import { IContact } from '@/types/types';
@@ -8,12 +8,12 @@ import { IProps } from './EditContactForm.types';
 import ContactFormInputs from '@/components/ContactFormInputs';
 import ModalForm from '@/components/ModalForm';
 import AcceptBtn from '@/components/AcceptBtn';
-import { toasts } from '@/utils';
-import css from './EditContactForm.module.css';
 import GoBackLink from '@/components/GoBackLink';
+import { toasts } from '@/utils';
 import { updateContact } from '@/app/lib/actions';
+import css from './EditContactForm.module.css';
 
-const EditContactForm = ({ contact }: IProps) => {
+const EditContactForm: FC<IProps> = ({ contact }) => {
   const [checked, setChecked] = useState<boolean>(
     () => contact.favorite as boolean
   );

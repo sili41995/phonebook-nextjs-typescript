@@ -2,15 +2,15 @@
 
 import { FC, MouseEvent } from 'react';
 import { SlLogout, SlPlus } from 'react-icons/sl';
+import { usePathname } from 'next/navigation';
 import 'react-toastify/dist/ReactToastify.css';
 import IconButton from '@/components/IconButton';
 import Filter from '@/components/Filter';
 import LinkWithQuery from '@/components/LinkWithQuery';
 import { makeBlur, toasts } from '@/utils';
 import { IconBtnType, IconSizes, PagePaths } from '@/constants';
-import css from './PrivateLinks.module.css';
-import { redirect, usePathname } from 'next/navigation';
 import { signOutAccount } from '@/app/lib/actions';
+import css from './PrivateLinks.module.css';
 
 const PrivateLinks: FC = () => {
   const isContactsPage = usePathname().includes(PagePaths.contactsPath);

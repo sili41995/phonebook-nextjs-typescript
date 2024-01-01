@@ -3,8 +3,8 @@ import { SlPhone, SlEvent, SlLocationPin } from 'react-icons/sl';
 import { IconSizes } from '@/constants';
 import { IProps } from './UserProfile.types';
 import ImageContainer from '@/components/ImageContainer';
-import css from './UserProfile.module.css';
 import { updateUserAvatar } from '@/app/lib/actions';
+import css from './UserProfile.module.css';
 
 const UserProfile: FC<IProps> = ({ user }) => {
   if (!user) return <div className={css.container}></div>;

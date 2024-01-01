@@ -1,6 +1,7 @@
 'use client';
 
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import {
   FaUser,
@@ -30,11 +31,10 @@ import {
   Messages,
   DefaultAvatars,
 } from '@/constants';
-import css from './SignUpForm.module.css';
 import { signUp } from '@/app/lib/actions';
-import { useRouter } from 'next/navigation';
+import css from './SignUpForm.module.css';
 
-const SignUpForm = () => {
+const SignUpForm: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [userAvatar, setUserAvatar] = useState<FileList | null>(null);
   const {

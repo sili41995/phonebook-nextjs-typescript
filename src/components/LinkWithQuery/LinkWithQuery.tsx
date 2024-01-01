@@ -1,10 +1,11 @@
 'use client';
 
+import { FC } from 'react';
 import Link from 'next/link';
-import { IProps } from './LinkWithQuery.types';
 import { useSearchParams } from 'next/navigation';
+import { IProps } from './LinkWithQuery.types';
 
-const LinkWithQuery = ({ children, href }: IProps) => {
+const LinkWithQuery: FC<IProps> = ({ children, href }) => {
   const searchParams = useSearchParams();
   const path = `${href}?${searchParams}`;
 

@@ -1,14 +1,14 @@
 'use client';
 
-import { getProfileFormData, onChangeAvatar, toasts } from '@/utils';
 import { ChangeEvent, FC, useRef, useState } from 'react';
-import 'react-toastify/dist/ReactToastify.css';
-import { IProps } from './ImageContainer.types';
-import css from './ImageContainer.module.css';
 import { SubmitHandler } from 'react-hook-form';
+import 'react-toastify/dist/ReactToastify.css';
+import { getProfileFormData, onChangeAvatar, toasts } from '@/utils';
+import { IProps } from './ImageContainer.types';
 import { IAvatar } from '@/types/types';
-import ChangeAvatarForm from '../ChangeAvatarForm';
+import ChangeAvatarForm from '@/components/ChangeAvatarForm';
 import { Messages } from '@/constants';
+import css from './ImageContainer.module.css';
 
 const ImageContainer: FC<IProps> = ({ avatar, imgSize, updateAvatarFunc }) => {
   const [previewAvatar, setPreviewAvatar] = useState<FileList | null>(null);

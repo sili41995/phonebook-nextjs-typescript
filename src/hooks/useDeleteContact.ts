@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { toasts } from '@/utils';
 import { PagePaths } from '@/constants/index';
 import { deleteContact } from '@/app/lib/actions';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-const useDeleteContact = () => {
+interface IFuncRet {
+  setContactId: Dispatch<SetStateAction<string | null>>;
+  isLoading: boolean;
+}
+
+const useDeleteContact = (): IFuncRet => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [contactId, setContactId] = useState<string | null>(null);
   const pathname = usePathname();

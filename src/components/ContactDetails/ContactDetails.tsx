@@ -1,6 +1,8 @@
 'use client';
 
-import { MouseEvent } from 'react';
+import { FC, MouseEvent } from 'react';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import {
   AiFillStar,
   AiOutlineDelete,
@@ -14,12 +16,10 @@ import { IconBtnType, IconSizes, PagePaths } from '@/constants';
 import { makeBlur, toasts } from '@/utils';
 import useDeleteContact from '@/hooks/useDeleteContact';
 import { IProps } from './ContactDetails.types';
-import css from './ContactDetails.module.css';
 import { updateContactStatus } from '@/app/lib/actions';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import css from './ContactDetails.module.css';
 
-const ContactDetails = ({ contact }: IProps) => {
+const ContactDetails: FC<IProps> = ({ contact }) => {
   const { setContactId, isLoading: isDeleting } = useDeleteContact();
   const searchParams = useSearchParams();
   const contactId = contact._id;

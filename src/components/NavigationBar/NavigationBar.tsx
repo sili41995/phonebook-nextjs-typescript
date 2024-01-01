@@ -1,13 +1,13 @@
 'use client';
 
-import PublicLinks from '@/components/PublicLinks';
-import { PagePaths } from '@/constants';
-import css from './NavigationBar.module.css';
-import Link from 'next/link';
 import { FC } from 'react';
-import { IProps } from './NavigationBar.types';
-import PrivateLinks from '@/components/PrivateLinks';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import PublicLinks from '@/components/PublicLinks';
+import PrivateLinks from '@/components/PrivateLinks';
+import { PagePaths } from '@/constants';
+import { IProps } from './NavigationBar.types';
+import css from './NavigationBar.module.css';
 
 const NavigationBar: FC<IProps> = ({ isSignIn }) => {
   const pathname = usePathname();

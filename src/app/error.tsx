@@ -1,17 +1,13 @@
 'use client';
 
+import { FC } from 'react';
 import ErrorMessage from '@/components/ErrorMessage';
+import { IErrorProps } from '@/types/types';
 
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) {
-  return (
-    <div className='container'>
-      <ErrorMessage reset={reset} message={error.message} />
-    </div>
-  );
-}
+const Error: FC<IErrorProps> = ({ error, reset }) => (
+  <div className='container'>
+    <ErrorMessage reset={reset} message={error.message} />
+  </div>
+);
+
+export default Error;

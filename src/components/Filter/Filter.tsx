@@ -1,4 +1,5 @@
 import { ChangeEvent, FC, MouseEvent, useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import {
   FaSortAlphaDown,
   FaSortAlphaUp,
@@ -9,7 +10,6 @@ import { makeBlur } from '@/utils';
 import IconButton from '@/components/IconButton';
 import Input from '@/components/Input';
 import {
-  BtnType,
   FormTypes,
   IconBtnType,
   IconSizes,
@@ -17,10 +17,8 @@ import {
   SearchParamsKeys,
   SortTypes,
 } from '@/constants';
-import css from './Filter.module.css';
-import { useSearchParams } from 'next/navigation';
 import useSetQueryString from '@/hooks/useSetQueryString';
-import { useDebouncedCallback } from 'use-debounce';
+import css from './Filter.module.css';
 
 const { FILTER_SP_KEY, SORT_SP_KEY } = SearchParamsKeys;
 const { DESC_SORT_TYPE, ASC_SORT_TYPE } = SortTypes;

@@ -1,3 +1,14 @@
+import { ReactNode } from 'react';
+
+export interface IErrorProps {
+  error: Error & { digest?: string };
+  reset: () => void;
+}
+
+export interface ILayoutProps {
+  children: ReactNode;
+}
+
 export type ProfileEntry = [string, string | boolean | FileList];
 
 export interface IProfile {

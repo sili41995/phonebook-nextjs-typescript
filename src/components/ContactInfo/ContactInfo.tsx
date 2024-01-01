@@ -1,8 +1,8 @@
+import { FC } from 'react';
 import { FaEnvelope, FaPhoneAlt, FaRegComment } from 'react-icons/fa';
 import ActionLink from '@/components/ActionLink';
 import { IconBtnType, IconSizes } from '@/constants';
 import { getPhoneNumber, getTelegramLink } from '@/utils';
-import { FC } from 'react';
 import css from './ContactInfo.module.css';
 import { IProps } from './ContactInfo.types';
 

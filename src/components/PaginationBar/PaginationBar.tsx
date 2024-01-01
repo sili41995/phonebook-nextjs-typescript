@@ -1,12 +1,12 @@
 'use client';
 
 import { FC, MouseEvent } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { IProps } from './PaginationBar.types';
 import { getPageNumbers, getPaginationBarSettings, makeBlur } from '@/utils';
 import { SearchParamsKeys } from '@/constants';
-import { useSearchParams } from 'next/navigation';
-import css from './PaginationBar.module.css';
 import useSetQueryString from '@/hooks/useSetQueryString';
+import css from './PaginationBar.module.css';
 
 const { PAGE_SP_KEY } = SearchParamsKeys;
 

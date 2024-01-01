@@ -1,8 +1,6 @@
+import { FC } from 'react';
 import AddContactForm from '@/components/AddContactForm';
-import React from 'react';
 
-const page = () => {
-  return <AddContactForm />;
-};
+const AddContactPage: FC = () => <AddContactForm />;
 
-export default page;
+export default AddContactPage;

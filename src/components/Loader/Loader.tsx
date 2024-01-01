@@ -1,8 +1,9 @@
 'use client';
 
+import { FC } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 
-const Loader = () => (
+const Loader: FC = () => (
   <ThreeDots
     height='80'
     width='80'

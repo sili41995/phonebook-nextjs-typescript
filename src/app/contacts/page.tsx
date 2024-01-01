@@ -1,3 +1,3 @@
-const ContactsPage = () => {};
+const ContactsPage = (): void => {};
 
 export default ContactsPage;

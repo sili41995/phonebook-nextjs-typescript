@@ -1,15 +1,16 @@
+import { FC } from 'react';
 import { BtnType, IconBtnType } from '@/constants';
 import { IProps } from './IconButton.types';
 import css from './IconButton.module.css';
 
-const IconButton = ({
+const IconButton: FC<IProps> = ({
   icon,
   onBtnClick,
   title,
   type = BtnType.button,
   disabled,
   btnType = IconBtnType.default,
-}: IProps) => {
+}) => {
   const btnChildren = title ? (
     <>
       {icon}
