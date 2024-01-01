@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 import { IProps } from './ContactProfile.types';
-import ImageContainer from '../ImageContainer';
+import ImageContainer from '@/components/ImageContainer';
 import ContactInfo from '@/components/ContactInfo';
 import { updateContactAvatar } from '@/app/lib/actions';
 import css from './ContactProfile.module.css';

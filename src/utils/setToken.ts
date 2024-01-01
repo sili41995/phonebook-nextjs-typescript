@@ -1,5 +1,5 @@
 import { Session } from 'next-auth/types';
-import { auth } from '../../auth';
+import { auth } from '@/../auth';
 import contactsServiceApi from '@/service/contactsServiceApi';
 
 const setToken = async (): Promise<void> => {

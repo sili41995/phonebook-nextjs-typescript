@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import LogOutBtn from '../LogOutBtn';
+import LogOutBtn from '@/components/LogOutBtn';
 import css from './AuthError.module.css';
 
 const AuthError: FC = () => {
