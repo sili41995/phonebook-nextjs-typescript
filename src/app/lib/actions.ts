@@ -51,6 +51,15 @@ export const getContacts = async () => {
   return response;
 };
 
+export const addContact = async (data: FormData) => {
+  const { user }: any = await auth();
+  contactsServiceApi.token = user.token;
+  const response = await contactsServiceApi.addContact(data);
+  revalidatePath(`/${PagePaths.contactsPath}`);
+
+  return response;
+};
+
 export const deleteContact = async (id: string): Promise<IContact> => {
   const { user }: any = await auth();
   contactsServiceApi.token = user.token;
