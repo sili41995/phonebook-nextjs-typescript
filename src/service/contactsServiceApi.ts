@@ -13,7 +13,7 @@ import {
 
 class ContactsServiceApi {
   private BASE_URL = 'https://contacts-rest-api-dvg7.onrender.com/api';
-  private TOKEN = null;
+  private TOKEN: string | null = null;
 
   get token() {
     return this.TOKEN;
