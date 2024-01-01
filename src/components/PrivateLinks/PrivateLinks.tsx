@@ -11,11 +11,9 @@ import { IconBtnType, IconSizes, PagePaths } from '@/constants';
 import css from './PrivateLinks.module.css';
 import { redirect, usePathname } from 'next/navigation';
 import { signOutAccount } from '@/app/lib/actions';
-import { IProps } from './PrivateLinks.types';
 
-const PrivateLinks: FC<IProps> = ({ contactsCount }) => {
+const PrivateLinks: FC = () => {
   const isContactsPage = usePathname().includes(PagePaths.contactsPath);
-  const showFilter = isContactsPage && Boolean(contactsCount);
   const addNewContactPath = `/${PagePaths.addNewContactPath}`;
 
   const onLogoutBtnClick = async (e: MouseEvent<HTMLButtonElement>) => {
@@ -24,7 +22,6 @@ const PrivateLinks: FC<IProps> = ({ contactsCount }) => {
     try {
       await signOutAccount();
       toasts.successToast('Goodbye!');
-      redirect(PagePaths.homePath);
     } catch (error) {
       if (error instanceof Error) {
         toasts.errorToast(error.message);
@@ -34,7 +31,7 @@ const PrivateLinks: FC<IProps> = ({ contactsCount }) => {
 
   return (
     <div className={css.container}>
-      {showFilter && <Filter />}
+      {isContactsPage && <Filter />}
       <LinkWithQuery href={addNewContactPath}>
         <SlPlus />
         <span>New Contact</span>

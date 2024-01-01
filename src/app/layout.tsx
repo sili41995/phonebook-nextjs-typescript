@@ -8,14 +8,11 @@ import { getContacts } from './lib/actions';
 const RootLayout = async ({ children }: { children: ReactNode }) => {
   const session: any = await auth();
   const isSignIn = Boolean(session);
-  const { count: contactsCount } = await getContacts();
 
   return (
     <html>
       <body>
-        <SharedLayout isSignIn={isSignIn} contactsCount={contactsCount}>
-          {children}
-        </SharedLayout>
+        <SharedLayout isSignIn={isSignIn}>{children}</SharedLayout>
         <Toast />
       </body>
     </html>

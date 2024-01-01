@@ -5,7 +5,7 @@ import { auth } from '../../../auth';
 import { ReactNode } from 'react';
 import { redirect } from 'next/navigation';
 import { PagePaths } from '@/constants';
-import { getContacts, getCurrentUser, signOutApp } from '../lib/actions';
+import { getContacts, getCurrentUser } from '../lib/actions';
 
 const Layout = async ({ children }: { children: ReactNode }) => {
   const currentUser = await getCurrentUser();

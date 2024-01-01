@@ -27,10 +27,6 @@ export const signOutAccount = async (): Promise<void> => {
   await signOut();
 };
 
-export const signOutApp = async (): Promise<void> => {
-  await signOut();
-};
-
 export const getCurrentUser = async () => {
   const { user }: any = await auth();
   contactsServiceApi.token = user.token;
