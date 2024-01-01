@@ -3,6 +3,8 @@ import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import contactsServiceApi from './src/service/contactsServiceApi';
 import { ICredentials } from '@/types/types';
+import ISession from './src/types/next-auth';
+import { Session } from 'next-auth/types';
 
 async function getUser(data: any) {
   try {
@@ -36,7 +38,7 @@ export const { auth, signIn, signOut } = NextAuth({
       return { ...token, ...user };
     },
     async session({ session, user, token }) {
-      session.user = token;
+      session.user = token as any;
       return session;
     },
   },

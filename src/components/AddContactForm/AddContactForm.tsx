@@ -19,6 +19,7 @@ import GoBackLink from '@/components/GoBackLink';
 import AcceptBtn from '@/components/AcceptBtn';
 import { DefaultAvatars } from '@/constants';
 import css from './AddContactForm.module.css';
+import { addContact } from '@/app/lib/actions';
 
 const AddContactForm: FC = () => {
   const [contactAvatar, setContactAvatar] = useState<FileList | null>(null);
@@ -41,31 +42,35 @@ const AddContactForm: FC = () => {
     onChangeAvatar({ e, ref: contactAvatarRef });
   };
 
-  const handleFormSubmit: SubmitHandler<IContact> = (data) => {
-    //   const newContactName = data.name;
-    //   const isContact = getIsContact({ newContactName, contacts });
-    //   if (isContact) {
-    //     toasts.warnToast(`${newContactName} is already in contacts`);
-    //     return;
-    //   }
-    //   if (contactAvatar) {
-    //     data.avatar = contactAvatar;
-    // };
-    //   const contactData = filterEmptyFields<IContact>(data);
-    //   const contactFormData = getProfileFormData(contactData);
-    // setIsLoading(true);
-    //   dispatch(addContact(contactFormData))
-    //     .unwrap()
-    //     .then(() => {
-    //       toasts.successToast('Contact added successfully');
-    //       if (contactAvatarRef.current) {
-    //         contactAvatarRef.current.src = image;
-    //       }
-    //       reset();
-    //     })
-    //     .catch((error) => {
-    //       toasts.errorToast(error);
-    //     }).finally(()=>{setIsLoading(false)})
+  const handleFormSubmit: SubmitHandler<IContact> = async (data) => {
+    if (contactAvatar) {
+      data.avatar = contactAvatar;
+    }
+
+    const contactData = filterEmptyFields<IContact>(data);
+    const contactFormData = getProfileFormData(contactData);
+
+    try {
+      setIsLoading(true);
+      await addContact(contactFormData);
+      toasts.successToast('Contact added successfully');
+
+      if (contactAvatarRef.current) {
+        contactAvatarRef.current.src = DefaultAvatars.signUpAvatar;
+      }
+
+      if (checked) {
+        setChecked(false);
+      }
+
+      reset();
+    } catch (error) {
+      if (error instanceof Error) {
+        toasts.errorToast(error.message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const onCheckboxChange = () => {
