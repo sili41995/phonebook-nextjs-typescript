@@ -6,7 +6,7 @@ import { auth } from '../../auth';
 import { getContacts } from './lib/actions';
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
-  const session: any = await auth();
+  const session = await auth();
   const isSignIn = Boolean(session);
 
   return (

@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  gap: var(--primaryGap);
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.message {
+  color: var(--primaryFontColor);
+  font-family: var(--font-jua);
+  font-size: var(--titleFontSize);
+  font-weight: var(--otherFontWeight);
+  text-align: center;
+}
+
+.container form {
+  text-align: center;
+}

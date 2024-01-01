@@ -36,10 +36,9 @@ export const signOutAccount = async (): Promise<void> => {
 
 export const signOutApp = async () => {
   await signOut();
-  revalidatePath(`/${PagePaths.contactsPath}`);
 };
 
-export const getCurrentUser = async (): Promise<ICurrentUser> => {
+export const getCurrentUser = async (): Promise<ICurrentUser | null> => {
   const { user } = (await auth()) as Session;
   contactsServiceApi.token = user.token;
   const response = await contactsServiceApi.refreshUser();

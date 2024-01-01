@@ -1,0 +1,24 @@
+.signOutBtn {
+  height: 48px;
+  text-decoration: none;
+  padding: 8px 12px;
+  background-color: var(--redBtnColor);
+  border-radius: var(--primaryBorderRadius);
+  outline: none;
+  border-color: transparent;
+  transition: background-color var(--transitionDurationAndFunc);
+}
+
+.signOutBtn p {
+  color: var(--redIconColor);
+}
+
+.signOutBtn:hover,
+.signOutBtn:focus {
+  background-color: var(--redIconColor);
+}
+
+.signOutBtn:hover p,
+.signOutBtn:focus p {
+  color: var(--whiteColor);
+}

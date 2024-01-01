@@ -6,9 +6,15 @@ import { ReactNode } from 'react';
 import { redirect } from 'next/navigation';
 import { PagePaths } from '@/constants';
 import { getContacts, getCurrentUser, signOutApp } from '../lib/actions';
+import AuthError from '@/components/AuthError';
 
 const Layout = async ({ children }: { children: ReactNode }) => {
   const currentUser = await getCurrentUser();
+
+  if (!currentUser) {
+    return <AuthError />;
+  }
+
   const { contacts, count } = await getContacts();
 
   return (

@@ -79,7 +79,7 @@ class ContactsServiceApi {
       });
   }
 
-  refreshUser(): Promise<ICurrentUser> {
+  refreshUser(): Promise<ICurrentUser | null> {
     const options = {
       method: 'GET',
       headers: {
@@ -92,7 +92,7 @@ class ContactsServiceApi {
       .then((response) => response.json())
       .then((data) => {
         if (data.message) {
-          throw Error(data.message);
+          return null;
         }
         return data;
       });
