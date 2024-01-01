@@ -14,6 +14,7 @@ import {
 import { revalidatePath } from 'next/cache';
 import { PagePaths } from '@/constants';
 import { Session } from 'next-auth/types';
+import { redirect } from 'next/navigation';
 
 export const authenticate = async (data: ICredentials): Promise<void> => {
   await signIn('credentials', data);
@@ -31,6 +32,11 @@ export const signOutAccount = async (): Promise<void> => {
     await contactsServiceApi.signOutUser();
     await signOut();
   }
+};
+
+export const signOutApp = async () => {
+  await signOut();
+  revalidatePath(`/${PagePaths.contactsPath}`);
 };
 
 export const getCurrentUser = async (): Promise<ICurrentUser> => {
