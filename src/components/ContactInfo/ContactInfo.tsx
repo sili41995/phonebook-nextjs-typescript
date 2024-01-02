@@ -6,6 +6,9 @@ import { getPhoneNumber, getTelegramLink } from '@/utils';
 import css from './ContactInfo.module.css';
 import { IProps } from './ContactInfo.types';
 
+const { phone: phoneBtn, message, chat } = IconBtnType;
+const { otherIconSize } = IconSizes;
+
 const ContactInfo: FC<IProps> = ({ contact }) => {
   const { phone, email, tgUsername, description } = contact;
   const phoneNumber = getPhoneNumber(phone);
@@ -20,8 +23,8 @@ const ContactInfo: FC<IProps> = ({ contact }) => {
         </div>
         <ActionLink
           link={`tel:${phoneNumber}`}
-          btnType={IconBtnType.phone}
-          icon={<FaPhoneAlt size={IconSizes.otherIconSize} />}
+          btnType={phoneBtn}
+          icon={<FaPhoneAlt size={otherIconSize} />}
         />
       </div>
       {email && (
@@ -32,8 +35,8 @@ const ContactInfo: FC<IProps> = ({ contact }) => {
           </div>
           <ActionLink
             link={`mailto:${email}`}
-            btnType={IconBtnType.message}
-            icon={<FaEnvelope size={IconSizes.otherIconSize} />}
+            btnType={message}
+            icon={<FaEnvelope size={otherIconSize} />}
           />
         </div>
       )}
@@ -45,8 +48,8 @@ const ContactInfo: FC<IProps> = ({ contact }) => {
           </div>
           <ActionLink
             link={`tg://resolve?domain=${telegramLink}`}
-            btnType={IconBtnType.chat}
-            icon={<FaRegComment size={IconSizes.otherIconSize} />}
+            btnType={chat}
+            icon={<FaRegComment size={otherIconSize} />}
           />
         </div>
       )}

@@ -6,6 +6,8 @@ import ImageContainer from '@/components/ImageContainer';
 import { updateUserAvatar } from '@/app/lib/actions';
 import css from './UserProfile.module.css';
 
+const { secondaryIconSize } = IconSizes;
+
 const UserProfile: FC<IProps> = ({ user }) => {
   if (!user) return <div className={css.container}></div>;
 
@@ -29,7 +31,7 @@ const UserProfile: FC<IProps> = ({ user }) => {
           {dateOfBirth && (
             <div className={css.contactInfo}>
               <span className={css.iconWrap}>
-                <SlEvent size={IconSizes.secondaryIconSize} />
+                <SlEvent size={secondaryIconSize} />
               </span>
               <p className='trimText'>{dateOfBirth}</p>
             </div>
@@ -37,7 +39,7 @@ const UserProfile: FC<IProps> = ({ user }) => {
           {phone && (
             <div className={css.contactInfo}>
               <span className={css.iconWrap}>
-                <SlPhone size={IconSizes.secondaryIconSize} />
+                <SlPhone size={secondaryIconSize} />
               </span>
               <p className='trimText'>{phone}</p>
             </div>
@@ -45,7 +47,7 @@ const UserProfile: FC<IProps> = ({ user }) => {
           {location && (
             <div className={css.contactInfo}>
               <span className={css.iconWrap}>
-                <SlLocationPin size={IconSizes.secondaryIconSize} />
+                <SlLocationPin size={secondaryIconSize} />
               </span>
               <p className='trimText'>{location}</p>
             </div>

@@ -22,6 +22,8 @@ import css from './Filter.module.css';
 
 const { FILTER_SP_KEY, SORT_SP_KEY } = SearchParamsKeys;
 const { DESC_SORT_TYPE, ASC_SORT_TYPE } = SortTypes;
+const { filter: filterType, clearFilter } = IconBtnType;
+const { primaryIconSize, otherIconSize } = IconSizes;
 
 const Filter: FC = () => {
   const setQueryString = useSetQueryString();
@@ -30,12 +32,12 @@ const Filter: FC = () => {
   const deskSortType = searchParams.get(SORT_SP_KEY) === DESC_SORT_TYPE;
   const [showFilter, setShowFilter] = useState<boolean>(() => Boolean(filter));
   const clearFilterBtnIcon = Boolean(filter) && (
-    <FaTimes size={IconSizes.primaryIconSize} />
+    <FaTimes size={primaryIconSize} />
   );
   const sortBtnIcon = deskSortType ? (
-    <FaSortAlphaDown size={IconSizes.primaryIconSize} />
+    <FaSortAlphaDown size={primaryIconSize} />
   ) : (
-    <FaSortAlphaUp size={IconSizes.primaryIconSize} />
+    <FaSortAlphaUp size={primaryIconSize} />
   );
 
   useEffect(() => {
@@ -76,16 +78,16 @@ const Filter: FC = () => {
           inputWrap
           onBtnClick={onClearFilterBtnClick}
           btnIcon={clearFilterBtnIcon}
-          btnType={IconBtnType.clearFilter}
+          btnType={clearFilter}
         />
       )}
       <IconButton
-        btnType={IconBtnType.filter}
+        btnType={filterType}
         onBtnClick={onFilterBtnClick}
-        icon={<FaSistrix size={IconSizes.otherIconSize} />}
+        icon={<FaSistrix size={otherIconSize} />}
       />
       <IconButton
-        btnType={IconBtnType.filter}
+        btnType={filterType}
         onBtnClick={onSortBtnClick}
         icon={sortBtnIcon}
       />

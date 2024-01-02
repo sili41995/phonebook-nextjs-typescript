@@ -12,9 +12,10 @@ import { IconBtnType, IconSizes, PagePaths } from '@/constants';
 import { signOutAccount } from '@/app/lib/actions';
 import css from './PrivateLinks.module.css';
 
+const { contactsPath, addNewContactPath } = PagePaths;
+
 const PrivateLinks: FC = () => {
-  const isContactsPage = usePathname().includes(PagePaths.contactsPath);
-  const addNewContactPath = `${PagePaths.addNewContactPath}`;
+  const isContactsPage = usePathname().includes(contactsPath);
 
   const onLogoutBtnClick = async (e: MouseEvent<HTMLButtonElement>) => {
     makeBlur(e.currentTarget);

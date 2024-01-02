@@ -19,14 +19,19 @@ import { IProps } from './ContactDetails.types';
 import { updateContactStatus } from '@/app/lib/actions';
 import css from './ContactDetails.module.css';
 
+const { primaryIconSize } = IconSizes;
+const { favorite, delete: deleteType } = IconBtnType;
+const { contactsPath, editPath } = PagePaths;
+
 const ContactDetails: FC<IProps> = ({ contact }) => {
   const { setContactId, isLoading: isDeleting } = useDeleteContact();
   const searchParams = useSearchParams();
   const contactId = contact._id;
+  const editPagePath = `/${contactsPath}/${contactId}/${editPath}?${searchParams}`;
   const favoriteBtnIcon = contact?.favorite ? (
-    <AiFillStar size={IconSizes.primaryIconSize} />
+    <AiFillStar size={primaryIconSize} />
   ) : (
-    <AiOutlineStar size={IconSizes.primaryIconSize} />
+    <AiOutlineStar size={primaryIconSize} />
   );
 
   const onDelBtnClick = () => {
@@ -59,21 +64,18 @@ const ContactDetails: FC<IProps> = ({ contact }) => {
         <GoBackLink />
         <div className={css.btnWrap}>
           <IconButton
-            btnType={IconBtnType.favorite}
+            btnType={favorite}
             onBtnClick={onFavoriteBtnClick}
             icon={favoriteBtnIcon}
           />
           <IconButton
             disabled={isDeleting}
-            btnType={IconBtnType.delete}
+            btnType={deleteType}
             onBtnClick={onDelBtnClick}
-            icon={<AiOutlineDelete size={IconSizes.primaryIconSize} />}
+            icon={<AiOutlineDelete size={primaryIconSize} />}
           />
-          <Link
-            href={`/${PagePaths.contactsPath}/${contactId}/${PagePaths.editPage}?${searchParams}`}
-            className={css.editLink}
-          >
-            <AiOutlineEdit size={IconSizes.primaryIconSize} />
+          <Link href={editPagePath} className={css.editLink}>
+            <AiOutlineEdit size={primaryIconSize} />
           </Link>
         </div>
       </div>

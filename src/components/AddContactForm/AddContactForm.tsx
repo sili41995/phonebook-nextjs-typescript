@@ -20,6 +20,8 @@ import { DefaultAvatars } from '@/constants';
 import css from './AddContactForm.module.css';
 import { addContact } from '@/app/lib/actions';
 
+const { signUpAvatar } = DefaultAvatars;
+
 const AddContactForm: FC = () => {
   const [contactAvatar, setContactAvatar] = useState<FileList | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -55,7 +57,7 @@ const AddContactForm: FC = () => {
       toasts.successToast('Contact added successfully');
 
       if (contactAvatarRef.current) {
-        contactAvatarRef.current.src = DefaultAvatars.signUpAvatar;
+        contactAvatarRef.current.src = signUpAvatar;
       }
 
       if (checked) {
@@ -88,7 +90,7 @@ const AddContactForm: FC = () => {
           altElem={
             <img
               className={css.image}
-              src={DefaultAvatars.signUpAvatar}
+              src={signUpAvatar}
               alt='profile avatar'
               ref={contactAvatarRef}
             />

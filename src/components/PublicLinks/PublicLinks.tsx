@@ -4,10 +4,12 @@ import { PagePaths } from '@/constants';
 import css from './PublicLinks.module.css';
 import { FC } from 'react';
 
+const { signInPath, signUpPath } = PagePaths;
+
 const PublicLinks: FC = () => {
   const pathname = usePathname();
-  const signUpPagePath = `/${PagePaths.signUpPath}`;
-  const signInPagePath = `/${PagePaths.signInPath}`;
+  const signUpPagePath = `/${signUpPath}`;
+  const signInPagePath = `/${signInPath}`;
 
   return (
     <ul className={css.navList}>

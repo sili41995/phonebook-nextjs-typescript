@@ -8,7 +8,7 @@ enum PagePaths {
   contactPath = 'contact',
   newContactPath = 'new-contact',
   dynamicParam = 'id',
-  editPage = 'edit',
+  editPath = 'edit',
 }
 
 export default PagePaths;

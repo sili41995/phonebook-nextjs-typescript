@@ -11,6 +11,8 @@ import Input from '@/components/Input';
 import { IProps } from './ChangeAvatarForm.types';
 import css from './ChangeAvatarForm.module.css';
 
+const { primaryIconSize } = IconSizes;
+
 const ChangeAvatarForm: FC<IProps> = ({
   isLoading,
   avatar,
@@ -29,7 +31,7 @@ const ChangeAvatarForm: FC<IProps> = ({
             <IconButton
               btnType={IconBtnType.cancel}
               onBtnClick={onCancelBtnClick}
-              icon={<SlBan size={IconSizes.primaryIconSize} />}
+              icon={<SlBan size={primaryIconSize} />}
             />
           </div>
         ) : (
@@ -38,7 +40,7 @@ const ChangeAvatarForm: FC<IProps> = ({
             accept='image/png, image/jpeg, image/jpg'
             onChange={onChangeInput}
             type={InputTypes.file}
-            altElem={<SlPaperClip size={IconSizes.primaryIconSize} />}
+            altElem={<SlPaperClip size={primaryIconSize} />}
           />
         )}
       </form>

@@ -1,4 +1,4 @@
-const enum IconSizes {
+enum IconSizes {
   defaultIconSize = 18,
   primaryIconSize = 23,
   secondaryIconSize = 20,

@@ -1,4 +1,4 @@
-enum FetchStatuses {
+const enum FetchStatuses {
   idle = 'idle',
   pending = 'pending',
   resolved = 'resolved',

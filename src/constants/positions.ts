@@ -1,4 +1,4 @@
-enum Positions {
+const enum Positions {
   absolute = 'absolute',
 }
 

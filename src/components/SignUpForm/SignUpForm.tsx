@@ -34,6 +34,11 @@ import {
 import { signUp } from '@/app/lib/actions';
 import css from './SignUpForm.module.css';
 
+const { secondaryIconSize } = IconSizes;
+const { authForm } = FormTypes;
+const { text, email, file } = InputTypes;
+const { dateOfBirthRegEx, emailRegEx, phoneRegEx } = regExp;
+
 const SignUpForm: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [userAvatar, setUserAvatar] = useState<FileList | null>(null);
@@ -105,7 +110,7 @@ const SignUpForm: FC = () => {
           settings={{ ...register('avatar') }}
           accept='image/png, image/jpeg, image/jpg'
           onChange={onChangeInput}
-          type={InputTypes.file}
+          type={file}
           altElem={
             <img
               className={css.image}
@@ -117,69 +122,69 @@ const SignUpForm: FC = () => {
         />
         <Input
           settings={{ ...register('name', { required: true }) }}
-          type={InputTypes.text}
+          type={text}
           placeholder='First name'
-          icon={<FaUser size={IconSizes.secondaryIconSize} />}
-          formType={FormTypes.authForm}
+          icon={<FaUser size={secondaryIconSize} />}
+          formType={authForm}
           inputWrap
           autoFocus
         />
         <Input
           settings={{ ...register('lastName') }}
-          type={InputTypes.text}
+          type={text}
           placeholder='Last name'
-          icon={<FaUser size={IconSizes.secondaryIconSize} />}
-          formType={FormTypes.authForm}
+          icon={<FaUser size={secondaryIconSize} />}
+          formType={authForm}
           inputWrap
         />
 
         <Input
-          settings={{ ...register('phone', { pattern: regExp.phoneRegEx }) }}
-          type={InputTypes.text}
+          settings={{ ...register('phone', { pattern: phoneRegEx }) }}
+          type={text}
           placeholder='Phone'
-          icon={<FaPhoneAlt size={IconSizes.secondaryIconSize} />}
-          formType={FormTypes.authForm}
+          icon={<FaPhoneAlt size={secondaryIconSize} />}
+          formType={authForm}
           inputWrap
         />
         <Input
           settings={{
             ...register('email', {
               required: true,
-              pattern: regExp.emailRegEx,
+              pattern: emailRegEx,
             }),
           }}
-          type={InputTypes.email}
+          type={email}
           placeholder='Email'
-          icon={<FaEnvelope size={IconSizes.secondaryIconSize} />}
-          formType={FormTypes.authForm}
+          icon={<FaEnvelope size={secondaryIconSize} />}
+          formType={authForm}
           inputWrap
         />
         <Input
           settings={{
             ...register('password', { required: true, minLength: 6 }),
           }}
-          type={InputTypes.text}
+          type={text}
           placeholder='Password'
-          icon={<FaLock size={IconSizes.secondaryIconSize} />}
-          formType={FormTypes.authForm}
+          icon={<FaLock size={secondaryIconSize} />}
+          formType={authForm}
           inputWrap
         />
         <Input
           settings={{ ...register('location') }}
-          type={InputTypes.text}
+          type={text}
           placeholder='Location'
-          icon={<FaMapMarkerAlt size={IconSizes.secondaryIconSize} />}
-          formType={FormTypes.authForm}
+          icon={<FaMapMarkerAlt size={secondaryIconSize} />}
+          formType={authForm}
           inputWrap
         />
         <Input
           settings={{
-            ...register('dateOfBirth', { pattern: regExp.dateOfBirthRegEx }),
+            ...register('dateOfBirth', { pattern: dateOfBirthRegEx }),
           }}
-          type={InputTypes.text}
+          type={text}
           placeholder='Date of birth'
-          icon={<FaRegCalendarCheck size={IconSizes.secondaryIconSize} />}
-          formType={FormTypes.authForm}
+          icon={<FaRegCalendarCheck size={secondaryIconSize} />}
+          formType={authForm}
           inputWrap
         />
         <AuthFormMessage

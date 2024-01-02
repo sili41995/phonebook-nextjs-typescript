@@ -4,6 +4,8 @@ import css from './Input.module.css';
 import { FormTypes, IconBtnType, InputTypes } from '@/constants';
 import IconButton from '@/components/IconButton';
 
+const { file, checkbox } = InputTypes;
+
 const Input: FC<IProps> = ({
   settings,
   inputWrap,
@@ -31,7 +33,7 @@ const Input: FC<IProps> = ({
     />
   );
 
-  if (type === InputTypes.file) {
+  if (type === file) {
     return (
       <label className={css.label}>
         {altElem}
@@ -40,7 +42,7 @@ const Input: FC<IProps> = ({
     );
   }
 
-  if (type === InputTypes.checkbox) {
+  if (type === checkbox) {
     return (
       <label className={css.checkbox}>
         {input}

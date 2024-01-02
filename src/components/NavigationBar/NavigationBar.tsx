@@ -9,10 +9,12 @@ import { PagePaths } from '@/constants';
 import { IProps } from './NavigationBar.types';
 import css from './NavigationBar.module.css';
 
+const { contactsPath, aboutPath } = PagePaths;
+
 const NavigationBar: FC<IProps> = ({ isSignIn }) => {
   const pathname = usePathname();
-  const contactsPagePath = `/${PagePaths.contactsPath}`;
-  const aboutPagePath = `/${PagePaths.aboutPath}`;
+  const contactsPagePath = `/${contactsPath}`;
+  const aboutPagePath = `/${aboutPath}`;
 
   return (
     <nav className={css.nav}>

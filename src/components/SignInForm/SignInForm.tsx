@@ -22,6 +22,10 @@ import { authenticate } from '@/app/lib/actions';
 import { makeBlur, toasts } from '@/utils';
 import css from './SignInForm.module.css';
 
+const { text, password, email } = InputTypes;
+const { authForm } = FormTypes;
+const { secondaryIconSize } = IconSizes;
+
 const SignInForm: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -30,14 +34,12 @@ const SignInForm: FC = () => {
     formState: { errors, isSubmitting },
     handleSubmit,
   } = useForm<ICredentials>();
-  const passwordInputType = showPassword
-    ? InputTypes.text
-    : InputTypes.password;
+  const passwordInputType = showPassword ? text : password;
 
   const passwordBtnIcon = showPassword ? (
-    <FaEyeSlash size={IconSizes.secondaryIconSize} />
+    <FaEyeSlash size={secondaryIconSize} />
   ) : (
-    <FaEye size={IconSizes.secondaryIconSize} />
+    <FaEye size={secondaryIconSize} />
   );
   const signUpPageLink = `/${PagePaths.signUpPath}`;
 
@@ -88,10 +90,10 @@ const SignInForm: FC = () => {
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
         <Input
           settings={{ ...register('email', { required: true }) }}
-          type={InputTypes.email}
+          type={email}
           placeholder='Email'
-          icon={<FaEnvelope size={IconSizes.secondaryIconSize} />}
-          formType={FormTypes.authForm}
+          icon={<FaEnvelope size={secondaryIconSize} />}
+          formType={authForm}
           inputWrap
           autoFocus
         />
@@ -101,8 +103,8 @@ const SignInForm: FC = () => {
           }}
           type={passwordInputType}
           placeholder='Password'
-          icon={<FaLock size={IconSizes.secondaryIconSize} />}
-          formType={FormTypes.authForm}
+          icon={<FaLock size={secondaryIconSize} />}
+          formType={authForm}
           inputWrap
           onBtnClick={toggleShowPassword}
           btnIcon={passwordBtnIcon}

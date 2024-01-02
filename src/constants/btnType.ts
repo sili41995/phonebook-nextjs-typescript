@@ -1,4 +1,4 @@
-enum BtnType {
+const enum BtnType {
   button = 'button',
   submit = 'submit',
 }

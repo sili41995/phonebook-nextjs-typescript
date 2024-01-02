@@ -9,12 +9,12 @@ import { IconSizes, PagePaths } from '@/constants';
 import { IconBtnType } from '@/constants';
 import css from './ContactsListItem.module.css';
 
-const { contactsPath } = PagePaths;
+const { primaryIconSize } = IconSizes;
 
 const ContactsListItem: FC<IProps> = ({ contact }) => {
   const { avatar, name, _id: id, role, phone, email, favorite } = contact;
   const { isLoading, setContactId } = useDeleteContact();
-  const path = `/${contactsPath}/${id}`;
+  const path = `/${PagePaths.contactsPath}/${id}`;
 
   const handleDelBtnClick = () => {
     setContactId(id as string);
@@ -31,7 +31,7 @@ const ContactsListItem: FC<IProps> = ({ contact }) => {
             width={70}
             height={70}
           />
-          {favorite && <AiFillStar size={IconSizes.primaryIconSize} />}
+          {favorite && <AiFillStar size={primaryIconSize} />}
         </div>
         <div className={css.infoWrap}>
           <div>
@@ -46,7 +46,7 @@ const ContactsListItem: FC<IProps> = ({ contact }) => {
         disabled={isLoading}
         btnType={IconBtnType.deleteTransparent}
         onBtnClick={handleDelBtnClick}
-        icon={<AiOutlineDelete size={IconSizes.primaryIconSize} />}
+        icon={<AiOutlineDelete size={primaryIconSize} />}
       />
     </li>
   );

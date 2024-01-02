@@ -1,4 +1,4 @@
-enum Messages {
+const enum Messages {
   firstNameReqErr = 'First name is required',
   phoneRegExpErr = 'Phone number must be digits and can start with character +',
   emailReqErr = 'Email is required',
