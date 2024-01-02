@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactElement } from 'react';
+import { ChangeEvent, MouseEvent, ReactElement } from 'react';
 import { FormTypes, InputTypes, IconBtnType } from '@/constants';
 
 export interface IProps {
@@ -16,7 +16,7 @@ export interface IProps {
   value?: string;
   defaultValue?: string;
   checked?: boolean;
-  onBtnClick?: () => void;
+  onBtnClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 

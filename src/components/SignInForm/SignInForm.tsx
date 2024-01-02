@@ -1,9 +1,9 @@
 'use client';
 
-import { FC, useEffect, useState } from 'react';
+import { FC, MouseEvent, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { FaEnvelope, FaLock } from 'react-icons/fa';
+import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from 'react-icons/fa';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthFormMessage from '@/components/AuthFormMessage';
 import Input from '@/components/Input';
@@ -19,35 +19,39 @@ import {
   DefaultAvatars,
 } from '@/constants';
 import { authenticate } from '@/app/lib/actions';
-import { toasts } from '@/utils';
+import { makeBlur, toasts } from '@/utils';
 import css from './SignInForm.module.css';
 
 const SignInForm: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [credentials, setCredentials] = useState<ICredentials | null>(null);
-  // const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const {
     register,
     formState: { errors, isSubmitting },
     handleSubmit,
     watch,
   } = useForm<ICredentials>();
-  // const passwordInputType = isShowPassword
-  //   ? InputTypes.text
-  //   : InputTypes.password;
-  // const watchPassword = watch('password');
-  // const passwordBtnIcon =
-  //   Boolean(watchPassword) &&
-  //   (isShowPassword ? (
-  //     <FaEyeSlash size={IconSizes.secondaryIconSize} />
-  //   ) : (
-  //     <FaEye size={IconSizes.secondaryIconSize} />
-  //   ));
+  const passwordInputType = showPassword
+    ? InputTypes.text
+    : InputTypes.password;
+
+  const passwordBtnIcon = showPassword ? (
+    <FaEyeSlash size={IconSizes.secondaryIconSize} />
+  ) : (
+    <FaEye size={IconSizes.secondaryIconSize} />
+  );
   const signUpPageLink = `/${PagePaths.signUpPath}`;
 
-  // const toggleIsShowPassword = () => {
-  //   setIsShowPassword((prevState) => !prevState);
-  // };
+  const toggleShowPassword = (e: MouseEvent<HTMLButtonElement>) => {
+    setShowPassword((prevState) => !prevState);
+    makeBlur(e.currentTarget);
+  };
+
+  useEffect(() => {
+    const watchPassword = watch('password');
+    console.log(watchPassword);
+  });
 
   useEffect(() => {
     errors.email &&
@@ -102,11 +106,13 @@ const SignInForm: FC = () => {
           settings={{
             ...register('password', { required: true, minLength: 6 }),
           }}
-          type={InputTypes.text}
+          type={passwordInputType}
           placeholder='Password'
           icon={<FaLock size={IconSizes.secondaryIconSize} />}
           formType={FormTypes.authForm}
           inputWrap
+          onBtnClick={toggleShowPassword}
+          btnIcon={passwordBtnIcon}
           btnType={IconBtnType.toggleShowPassword}
         />
         <AuthFormMessage
