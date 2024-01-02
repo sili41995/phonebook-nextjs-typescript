@@ -1,3 +1,5 @@
+'use client';
+
 import { FC } from 'react';
 import LogOutBtn from '@/components/LogOutBtn';
 import css from './AuthError.module.css';
