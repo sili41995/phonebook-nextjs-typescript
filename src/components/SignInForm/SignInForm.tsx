@@ -24,13 +24,11 @@ import css from './SignInForm.module.css';
 
 const SignInForm: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [credentials, setCredentials] = useState<ICredentials | null>(null);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const {
     register,
     formState: { errors, isSubmitting },
     handleSubmit,
-    watch,
   } = useForm<ICredentials>();
   const passwordInputType = showPassword
     ? InputTypes.text
@@ -47,11 +45,6 @@ const SignInForm: FC = () => {
     setShowPassword((prevState) => !prevState);
     makeBlur(e.currentTarget);
   };
-
-  useEffect(() => {
-    const watchPassword = watch('password');
-    console.log(watchPassword);
-  });
 
   useEffect(() => {
     errors.email &&
