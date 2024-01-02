@@ -8,7 +8,7 @@
   border-radius: var(--secondaryBorderRadius);
   border-color: transparent;
   color: var(--primaryFontColor);
-  font-family: Inter;
+  font-family: var(--font-inter);
   font-size: var(--primaryFontSize);
   font-weight: var(--primaryFontWeight);
   transition: var(--transitionDurationAndFunc);

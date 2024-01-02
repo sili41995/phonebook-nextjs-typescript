@@ -7,7 +7,7 @@
 
 .message {
   color: var(--redIconColor);
-  font-family: Inter;
+  font-family: var(--font-inter);
   font-size: var(--otherFontSize);
   font-weight: var(--secondaryFontWeight);
   text-align: center;

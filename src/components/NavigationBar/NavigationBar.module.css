@@ -15,7 +15,7 @@
   border: 1px solid var(--whiteColor);
   border-radius: var(--primaryBorderRadius);
   color: var(--whiteColor);
-  font-family: Inter;
+  font-family: var(--font-inter);
   font-size: primaryFontSize;
   font-weight: var(--primaryFontWeight);
   text-align: center;

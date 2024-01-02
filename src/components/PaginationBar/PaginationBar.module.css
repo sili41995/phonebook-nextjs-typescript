@@ -11,7 +11,7 @@
   border-color: transparent;
   border-radius: var(--primaryBorderRadius);
   color: var(--primaryFontColor);
-  font-family: Jua;
+  font-family: var(--font-jua);
   font-size: var(--secondaryFontSize);
   font-weight: var(--otherFontWeight);
   transition: box-shadow var(--transitionDurationAndFunc);

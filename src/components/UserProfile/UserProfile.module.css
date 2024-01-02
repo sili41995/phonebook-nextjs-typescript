@@ -8,7 +8,7 @@
 
 .name {
   color: var(--primaryFontColor);
-  font-family: Jua;
+  font-family: var(--font-jua);
   font-size: var(--titleFontSize);
   font-weight: var(--otherFontWeight);
 }
@@ -20,7 +20,7 @@
 .fullName {
   margin-top: calc(var(--spacing) * 2);
   color: var(--primaryFontColor);
-  font-family: Jua;
+  font-family: var(--font-jua);
   font-size: var(--subtitleFontSize);
   font-weight: var(--otherFontWeight);
   text-align: center;
@@ -28,7 +28,7 @@
 
 .email {
   color: var(--secondaryFontColor);
-  font-family: Inter;
+  font-family: var(--font-inter);
   font-size: var(--secondaryFontSize);
   font-weight: var(--primaryFontWeight);
   text-align: center;
@@ -45,7 +45,7 @@
   align-items: center;
   gap: calc(var(--spacing) * 3);
   color: var(--secondaryFontColor);
-  font-family: Inter;
+  font-family: var(--font-inter);
   font-size: var(--primaryFontSize);
   font-weight: var(--primaryFontWeight);
 }

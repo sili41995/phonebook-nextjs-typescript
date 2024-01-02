@@ -17,7 +17,7 @@
   border: 1px solid var(--borderColor);
   border-radius: var(--secondaryBorderRadius);
   padding: 8px 8px 8px 40px;
-  font-family: Inter;
+  font-family: var(--font-inter);
   color: var(--primaryFontColor);
   font-weight: var(--primaryFontWeight);
   font-size: var(--secondaryFontSize);

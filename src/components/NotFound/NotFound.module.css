@@ -1,13 +1,13 @@
 .subtitle {
   color: var(--primaryFontColor);
-  font-family: Jua;
+  font-family: var(--font-jua);
   font-size: var(--titleFontSize);
   font-weight: var(--otherFontWeight);
 }
 
 .message {
   color: var(--otherFontColor);
-  font-family: Jua;
+  font-family: var(--font-jua);
   font-size: var(--primaryFontSize);
   font-weight: var(--otherFontWeight);
 }

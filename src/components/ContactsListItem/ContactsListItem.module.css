@@ -55,7 +55,7 @@
 
 .name {
   color: var(--primaryFontColor);
-  font-family: Inter;
+  font-family: var(--font-inter);
   font-size: var(--otherFontSize);
   font-weight: var(--secondaryFontWeight);
   text-align: center;
@@ -63,7 +63,7 @@
 
 .role {
   color: var(--contactPrimaryTextColor);
-  font-family: Inter;
+  font-family: var(--font-inter);
   font-size: var(--primaryFontSize);
   font-weight: var(--primaryFontWeight);
   text-align: center;
@@ -71,7 +71,7 @@
 
 .phone {
   color: var(--primaryFontColor);
-  font-family: Inter;
+  font-family: var(--font-inter);
   font-size: var(--secondaryFontSize);
   font-weight: var(--primaryFontWeight);
   text-align: center;
@@ -79,7 +79,7 @@
 
 .email {
   color: var(--contactSecondaryTextColor);
-  font-family: Inter;
+  font-family: var(--font-inter);
   font-size: var(--secondaryFontSize);
   font-weight: var(--secondaryFontWeight);
 }
