@@ -5,6 +5,11 @@ export interface IErrorProps {
   reset: () => void;
 }
 
+export interface IMetadataProps {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
 export interface ILayoutProps {
   children: ReactNode;
 }

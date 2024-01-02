@@ -1,7 +1,13 @@
+import { FC } from 'react';
+import { Metadata } from 'next';
 import ModalForm from '@/components/ModalForm';
 import SignUpForm from '@/components/SignUpForm';
 import { FormTypes } from '@/constants';
-import { FC } from 'react';
+
+export const metadata: Metadata = {
+  title: 'Sign Up',
+  description: 'Page for sign up user',
+};
 
 const SignUpPage: FC = () => (
   <div className='container'>
