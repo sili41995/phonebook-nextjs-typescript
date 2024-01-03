@@ -1,3 +1,4 @@
+import { NavLinkTypes } from '@/constants';
 import { ReactNode } from 'react';
 
 export interface IErrorProps {
@@ -127,4 +128,10 @@ export interface IUpdateContactProps {
 export interface IUpdContactStatusProps {
   data: IContactStatus;
   id: string;
+}
+
+export interface INavLink {
+  name: string;
+  href: string;
+  type: NavLinkTypes;
 }

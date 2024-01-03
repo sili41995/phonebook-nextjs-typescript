@@ -1,40 +1,26 @@
 'use client';
 
 import { FC } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import PublicLinks from '@/components/PublicLinks';
+import NavLink from '@/components/NavLink';
 import PrivateLinks from '@/components/PrivateLinks';
-import { PagePaths } from '@/constants';
+import { NavLinkTypes, navLinks } from '@/constants';
 import { IProps } from './NavigationBar.types';
+import { getNavLinks } from '@/utils';
 import css from './NavigationBar.module.css';
 
-const { contactsPath, aboutPath } = PagePaths;
-
 const NavigationBar: FC<IProps> = ({ isSignIn }) => {
-  const pathname = usePathname();
-  const contactsPagePath = `/${contactsPath}`;
-  const aboutPagePath = `/${aboutPath}`;
+  const links = getNavLinks({
+    links: navLinks,
+    linksType: NavLinkTypes.general,
+  });
 
   return (
     <nav className={css.nav}>
       <ul className={css.navList}>
-        <li className={css.navItem}>
-          <Link
-            href={contactsPagePath}
-            className={pathname.includes(contactsPagePath) ? css.active : ''}
-          >
-            Contacts
-          </Link>
-        </li>
-        <li className={css.navItem}>
-          <Link
-            href={aboutPagePath}
-            className={pathname.includes(aboutPagePath) ? css.active : ''}
-          >
-            About
-          </Link>
-        </li>
+        {links.map(({ name, href }) => (
+          <NavLink name={name} href={href} key={href} />
+        ))}
       </ul>
       {isSignIn ? <PrivateLinks /> : <PublicLinks />}
     </nav>

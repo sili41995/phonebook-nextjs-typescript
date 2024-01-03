@@ -1,34 +1,20 @@
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { PagePaths } from '@/constants';
-import css from './PublicLinks.module.css';
 import { FC } from 'react';
-
-const { signInPath, signUpPath } = PagePaths;
+import { NavLinkTypes, navLinks } from '@/constants';
+import NavLink from '@/components/NavLink';
+import { getNavLinks } from '@/utils';
+import css from './PublicLinks.module.css';
 
 const PublicLinks: FC = () => {
-  const pathname = usePathname();
-  const signUpPagePath = `/${signUpPath}`;
-  const signInPagePath = `/${signInPath}`;
+  const links = getNavLinks({
+    links: navLinks,
+    linksType: NavLinkTypes.auth,
+  });
 
   return (
     <ul className={css.navList}>
-      <li className={css.navItem}>
-        <Link
-          href={signUpPagePath}
-          className={pathname.includes(signUpPagePath) ? css.active : ''}
-        >
-          Sign up
-        </Link>
-      </li>
-      <li className={css.navItem}>
-        <Link
-          href={signInPagePath}
-          className={pathname.includes(signInPagePath) ? css.active : ''}
-        >
-          Sign in
-        </Link>
-      </li>
+      {links.map(({ name, href }) => (
+        <NavLink name={name} href={href} key={href} />
+      ))}
     </ul>
   );
 };

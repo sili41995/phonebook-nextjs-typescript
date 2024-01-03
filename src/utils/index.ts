@@ -16,3 +16,4 @@ export { default as getTelegramLink } from './getTelegramLink';
 export { default as getIsContact } from './getIsContact';
 export { default as getIsAuthPage } from './getIsAuthPage';
 export { default as setToken } from './setToken';
+export { default as getNavLinks } from './getNavLinks';
