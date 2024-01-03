@@ -1,25 +1,29 @@
 import { FC } from 'react';
+import { Metadata } from 'next';
 import EditContactForm from '@/components/EditContactForm';
 import { IMetadataProps, IParams } from '@/types/types';
-import contactsServiceApi from '@/service/contactsServiceApi';
-import { setToken } from '@/utils';
-import { Metadata } from 'next';
+import { getContactById } from '@/app/lib/actions';
 
 export async function generateMetadata({
   params,
 }: IMetadataProps): Promise<Metadata> {
-  await setToken();
-  const contact = await contactsServiceApi.fetchContactById(params.id);
+  let title = 'Edit';
+
+  try {
+    const contact = await getContactById(params.id);
+    title = contact.name;
+  } catch (error) {
+    console.log(error);
+  }
 
   return {
-    title: contact.name,
+    title,
     description: 'Contact editing page',
   };
 }
 
 const EditPage: FC<IParams> = async ({ params }) => {
-  await setToken();
-  const contact = await contactsServiceApi.fetchContactById(params.id);
+  const contact = await getContactById(params.id);
 
   return <EditContactForm contact={contact} />;
 };

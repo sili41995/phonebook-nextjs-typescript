@@ -54,6 +54,13 @@ export const getContacts = async (): Promise<IFetchContactsRes> => {
   return response;
 };
 
+export const getContactById = async (id: string) => {
+  await setToken();
+  const response = await contactsServiceApi.fetchContactById(id);
+
+  return response;
+};
+
 export const addContact = async (data: FormData): Promise<IContact> => {
   await setToken();
   const response = await contactsServiceApi.addContact(data);
