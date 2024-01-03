@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { Metadata } from 'next';
-import contactsServiceApi from '@/service/contactsServiceApi';
 import { IMetadataProps, IParams } from '@/types/types';
 import ContactDetails from '@/components/ContactDetails';
 import { getContactById } from '@/app/lib/actions';
