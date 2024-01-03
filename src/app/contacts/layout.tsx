@@ -17,12 +17,12 @@ const Layout: FC<ILayoutProps> = async ({ children }) => {
     return <AuthError />;
   }
 
-  const { contacts, count } = await getContacts();
+  const { contacts } = await getContacts();
 
   return (
     <div className='container contacts'>
       <UserProfile user={currentUser} />
-      <ContactsContainer quantity={6} contacts={contacts} count={count} />
+      <ContactsContainer quantity={6} contacts={contacts} />
       {children}
     </div>
   );

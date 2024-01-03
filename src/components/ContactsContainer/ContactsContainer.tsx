@@ -16,7 +16,7 @@ import css from './ContactsContainer.module.css';
 
 const { FILTER_SP_KEY, SORT_SP_KEY, PAGE_SP_KEY } = SearchParamsKeys;
 
-const ContactsContainer: FC<IProps> = ({ quantity, contacts, count }) => {
+const ContactsContainer: FC<IProps> = ({ quantity, contacts }) => {
   const searchParams = useSearchParams();
   const filter = searchParams.get(FILTER_SP_KEY) ?? '';
   const sortType = searchParams.get(SORT_SP_KEY) ?? '';

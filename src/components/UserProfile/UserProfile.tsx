@@ -9,8 +9,6 @@ import css from './UserProfile.module.css';
 const { secondaryIconSize } = IconSizes;
 
 const UserProfile: FC<IProps> = ({ user }) => {
-  if (!user) return <div className={css.container}></div>;
-
   const { name, avatar, email, dateOfBirth, phone, location, lastName } = user;
   const fullName = lastName ? `${name} ${lastName}` : name;
 
