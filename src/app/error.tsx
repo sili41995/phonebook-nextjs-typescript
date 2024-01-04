@@ -6,7 +6,7 @@ import { IErrorProps } from '@/types/types';
 
 const Error: FC<IErrorProps> = ({ error, reset }) => (
   <div className='container'>
-    <ErrorMessage reset={reset} message={error.message} />
+    <ErrorMessage reset={reset} message='Unexpected error' />
   </div>
 );
 
