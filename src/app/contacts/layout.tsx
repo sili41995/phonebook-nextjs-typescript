@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'My contacts',
 };
 
-const Layout: FC<ILayoutProps> = async ({ children }) => {
+const Layout: FC<ILayoutProps> = async ({ children, newContact }) => {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
@@ -23,6 +23,7 @@ const Layout: FC<ILayoutProps> = async ({ children }) => {
     <div className='container contacts'>
       <UserProfile user={currentUser} />
       <ContactsContainer quantity={6} contacts={contacts} />
+      {newContact}
       {children}
     </div>
   );

@@ -13,6 +13,7 @@ export interface IMetadataProps {
 
 export interface ILayoutProps {
   children: ReactNode;
+  newContact: ReactNode;
 }
 
 export type ProfileEntry = [string, string | boolean | FileList];
