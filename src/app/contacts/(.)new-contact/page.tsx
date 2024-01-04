@@ -1,17 +1,14 @@
 import { FC } from 'react';
-import { Metadata } from 'next';
 import AddContactForm from '@/components/AddContactForm';
 import ModalForm from '@/components/ModalForm';
-
-export const metadata: Metadata = {
-  title: 'Add contact',
-  description: 'Page for adding a new contact',
-};
+import { FormTypes } from '@/constants';
 
 const AddContactPage: FC = () => (
-  <ModalForm>
-    <AddContactForm />
-  </ModalForm>
+  <div className='backdrop'>
+    <ModalForm formType={FormTypes.withBackdrop}>
+      <AddContactForm />
+    </ModalForm>
+  </div>
 );
 
 export default AddContactPage;

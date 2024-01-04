@@ -1,7 +1,9 @@
 enum FormTypes {
   filter = 'filter',
   authForm = 'authForm',
-  default = 'input',
+  modalForm = 'modalForm',
+  withBackdrop = 'withBackdrop',
+  input = 'input',
 }
 
 export default FormTypes;

@@ -71,6 +71,7 @@
 .checkbox svg {
   width: 44px;
   height: 100%;
+  display: block;
   padding: calc(var(--spacing) * 2);
   border: 1px solid;
   border-color: var(--borderColor);

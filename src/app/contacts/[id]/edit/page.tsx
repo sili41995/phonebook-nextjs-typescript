@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import EditContactForm from '@/components/EditContactForm';
 import { IMetadataProps, IParams } from '@/types/types';
 import { getContactById } from '@/app/lib/actions';
+import ModalForm from '@/components/ModalForm';
 
 export async function generateMetadata({
   params,
@@ -25,7 +26,11 @@ export async function generateMetadata({
 const EditPage: FC<IParams> = async ({ params }) => {
   const contact = await getContactById(params.id);
 
-  return <EditContactForm contact={contact} />;
+  return (
+    <ModalForm>
+      <EditContactForm contact={contact} />
+    </ModalForm>
+  );
 };
 
 export default EditPage;

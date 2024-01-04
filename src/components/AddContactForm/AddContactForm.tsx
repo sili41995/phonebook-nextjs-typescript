@@ -12,7 +12,6 @@ import {
 } from '@/utils';
 import { IContact } from '@/types/types';
 import ContactFormInputs from '@/components/ContactFormInputs';
-import ModalForm from '@/components/ModalForm';
 import Input from '@/components/Input';
 import GoBackLink from '@/components/GoBackLink';
 import AcceptBtn from '@/components/AcceptBtn';
@@ -79,7 +78,7 @@ const AddContactForm: FC = () => {
   };
 
   return (
-    <ModalForm>
+    <>
       <p className={css.title}>Add contact</p>
       <form className={css.form} onSubmit={handleSubmit(handleFormSubmit)}>
         <Input
@@ -108,7 +107,7 @@ const AddContactForm: FC = () => {
           <GoBackLink />
         </div>
       </form>
-    </ModalForm>
+    </>
   );
 };
 

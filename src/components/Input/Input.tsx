@@ -10,7 +10,7 @@ const Input: FC<IProps> = ({
   settings,
   inputWrap,
   icon,
-  formType = FormTypes.default,
+  formType = FormTypes.input,
   placeholder,
   altElem,
   onChange,

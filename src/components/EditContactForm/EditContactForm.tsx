@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { IContact } from '@/types/types';
 import { IProps } from './EditContactForm.types';
 import ContactFormInputs from '@/components/ContactFormInputs';
-import ModalForm from '@/components/ModalForm';
 import AcceptBtn from '@/components/AcceptBtn';
 import GoBackLink from '@/components/GoBackLink';
 import { toasts } from '@/utils';
@@ -46,7 +45,7 @@ const EditContactForm: FC<IProps> = ({ contact }) => {
   };
 
   return (
-    <ModalForm>
+    <>
       <p className={css.title}>Contact editing</p>
       <form className={css.form} onSubmit={handleSubmit(handleFormSubmit)}>
         <ContactFormInputs
@@ -62,7 +61,7 @@ const EditContactForm: FC<IProps> = ({ contact }) => {
           <GoBackLink title='Cancel' />
         </div>
       </form>
-    </ModalForm>
+    </>
   );
 };
 

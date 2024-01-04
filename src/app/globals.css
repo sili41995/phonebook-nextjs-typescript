@@ -27,6 +27,7 @@
   --borderColor: rgba(137, 137, 137, 0.43);
   --contactPrimaryTextColor: #636363;
   --contactSecondaryTextColor: #696969;
+  --backdrop-color: rgba(46, 47, 66, 0.4);
   --primaryShadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   --secondaryShadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.17);
   --primaryFontWeight: 500;
@@ -109,4 +110,17 @@ button {
 .container.contacts {
   display: flex;
   gap: var(--primaryGap);
+}
+
+.backdrop {
+  position: fixed;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--backdrop-color);
+  overflow-y: auto;
 }
