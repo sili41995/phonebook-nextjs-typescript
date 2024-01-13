@@ -81,14 +81,14 @@
   color: var(--blueIconColor);
 }
 
-.logout {
+.signout {
   composes: button;
   height: auto;
   width: auto;
   background-color: var(--redBtnColor);
 }
 
-.logout svg {
+.signout svg {
   color: var(--redIconColor);
 }
 

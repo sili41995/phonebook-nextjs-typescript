@@ -17,7 +17,7 @@
   margin-right: auto;
 }
 
-.btnContainer {
+.btnList {
   display: flex;
   gap: calc(var(--spacing) * 10);
   align-self: center;

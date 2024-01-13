@@ -5,6 +5,12 @@
   gap: calc(var(--spacing) * 10);
 }
 
+.btnList {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 10);
+}
+
 .field {
   display: flex;
   justify-content: space-between;

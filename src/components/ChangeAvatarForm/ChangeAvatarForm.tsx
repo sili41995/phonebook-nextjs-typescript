@@ -10,6 +10,7 @@ import IconButton from '@/components/IconButton';
 import Input from '@/components/Input';
 import { IProps } from './ChangeAvatarForm.types';
 import css from './ChangeAvatarForm.module.css';
+import AriaLabels from '@/constants/ariaLabels';
 
 const { primaryIconSize } = IconSizes;
 
@@ -26,20 +27,26 @@ const ChangeAvatarForm: FC<IProps> = ({
     <>
       <form className={css.form} onSubmit={handleSubmit(handleFormSubmit)}>
         {avatar?.length ? (
-          <div className={css.container}>
-            <AcceptBtn disabled={isLoading} />
-            <IconButton
-              btnType={IconBtnType.cancel}
-              onBtnClick={onCancelBtnClick}
-              icon={<SlBan size={primaryIconSize} />}
-            />
-          </div>
+          <ul className={css.btnList}>
+            <li>
+              <AcceptBtn disabled={isLoading} />
+            </li>
+            <li>
+              <IconButton
+                btnType={IconBtnType.cancel}
+                onBtnClick={onCancelBtnClick}
+                aria-label={AriaLabels.cancel}
+                icon={<SlBan size={primaryIconSize} />}
+              />
+            </li>
+          </ul>
         ) : (
           <Input
             settings={{ ...register('avatar') }}
             accept='image/png, image/jpeg, image/jpg'
             onChange={onChangeInput}
             type={InputTypes.file}
+            aria-label={AriaLabels.avatar}
             altElem={<SlPaperClip size={primaryIconSize} />}
           />
         )}

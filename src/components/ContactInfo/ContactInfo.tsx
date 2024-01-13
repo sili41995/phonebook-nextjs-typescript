@@ -5,6 +5,7 @@ import { IconBtnType, IconSizes } from '@/constants';
 import { getPhoneNumber, getTelegramLink } from '@/utils';
 import css from './ContactInfo.module.css';
 import { IProps } from './ContactInfo.types';
+import AriaLabels from '@/constants/ariaLabels';
 
 const { phone: phoneBtn, message, chat } = IconBtnType;
 const { otherIconSize } = IconSizes;
@@ -16,43 +17,48 @@ const ContactInfo: FC<IProps> = ({ contact }) => {
 
   return (
     <div className={css.container}>
-      <div className={css.field}>
-        <div className={css.infoWrap}>
-          <p className={css.subtitle}>Phone number</p>
-          <p className={`${css.description} trimText`}>{phone}</p>
-        </div>
-        <ActionLink
-          link={`tel:${phoneNumber}`}
-          btnType={phoneBtn}
-          icon={<FaPhoneAlt size={otherIconSize} />}
-        />
-      </div>
-      {email && (
-        <div className={css.field}>
+      <ul className={css.btnList}>
+        <li className={css.field}>
           <div className={css.infoWrap}>
-            <p className={css.subtitle}>Email Address</p>
-            <p className={`${css.description} trimText`}>{email}</p>
+            <p className={css.subtitle}>Phone number</p>
+            <p className={`${css.description} trimText`}>{phone}</p>
           </div>
           <ActionLink
-            link={`mailto:${email}`}
-            btnType={message}
-            icon={<FaEnvelope size={otherIconSize} />}
+            link={`tel:${phoneNumber}`}
+            btnType={phoneBtn}
+            aria-label={AriaLabels.call}
+            icon={<FaPhoneAlt size={otherIconSize} />}
           />
-        </div>
-      )}
-      {tgUsername && (
-        <div className={css.field}>
-          <div className={css.infoWrap}>
-            <p className={css.subtitle}>Username on Telegram</p>
-            <p className={`${css.description} trimText`}>{tgUsername}</p>
-          </div>
-          <ActionLink
-            link={`tg://resolve?domain=${telegramLink}`}
-            btnType={chat}
-            icon={<FaRegComment size={otherIconSize} />}
-          />
-        </div>
-      )}
+        </li>
+        {email && (
+          <li className={css.field}>
+            <div className={css.infoWrap}>
+              <p className={css.subtitle}>Email Address</p>
+              <p className={`${css.description} trimText`}>{email}</p>
+            </div>
+            <ActionLink
+              link={`mailto:${email}`}
+              btnType={message}
+              aria-label={AriaLabels.sendEmail}
+              icon={<FaEnvelope size={otherIconSize} />}
+            />
+          </li>
+        )}
+        {tgUsername && (
+          <li className={css.field}>
+            <div className={css.infoWrap}>
+              <p className={css.subtitle}>Username on Telegram</p>
+              <p className={`${css.description} trimText`}>{tgUsername}</p>
+            </div>
+            <ActionLink
+              link={`tg://resolve?domain=${telegramLink}`}
+              btnType={chat}
+              aria-label={AriaLabels.tgAccount}
+              icon={<FaRegComment size={otherIconSize} />}
+            />
+          </li>
+        )}
+      </ul>
       <div className={css.descWrap}>
         <p className={css.subtitle}>Description</p>
         <p className={css.description}>

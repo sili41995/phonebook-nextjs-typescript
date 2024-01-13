@@ -19,6 +19,7 @@ import {
 } from '@/constants';
 import useSetQueryString from '@/hooks/useSetQueryString';
 import css from './Filter.module.css';
+import AriaLabels from '@/constants/ariaLabels';
 
 const { FILTER_SP_KEY, SORT_SP_KEY } = SearchParamsKeys;
 const { DESC_SORT_TYPE, ASC_SORT_TYPE } = SortTypes;
@@ -84,11 +85,13 @@ const Filter: FC = () => {
       <IconButton
         btnType={filterType}
         onBtnClick={onFilterBtnClick}
+        aria-label={AriaLabels.filter}
         icon={<FaSistrix size={otherIconSize} />}
       />
       <IconButton
         btnType={filterType}
         onBtnClick={onSortBtnClick}
+        aria-label={AriaLabels.sort}
         icon={sortBtnIcon}
       />
     </div>

@@ -17,7 +17,7 @@ const { contactsPath, addNewContactPath } = PagePaths;
 const PrivateLinks: FC = () => {
   const isContactsPage = usePathname().includes(contactsPath);
 
-  const onLogoutBtnClick = async (e: MouseEvent<HTMLButtonElement>) => {
+  const onSignOutBtnClick = async (e: MouseEvent<HTMLButtonElement>) => {
     makeBlur(e.currentTarget);
 
     try {
@@ -37,10 +37,10 @@ const PrivateLinks: FC = () => {
         <span>New Contact</span>
       </LinkWithQuery>
       <IconButton
-        btnType={IconBtnType.logout}
-        onBtnClick={onLogoutBtnClick}
+        btnType={IconBtnType.signout}
+        onBtnClick={onSignOutBtnClick}
         icon={<SlLogout size={IconSizes.otherIconSize} />}
-        title='Logout'
+        title='Signout'
       />
     </div>
   );

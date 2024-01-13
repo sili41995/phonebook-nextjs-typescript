@@ -5,7 +5,7 @@ enum IconBtnType {
   message = 'message',
   chat = 'chat',
   filter = 'filter',
-  logout = 'logout',
+  signout = 'signout',
   accept = 'accept',
   cancel = 'cancel',
   deleteTransparent = 'deleteTransparent',

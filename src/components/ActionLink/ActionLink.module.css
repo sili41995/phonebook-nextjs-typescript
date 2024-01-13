@@ -73,12 +73,12 @@
   color: var(--blueIconColor);
 }
 
-.logout {
+.signout {
   composes: link;
   background-color: var(--redBtnColor);
 }
 
-.logout svg {
+.signout svg {
   color: var(--redIconColor);
 }
 

@@ -8,6 +8,7 @@ import { IProps } from './ContactsListItem.types';
 import { IconSizes, PagePaths } from '@/constants';
 import { IconBtnType } from '@/constants';
 import css from './ContactsListItem.module.css';
+import AriaLabels from '@/constants/ariaLabels';
 
 const { primaryIconSize } = IconSizes;
 
@@ -46,6 +47,7 @@ const ContactsListItem: FC<IProps> = ({ contact }) => {
         disabled={isLoading}
         btnType={IconBtnType.deleteTransparent}
         onBtnClick={handleDelBtnClick}
+        aria-label={AriaLabels.delete}
         icon={<AiOutlineDelete size={primaryIconSize} />}
       />
     </li>

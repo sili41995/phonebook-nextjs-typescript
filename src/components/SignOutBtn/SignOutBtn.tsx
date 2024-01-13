@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { signOutApp } from '@/app/lib/actions';
-import css from './LogOutBtn.module.css';
+import css from './SignOutBtn.module.css';
 
-const LogOutBtn: FC = () => (
+const SignOutBtn: FC = () => (
   <form
     action={async () => {
       await signOutApp();
@@ -14,4 +14,4 @@ const LogOutBtn: FC = () => (
   </form>
 );
 
-export default LogOutBtn;
+export default SignOutBtn;

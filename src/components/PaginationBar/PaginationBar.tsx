@@ -7,6 +7,7 @@ import { getPageNumbers, getPaginationBarSettings, makeBlur } from '@/utils';
 import { SearchParamsKeys } from '@/constants';
 import useSetQueryString from '@/hooks/useSetQueryString';
 import css from './PaginationBar.module.css';
+import AriaLabels from '@/constants/ariaLabels';
 
 const { PAGE_SP_KEY } = SearchParamsKeys;
 
@@ -86,6 +87,7 @@ const PaginationBar: FC<IProps> = ({ itemsQuantity, quantity, step = 1 }) => {
             <li key={number} className={isHidden ? css.hidden : ''}>
               <button
                 className={className}
+                aria-label={`${AriaLabels.pageBtn} ${number}`}
                 onClick={(e) => {
                   onPageBtnClick({ e, page: number });
                 }}

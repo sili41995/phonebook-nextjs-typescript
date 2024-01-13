@@ -102,10 +102,14 @@ const AddContactForm: FC = () => {
           onCheckboxChange={onCheckboxChange}
           checked={checked}
         />
-        <div className={css.btnContainer}>
-          <AcceptBtn disabled={isLoading} />
-          <GoBackLink />
-        </div>
+        <ul className={css.btnList}>
+          <li>
+            <AcceptBtn disabled={isLoading} />
+          </li>
+          <li>
+            <GoBackLink />
+          </li>
+        </ul>
       </form>
     </>
   );

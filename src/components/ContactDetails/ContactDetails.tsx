@@ -18,6 +18,7 @@ import useDeleteContact from '@/hooks/useDeleteContact';
 import { IProps } from './ContactDetails.types';
 import { updateContactStatus } from '@/app/lib/actions';
 import css from './ContactDetails.module.css';
+import AriaLabels from '@/constants/ariaLabels';
 
 const { primaryIconSize } = IconSizes;
 const { favorite, delete: deleteType } = IconBtnType;
@@ -62,19 +63,31 @@ const ContactDetails: FC<IProps> = ({ contact }) => {
     <div className={css.container}>
       <div className={css.btnContainer}>
         <GoBackLink />
-        <div className={css.btnWrap}>
-          <IconButton
-            btnType={favorite}
-            onBtnClick={onFavoriteBtnClick}
-            icon={favoriteBtnIcon}
-          />
-          <IconButton
-            disabled={isDeleting}
-            btnType={deleteType}
-            onBtnClick={onDelBtnClick}
-            icon={<AiOutlineDelete size={primaryIconSize} />}
-          />
-          <Link href={editPagePath} className={css.editLink}>
+        <div className={css.btnList}>
+          <ul className={css.btnList}>
+            <li>
+              <IconButton
+                btnType={favorite}
+                onBtnClick={onFavoriteBtnClick}
+                aria-label={AriaLabels.favorite}
+                icon={favoriteBtnIcon}
+              />
+            </li>
+            <li>
+              <IconButton
+                disabled={isDeleting}
+                btnType={deleteType}
+                onBtnClick={onDelBtnClick}
+                aria-label={AriaLabels.delete}
+                icon={<AiOutlineDelete size={primaryIconSize} />}
+              />
+            </li>
+          </ul>
+          <Link
+            href={editPagePath}
+            className={css.editLink}
+            aria-label={AriaLabels.edit}
+          >
             <AiOutlineEdit size={primaryIconSize} />
           </Link>
         </div>

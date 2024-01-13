@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import LogOutBtn from '@/components/LogOutBtn';
+import SignOutBtn from '@/components/SignOutBtn';
 import css from './AuthError.module.css';
 
 const AuthError: FC = () => {
@@ -10,7 +10,7 @@ const AuthError: FC = () => {
       <p className={css.message}>
         Oops, something went wrong! You need to re-login!
       </p>
-      <LogOutBtn />
+      <SignOutBtn />
     </div>
   );
 };

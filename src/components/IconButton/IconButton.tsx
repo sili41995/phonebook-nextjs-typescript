@@ -10,6 +10,7 @@ const IconButton: FC<IProps> = ({
   type = BtnType.button,
   disabled,
   btnType = IconBtnType.default,
+  ...otherProps
 }) => {
   const btnChildren = title ? (
     <>
@@ -26,6 +27,7 @@ const IconButton: FC<IProps> = ({
       type={type}
       onClick={onBtnClick}
       disabled={disabled}
+      {...otherProps}
     >
       {btnChildren}
     </button>
