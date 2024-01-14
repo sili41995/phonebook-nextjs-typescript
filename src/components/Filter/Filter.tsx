@@ -82,18 +82,24 @@ const Filter: FC = () => {
           btnType={clearFilter}
         />
       )}
-      <IconButton
-        btnType={filterType}
-        onBtnClick={onFilterBtnClick}
-        aria-label={AriaLabels.filter}
-        icon={<FaSistrix size={otherIconSize} />}
-      />
-      <IconButton
-        btnType={filterType}
-        onBtnClick={onSortBtnClick}
-        aria-label={AriaLabels.sort}
-        icon={sortBtnIcon}
-      />
+      <ul className={css.btnList}>
+        <li>
+          <IconButton
+            btnType={filterType}
+            onBtnClick={onFilterBtnClick}
+            aria-label={AriaLabels.filter}
+            icon={<FaSistrix size={otherIconSize} />}
+          />
+        </li>
+        <li>
+          <IconButton
+            btnType={filterType}
+            onBtnClick={onSortBtnClick}
+            aria-label={AriaLabels.sort}
+            icon={sortBtnIcon}
+          />
+        </li>
+      </ul>
     </div>
   );
 };

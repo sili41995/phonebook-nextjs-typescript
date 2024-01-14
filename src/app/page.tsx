@@ -1,14 +1,15 @@
 import { FC } from 'react';
 import ModalForm from '@/components/ModalForm';
 import SignInForm from '@/components/SignInForm';
+import Container from '@/components/Container';
 import { FormTypes } from '@/constants';
 
 const HomePage: FC = () => (
-  <div className='container'>
+  <Container>
     <ModalForm formType={FormTypes.authForm}>
       <SignInForm />
     </ModalForm>
-  </div>
+  </Container>
 );
 
 export default HomePage;

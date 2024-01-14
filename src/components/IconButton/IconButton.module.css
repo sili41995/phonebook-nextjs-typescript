@@ -160,5 +160,5 @@
 
 .filter {
   composes: button;
-  height: auto;
+  height: 100%;
 }

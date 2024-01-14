@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import NotFoundMessage from '@/components/NotFound';
+import Container from '@/components/Container';
 
 const NotFound: FC = () => (
-  <div className='container'>
+  <Container>
     <NotFoundMessage />
-  </div>
+  </Container>
 );
 
 export default NotFound;

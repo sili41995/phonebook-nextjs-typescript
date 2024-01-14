@@ -2,3 +2,8 @@
   display: flex;
   gap: var(--primaryGap);
 }
+
+.btnList {
+  display: flex;
+  gap: calc(var(--spacing) * 2);
+}

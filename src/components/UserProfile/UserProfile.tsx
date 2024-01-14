@@ -25,32 +25,32 @@ const UserProfile: FC<IProps> = ({ user }) => {
         <p className={`${css.email} trimText`}>{email}</p>
       </div>
       {(phone || dateOfBirth || location) && (
-        <div className={css.userInfo}>
+        <ul className={css.userInfo}>
           {dateOfBirth && (
-            <div className={css.contactInfo}>
+            <li className={css.contactInfo}>
               <span className={css.iconWrap}>
                 <SlEvent size={secondaryIconSize} />
               </span>
               <p className='trimText'>{dateOfBirth}</p>
-            </div>
+            </li>
           )}
           {phone && (
-            <div className={css.contactInfo}>
+            <li className={css.contactInfo}>
               <span className={css.iconWrap}>
                 <SlPhone size={secondaryIconSize} />
               </span>
               <p className='trimText'>{phone}</p>
-            </div>
+            </li>
           )}
           {location && (
-            <div className={css.contactInfo}>
+            <li className={css.contactInfo}>
               <span className={css.iconWrap}>
                 <SlLocationPin size={secondaryIconSize} />
               </span>
               <p className='trimText'>{location}</p>
-            </div>
+            </li>
           )}
-        </div>
+        </ul>
       )}
     </div>
   );

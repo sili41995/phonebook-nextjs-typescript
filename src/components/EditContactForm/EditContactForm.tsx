@@ -56,10 +56,14 @@ const EditContactForm: FC<IProps> = ({ contact }) => {
           onCheckboxChange={onCheckboxChange}
           checked={checked}
         />
-        <div className={css.btnWrap}>
-          <AcceptBtn disabled={isLoading} />
-          <GoBackLink title='Cancel' />
-        </div>
+        <ul className={css.btnList}>
+          <li>
+            <AcceptBtn disabled={isLoading} />
+          </li>
+          <li>
+            <GoBackLink title='Cancel' />
+          </li>
+        </ul>
       </form>
     </>
   );

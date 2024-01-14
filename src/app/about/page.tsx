@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Metadata } from 'next';
+import Container from '@/components/Container';
 import About from '@/components/About';
 
 export const metadata: Metadata = {
@@ -8,9 +9,9 @@ export const metadata: Metadata = {
 };
 
 const AboutPage: FC = () => (
-  <div className='container'>
+  <Container>
     <About />
-  </div>
+  </Container>
 );
 
 export default AboutPage;

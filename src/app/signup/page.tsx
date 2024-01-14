@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Metadata } from 'next';
 import ModalForm from '@/components/ModalForm';
 import SignUpForm from '@/components/SignUpForm';
+import Container from '@/components/Container';
 import { FormTypes } from '@/constants';
 
 export const metadata: Metadata = {
@@ -10,11 +11,11 @@ export const metadata: Metadata = {
 };
 
 const SignUpPage: FC = () => (
-  <div className='container'>
+  <Container>
     <ModalForm formType={FormTypes.authForm}>
       <SignUpForm />
     </ModalForm>
-  </div>
+  </Container>
 );
 
 export default SignUpPage;

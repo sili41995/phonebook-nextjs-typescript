@@ -12,7 +12,7 @@
   gap: calc(var(--spacing) * 2);
 }
 
-.btnWrap {
+.btnList {
   display: flex;
   gap: calc(var(--spacing) * 2);
   justify-content: center;
