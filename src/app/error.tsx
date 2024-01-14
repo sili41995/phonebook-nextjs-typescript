@@ -2,8 +2,8 @@
 
 import { FC } from 'react';
 import ErrorMessage from '@/components/ErrorMessage';
-import { IErrorProps } from '@/types/types';
 import Container from '@/components/Container';
+import { IErrorProps } from '@/types/types';
 
 const Error: FC<IErrorProps> = ({ error, reset }) => (
   <Container>
